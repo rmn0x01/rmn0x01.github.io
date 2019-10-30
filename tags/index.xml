@@ -6,9 +6,37 @@
     <description>Recent content in Tags on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ICMP</title>
+      <link>/tags/icmp/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/icmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ISO</title>
+      <link>/tags/iso/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/iso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wireshark</title>
+      <link>/tags/wireshark/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/wireshark/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
