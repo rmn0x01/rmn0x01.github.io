@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Forensic" />
-    <meta property="og:title" content="Forensic" />
-    <meta property="twitter:title" content="Forensic" />
+    <meta name="title" content="Writeup Disk Forensic" />
+    <meta property="og:title" content="Writeup Disk Forensic" />
+    <meta property="twitter:title" content="Writeup Disk Forensic" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Forensic-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Disk Forensic-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/categories/forensic/">
+    <link rel="canonical" href="/2019/10/30/writeup-gemastik12-final-disk/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -152,14 +152,41 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/home-bg-sven.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-gemastik.png')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>rmn0x01 </h1>
-                    
-		    <span class="subheading">Cheese Kimbap</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/linux-filesystem" title="Linux Filesystem">
+                            Linux Filesystem
+                        </a>
+                        
+                        <a class="tag" href="/tags/ext2" title="ext2">
+                            ext2
+                        </a>
+                        
+                    </div>
+                    <h1>Writeup Disk Forensic</h1>
+                    <h2 class="subheading">Final Gemastik XII</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            rmn0x01
+                         
+                        on 
+                        Wednesday, October 30, 2019
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -168,211 +195,178 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="/2019/10/30/writeup-gemastik12-final-disk/">
-        <h2 class="post-title">
-            Writeup Disk Forensic
-        </h2>
-	
-        <h3 class="post-subtitle">
-            Final Gemastik XII
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            <h2 id="intro">Intro</h2>
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#rant">Rant</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <h2 id="intro">Intro</h2>
 
 <p>Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by rmn0x01 Wednesday, October 30, 2019
-    
-    
-    </p>
 
-</div>
-<hr>
+<p>File yang diberikan berupa</p>
 
-<div class="post-preview">
-    <a href="/2019/10/30/writeup-hology-final-jendeladunia/">
-        <h2 class="post-title">
-            Writeup Jendela Dunia
-        </h2>
-	
-        <h3 class="post-subtitle">
-            Final Hology 2.0
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            <h2 id="intro">Intro</h2>
+<pre><code># file forensic.img 
+forensic.img: data
+</code></pre>
 
-<p>Soal Forensik pertama yang diberikan saat final Hology 2.0, <em>starting points</em>: 100.</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by rmn0x01 Wednesday, October 30, 2019
-    
-    
-    </p>
+<h2 id="tldr">TLDR</h2>
 
-</div>
-<hr>
+<ol>
+<li>Perbaiki file</li>
+<li>Mount file</li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
 
-<div class="post-preview">
-    <a href="/2019/10/29/writeup-hology-final-icmp/">
-        <h2 class="post-title">
-            Writeup I(Co)MP
-        </h2>
-	
-        <h3 class="post-subtitle">
-            Final Hology 2.0
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            <h2 id="intro">Intro</h2>
+<h2 id="full-steps">Full Steps</h2>
 
-<p>Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by rmn0x01 Tuesday, October 29, 2019
-    
-    
-    </p>
+<p>File <em>forensic.img</em> perlu diperbaiki terlebih dahulu agar dapat dilakukan <em>mounting</em> dengan menggunakan <em>fsck</em></p>
 
-</div>
-<hr>
+<pre><code># fsck.ext2 forensic.img 
+e2fsck 1.44.5 (15-Dec-2018)
+ext2fs_open2: Bad magic number in super-block
+fsck.ext2: Superblock invalid, trying backup blocks...
+forensic.img was not cleanly unmounted, check forced.
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+Free blocks count wrong for group #0 (7975, counted=7711).
+Fix&lt;y&gt;? yes
+Free blocks count wrong for group #1 (1844, counted=940).
+Fix&lt;y&gt;? yes
+Free blocks count wrong (9819, counted=8651).
+Fix&lt;y&gt;? yes
+Free inodes count wrong for group #0 (1269, counted=1268).
+Fix&lt;y&gt;? yes
+Free inodes count wrong for group #1 (1280, counted=1224).
+Fix&lt;y&gt;? yes
+Directories count wrong for group #1 (0, counted=1).
+Fix&lt;y&gt;? yes
+Free inodes count wrong (2549, counted=2492).
+Fix&lt;y&gt;? yes
 
+forensic.img: ***** FILE SYSTEM WAS MODIFIED *****
+forensic.img: 68/2560 files (77.9% non-contiguous), 1589/10240 blocks
+</code></pre>
 
-            
+<p>File <em>forensic.img</em> telah berhasil diperbaiki</p>
 
+<pre><code># file forensic.img 
+forensic.img: Linux rev 1.0 ext2 filesystem data, UUID=5424215a-8103-4a3d-8687-b4ed6f74fef2 (large files)
+</code></pre>
 
+<p>Kemudian file <em>forensic.img</em> di-<em>mount</em></p>
 
-       	</div>
-        
+<pre><code># mkdir mont
+# mount -o loop forensic.img mont/
+# cd mont/
+# ls
+accordion  lost+found  wkwkwkw
+</code></pre>
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-             
-            
+<p>Flag ditemukan di</p>
+
+<blockquote>
+<p>accordion/image_0017.jpg</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-diskforen/pic1.jpg" alt="image_0017" /></p>
+
+<h2 id="flag">Flag</h2>
+
+<p><strong>gemastik12{Disk_forensic_is Eazy}</strong></p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://linux.die.net/man/8/fsck">https://linux.die.net/man/8/fsck</a></li>
+</ol>
+
+<h2 id="rant">Rant</h2>
+
+<p>Saya benci cheese kimbap</p>
+
                 
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-        </div>
-    </section>
-    
 
-    
-	
-    <section class="visible-md visible-lg">
-	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
-        <div class="short-about">
-            
-            <a href="/top/about">
-               <img src="/img/avatar.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Computer Science Student</p>
-            
-           
-           <ul class="list-inline"> 
-               
-               
-               <li>
-                   <a href="https://twitter.com/nizarahman_">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/rmn0x01/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-            
-            
-               
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/10/30/writeup-hology-final-jendeladunia/" data-toggle="tooltip" data-placement="top" title="Writeup Jendela Dunia">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
                 </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
             </div>
-    </section>
-	
-    
-    
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
-</div>
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
 
-	</div>
-</div>
-
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
