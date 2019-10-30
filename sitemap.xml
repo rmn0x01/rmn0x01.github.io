@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/tags/ftp/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/linux-filesystem/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
@@ -43,7 +48,17 @@
   </url>
   
   <url>
+    <loc>/tags/wireshark/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2019/10/30/writeup-gemastik12-final-disk/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/10/30/writeup-gemastik12-final-ftp/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,11 +74,6 @@
   
   <url>
     <loc>/tags/iso/</loc>
-    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/wireshark/</loc>
     <lastmod>2019-10-29T00:00:00+00:00</lastmod>
   </url>
   

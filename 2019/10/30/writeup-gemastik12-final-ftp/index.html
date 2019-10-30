@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Clean White Theme for Hugo" />
-    <meta property="og:title" content="Clean White Theme for Hugo" />
-    <meta property="twitter:title" content="Clean White Theme for Hugo" />
+    <meta name="title" content="Writeup FTP Forensik" />
+    <meta property="og:title" content="Writeup FTP Forensik" />
+    <meta property="twitter:title" content="Writeup FTP Forensik" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Clean White Theme for Hugo-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup FTP Forensik-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/post/readme/">
+    <link rel="canonical" href="/2019/10/30/writeup-gemastik12-final-ftp/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -155,7 +155,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://img.zhaohuabing.com/post-bg-2015.jpg')
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-gemastik.png')
     }
 </style>
 <header class="intro-header">
@@ -165,16 +165,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/ftp" title="ftp">
+                            ftp
+                        </a>
+                        
+                        <a class="tag" href="/tags/wireshark" title="wireshark">
+                            wireshark
+                        </a>
+                        
                     </div>
-                    <h1>Clean White Theme for Hugo</h1>
-                    <h2 class="subheading">How to set up this theme</h2>
+                    <h1>Writeup FTP Forensik</h1>
+                    <h2 class="subheading">Final Gemastik XII</h2>
                     <span class="meta">
                         Posted by 
                         
-                            赵化冰
+                            rmn0x01
                          
                         on 
-                        Wednesday, January 9, 2019
+                        Wednesday, October 30, 2019
                         
                         
                         
@@ -204,202 +212,168 @@
                 </header>
                 <nav id="TableOfContents">
 <ul>
-<li><a href="#clean-white-theme-for-hugo">Clean White Theme for Hugo</a>
+<li>
 <ul>
-<li><a href="#screenshots">Screenshots</a></li>
-<li><a href="#quick-start">Quick Start</a></li>
-<li><a href="#configuration">Configuration</a>
-<ul>
-<li><a href="#comments">Comments</a></li>
-<li><a href="#disqus-in-china">Disqus in China</a></li>
-<li><a href="#site-search-with-algolia">Site Search with Algolia</a></li>
-<li><a href="#analytics">Analytics</a></li>
-<li><a href="#wechat-pay-alipay-rewards">Wechat Pay &amp; Alipay Rewards</a></li>
-</ul></li>
-<li><a href="#thank">Thank</a></li>
-<li><a href="#feedback">Feedback</a></li>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#shortcut">Shortcut</a></li>
+<li><a href="#rant">Rant</a></li>
 </ul></li>
 </ul>
 </nav>
                 
-                
+                <h2 id="intro">Intro</h2>
 
-<h1 id="clean-white-theme-for-hugo">Clean White Theme for Hugo</h1>
+<p>Soal forensik final Gemastik XII di Telkom University. Poin 200</p>
 
-<p>CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live <a href="https://zhaohuabing.com">demo site</a> using this theme.</p>
+<p>File yang diberikan berupa</p>
 
-<p>It is based on <a href="https://github.com/Huxpro/huxpro.github.io">huxblog Jekyll Theme</a>
-and <a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll">Clean Blog Jekyll Theme</a>.</p>
-
-<p>These two upstream projects have done awesome jobs to create a blog theme, what I&rsquo;m doing here is porting it to Hugo, of which I like the simplicity and the much faster compiling speed. Some other features which I think could be useful, such as site search with algolia and proxy for Disqus access in China, have also been built in the CleanWhite theme. Other fancy features of upstream projects are not supported by this Hugo theme, I&rsquo;d like to make it as simple as possible and only focus on blog purpose, at least for now.
-While I created this theme, I followed the Hugo theme best practice and tried to make every part of the template as a replaceable partial html, so it could be much easier for you to make your customization based on it.</p>
-
-<h2 id="screenshots">Screenshots</h2>
-
-<p><strong>Home</strong>
-<img src="/img/fullscreenshot.png" alt="screenshot" /></p>
-
-<p><strong>Post</strong>
-<img src="/img/post.png" alt="screenshot" /></p>
-
-<p><strong>Search</strong>
-<img src="/img/sitesearch.png" alt="screenshot" /></p>
-
-<p><strong>Disqus</strong>
-<img src="/img/disqus.png" alt="screenshot" /></p>
-
-<p><strong>Wechat Pay &amp; Alipay</strong>
-<img src="/img/rewards.png" alt="screenshot" /></p>
-
-<h2 id="quick-start">Quick Start</h2>
-
-<p>Go to the directory where you have your Hugo site and run:</p>
-
-<pre><code>$ mkdir themes
-$ cd themes
-$ git clone https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
+<pre><code># file *
+images.png:               PNG image data, 358 x 141, 8-bit colormap, non-interlaced
+trafik-gemastik12.pcapng: pcap-ng capture file - version 1.0
 </code></pre>
 
-<p>If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.</p>
+<p><em>images.png</em> yang diterima menerangkan bagaimana <em>File Transfer Protocol</em> (FTP) bekerja
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-ftpforen/pic1.png" alt="images.png" /></p>
 
-<pre><code>$ mkdir themes
-$ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+<h2 id="tldr">TLDR</h2>
+
+<ol>
+<li>FTP Packet filter</li>
+<li>Analisis paket</li>
+<li>Dump <em>JPG File</em></li>
+<li>Recover file</li>
+<li>Dapatkan <em>password ZIP</em></li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
+
+<h2 id="full-steps">Full Steps</h2>
+
+<p>Sesuai dengan judul soal dan <em>images.png</em> yang sudah sangat amat terang jelas mengarah pada FTP, maka file <em>trafik-gemastik12.pcapng</em> dibuka dengan <em>wireshark</em> dan difilter <em>ftp</em>
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-ftpforen/pic2.png" alt="Wireshark FTP Filter" /></p>
+
+<p>Pada paket no. 356, terdapat aktivitas yang menarik dimana dilakukan <em>request</em> terhadap file</p>
+
+<blockquote>
+<p>/home/gemastik12/files/file/data-gemastik.jpg</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-ftpforen/pic3.png" alt="Paket no. 356" /></p>
+
+<p>Dilakukan pencarian terhadap file <em>data-gemastik.jpg</em> dengan cara mencari FF D8 FF (<em>hex-value</em> dari JPG), kemudian <em>follow tcp streams</em> tersebut, <em>dump as raw</em> dan simpan sebagai <em>data-gemastik.jpg</em></p>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-ftpforen/pic4.png" alt="raw value" /></p>
+
+<p><em>data-gemastik.jpg</em></p>
+
+<pre><code># file data-gemastik.jpg 
+data-gemastik.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 300x300, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=4, manufacturer=Canon, model=Canon EOS 5D Mark III], baseline, precision 8, 510x340, components 3
 </code></pre>
 
-<p>Run  Hugo Build-in Server Locally</p>
+<p>Kemudian dilakukan pencarian terhadap file lain di <em>data-gemastik.jpg</em> menggunakan <em>binwalk</em></p>
 
-<pre><code>$ hugo serve -t  hugo-theme-cleanwhite
+<pre><code># binwalk data-gemastik.jpg 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.01
+30            0x1E            TIFF image data, big-endian, offset of first image directory: 8
+22337         0x5741          Zip archive data, at least v1.0 to extract, compressed size: 93051, uncompressed size: 93051, name: data.png
+115426        0x1C2E2         Zip archive data, at least v2.0 to extract, compressed size: 206330, uncompressed size: 210266, name: flag-diproteksi.pdf
+321805        0x4E90D         Zip archive data, at least v1.0 to extract, compressed size: 322317, uncompressed size: 322317, name: tree.jpg
+644441        0x9D559         End of Zip archive, footer length: 22
 </code></pre>
 
-<p>Now enter <a href="http://localhost:1313"><code>localhost:1313</code></a> in the address bar of your browser.</p>
+<p><em>Recover</em> semuanya dengan <em>foremost</em></p>
 
-<p>If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the <a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite/tree/master/exampleSite">exampleSite</a> directory.  You can use it as a starting point for your site.</p>
+<pre><code># foremost data-gemastik.jpg 
+Processing: data-gemastik.jpg
+|foundat=data.png�PNG
+
 
-<p>For more information read the official <a href="https://gohugo.io/overview/installing/">setup guide</a> of Hugo</p>
-
-<h2 id="configuration">Configuration</h2>
-
-<p>First, let&rsquo;s take a look at the <a href="https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml">config.toml</a>. It will be useful to learn how to customize your site. Feel free to play around with the settings.</p>
-
-<h3 id="comments">Comments</h3>
-
-<p>The optional comments system is powered by <a href="https://disqus.com">Disqus</a>. If you want to enable comments, create an account in Disqus and write down your shortname.</p>
-
-<pre><code class="language-toml">disqusShortname = &quot;your-disqus-short-name&quot;
+foundat=flag-diproteksi.pdf�Rcp%\̈́۶�b���b[/�'�L&lt;I&amp;�1ыm۶�Ŷ�ݭu��ت���{���&gt;���R�l,Ի{Sld�d����
+foundat=tree.jpg����
+*|
 </code></pre>
 
-<p>You can disable the comments system by leaving the <code>disqusShortname</code> empty.</p>
+<p>File zip yang di-<em>recover</em> berisi</p>
 
-<h3 id="disqus-in-china">Disqus in China</h3>
-
-<p>Disqus is inaccessible in China. To get it to work, we can set up a proxy with <a href="https://github.com/zhaohuabing/disqus-php-api">disqus-php-api</a> in a host which sets between the client browser and the Disqus server. The idea is that if Disqus can be reached in the guest network, the blog page will show the original Disqus comments UI, otherwise, it will downgrade and use the proxy to access the Disqus, the UI will be a little different, but the visitors can still write their comments on the page.</p>
-
-<p>The client side java script has already been integrated to CleanWhite them, but you need to set up a proxy server yourself.</p>
-
-<p>The proxy is written in php, which can be found here: <a href="https://github.com/zhaohuabing/disqus-php-api/tree/master/api">https://github.com/zhaohuabing/disqus-php-api/tree/master/api</a></p>
-
-<p>You need to specify  your Disqus account information in the config.php.</p>
-
-<pre><code>define('PUBLIC_KEY', '');
-define('SECRET_KEY', '');
-define('DISQUS_USERNAME', '');
-define('DISQUS_EMAIL', '');
-define('DISQUS_PASSWORD', '');
-define('DISQUS_WEBSITE', '');
-define('DISQUS_SHORTNAME', '');
+<pre><code># unzip 00000043.zip 
+Archive:  00000043.zip
+ extracting: data.png                
+  inflating: flag-diproteksi.pdf     
+ extracting: tree.jpg 
 </code></pre>
 
-<p>Set the proxy server address in the site config file of your Hugo project.</p>
+<blockquote>
+<p>Tidak semudah itu ferguso - Panitia gemastik12</p>
+</blockquote>
 
-<pre><code class="language-toml">disqus_proxy = &quot;http://yourdisqusproxy.com&quot;
+<p>File PDF tidak dapat dibuka karena <em>password protected</em>, asumsi selanjutnya adalah <em>password</em> disembunyikan di salah satu gambar, antara <em>data.png</em> atau <em>tree.jpg</em>, sehingga kemudian dilakukan <em>zsteg</em>.</p>
+
+<pre><code># zsteg data.png 
+meta Raw profile type APP1.. text: &quot;\ngeneric profile\n     202\n4578696600004d4d002a000000080004010e00020000001f0000003e0128000300000001\n0002000002130003000000010001000088250004000000010000005e000000004e4f2043\n4f444520455845435554494f4e20414c4c4f574544204845524500000004000100020000\n00024e000000000200050000000300000094000300020000000245000000000400050000\n0003000000ac000000000000002b0000000100000036000000010001914000001d1b0000\n0009000000010000003a0000000100004eb100001000\n&quot;
+b1,g,msb,xy         .. file: PGP\011Secret Key -
+b1,rgb,lsb,xy       .. text: &quot;cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=&quot;
+b2,r,msb,xy         .. text: &quot;@UUUUUUUUA&quot;
+b2,g,msb,xy         .. text: &quot;TUUUUUUU&quot;
+b2,rgba,lsb,xy      .. text: &quot;{k?g#s?{cs&quot;
+b2,abgr,msb,xy      .. text: &quot;GCSSSSSSSSSSSSSSS&quot;
+b3,rgba,lsb,xy      .. text: &quot;?Wu?wwwWu?s&quot;
+b4,r,lsb,xy         .. text: &quot;fUEEEU#2 &quot;
+b4,r,msb,xy         .. text: &quot;DD\&quot;\&quot;33333333\&quot;\&quot;\&quot;DD&quot;
+b4,g,lsb,xy         .. text: &quot;3#\&quot;3vwfgvffvvuB#&quot;
+b4,g,msb,xy         .. text: &quot;;3;3;33w&quot;
+b4,b,lsb,xy         .. text: &quot;gfwwgfgv&quot;
+b4,b,msb,xy         .. text: &quot;ffff\&quot;\&quot;\&quot;\&quot;DTUU&quot;
+b4,rgb,lsb,xy       .. text: &quot;c62b'2b'#c)3&quot;
+b4,bgr,lsb,xy       .. text: &quot;3b6\&quot;b7\&quot;c'#c9&quot;
+b4,abgr,msb,xy      .. text: &quot;h_`o(o(o&quot;
 </code></pre>
 
-<h3 id="site-search-with-algolia">Site Search with Algolia</h3>
+<p><em>Decode string</em> cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=</p>
 
-<p>Follow this <a href="https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia">tutorial</a> to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.</p>
-
-<p>Go to the directory where you have your Hugo site and run the following commands:</p>
-
-<pre><code class="language-bash">$ npm init
-$ npm install atomic-algolia --save
+<pre><code># echo 'cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=' | base64 -d
+password pdf file adalah galiterussampaid4p4tkawan
 </code></pre>
 
-<p>Next, open up the newly created package.json, where we’ll add an NPM script to update your index at Algolia. Find &ldquo;scripts&rdquo;, and add the following:</p>
+<p>Buka file <em>flag-diproteksi.pdf</em> dengan <em>password</em> <strong>galiterussampaid4p4tkawan</strong>, didapatkan flagnya
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-ftpforen/pic5.png" alt="flag" /></p>
 
-<pre><code class="language-josn">&quot;algolia&quot;: &quot;atomic-algolia&quot;
+<h2 id="flag">Flag</h2>
+
+<p><strong>gemastik12{a4e5e3b7ac929b5ec11726f7820cb1cd}</strong></p>
+
+<h2 id="shortcut">Shortcut</h2>
+
+<p>Cek dahulu apakah ada string <em>flag</em> di dalam paket</p>
+
+<pre><code># strings trafik-gemastik12.pcapng | grep -i flag
+flag-diproteksi.pdf
+flag-diproteksi.pdf
 </code></pre>
 
-<p>Algolia index output format has already been supported by the CleanWhite theme, so you can just build your site, then you’ll find a file called algolia.json in the root, which we can use to update your index in Algolia.
-Generate index file:</p>
+<p>Jika ada, gunakan filter <strong>tcp contains flag</strong> di Wireshark, kemudian follow tcp stream tersebut dan <em>dump</em> file <em>data-gemastik.jpg</em>, kemudian dapat dilanjutkan dengan step 5 dan seterusnya seperti biasa.</p>
 
-<pre><code class="language-bash">$ hugo
-</code></pre>
+<h2 id="rant">Rant</h2>
 
-<p>Create a new file in the root of your Hugo project called .env, and add the following contents:</p>
-
-<pre><code class="language-bash">ALGOLIA_APP_ID={{ YOUR_APP_ID }}
-ALGOLIA_ADMIN_KEY={{ YOUR_ADMIN_KEY }}
-ALGOLIA_INDEX_NAME={{ YOUR_INDEX_NAME }}
-ALGOLIA_INDEX_FILE={{ PATH/TO/algolia.json }}
-</code></pre>
-
-<p>Now you can push your index to Algolia by simply running:</p>
-
-<pre><code class="language-bash">$ npm run algolia
-</code></pre>
-
-<p>Add the following variables to your hugo site config so the search page can get access to algolia index data in the cloud:</p>
-
-<pre><code>algolia_search = true
-algolia_appId = {{ YOUR_APP_ID }}
-algolia_indexName = {{ YOUR_INDEX_NAME }}
-algolia_apiKey = {{ YOUR_ADMIN_KEY }}
-</code></pre>
-
-<p>Open search page in your browser: <a href="http://localhost:1313/search">http://localhost:1313/search</a></p>
-
-<h3 id="analytics">Analytics</h3>
-
-<p>You can optionally enable Google or Baidu Analytics. Type your tracking code in the</p>
-
-<pre><code class="language-toml">googleAnalytics = &quot;UA-XXXXX-X&quot;
-ba_track_id  = &quot;XXXXXXXXXXXXXXXX&quot;
-</code></pre>
-
-<p>Leave the <code>googleAnalytics</code>  or &lsquo;ba_track_id &lsquo; key empty to disable it.</p>
-
-<h3 id="wechat-pay-alipay-rewards">Wechat Pay &amp; Alipay Rewards</h3>
-
-<p>You can enable Wechat Pay &amp; Alipay to allow readers send you money. So if they like your articles, you may even get rewards from your writing. Now you must be motivated to write more.</p>
-
-<ul>
-<li><p>Enable Wechat Pay &amp; Alipay in the site config</p>
-
-<pre><code class="language-toml">reward = true
-</code></pre></li>
-
-<li><p>Replace the QR codes of Wechat Pay &amp; Alipay by overriding the photos in folder /static/img/reward/, otherwise the money will be sent to my accounts!</p></li>
-</ul>
-
-<h2 id="thank">Thank</h2>
-
-<p>Thanks for the great jobs of <a href="https://github.com/Huxpro/huxpro.github.io">huxblog Jekyll Theme</a> and <a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll">Clean Blog Jekyll Theme</a> which are the the two upstream projects CleanWhite Hugo theme is based on.</p>
-
-<h2 id="feedback">Feedback</h2>
-
-<p>If you find any problems, please feel free to <a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite/issues/new">raise an issue</a> or create a pull request to fix it.</p>
-
-<p>If it&rsquo;s helpful for you, I would appreciate it if you could star this repository, thanks!</p>
-
+<p>Saya benci cheese kimbap</p>
 
                 
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2019/10/30/writeup-hology-final-jendeladunia/" data-toggle="tooltip" data-placement="top" title="Writeup Jendela Dunia">&larr;
+                            Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2019/10/28/hello-world/" data-toggle="tooltip" data-placement="top" title="Welcome to rmn0x01 Blog">Next
+                        <a href="/2019/10/30/writeup-gemastik12-final-disk/" data-toggle="tooltip" data-placement="top" title="Writeup Disk Forensic">Next
                             Post &rarr;</a>
                     </li>
                     
