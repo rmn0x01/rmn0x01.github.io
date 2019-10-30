@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Writeup Jendela Dunia" />
+    <meta property="og:title" content="Writeup Jendela Dunia" />
+    <meta property="twitter:title" content="Writeup Jendela Dunia" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Jendela Dunia-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/2019/10/30/writeup-hology-final-jendeladunia/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -165,16 +165,20 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/windows-registry" title="Windows Registry">
+                            Windows Registry
+                        </a>
+                        
                     </div>
-                    <h1></h1>
-                    <h2 class="subheading"></h2>
+                    <h1>Writeup Jendela Dunia</h1>
+                    <h2 class="subheading">Final Hology 2.0</h2>
                     <span class="meta">
                         Posted by 
                         
-                                rmn0x01
+                            rmn0x01
                          
                         on 
-                        Monday, January 1, 0001
+                        Wednesday, October 30, 2019
                         
                         
                         
@@ -202,15 +206,163 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#rant">Rant</a></li>
+</ul></li>
+</ul>
+</nav>
                 
-                
-                
+                <h2 id="intro">Intro</h2>
+
+<p>Soal Forensik pertama yang diberikan saat final Hology 2.0, <em>starting points</em>: 100.</p>
+
+<p>File yang diberikan berupa</p>
+
+<pre><code># file Leaked
+Leaked: data
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
+<ol>
+<li>Perbaiki file</li>
+<li>Import registry</li>
+<li>Analisis registry</li>
+<li>Extract hex value</li>
+<li>Decode</li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
+
+<h2 id="full-steps">Full Steps</h2>
+
+<p>Isi dari file <em>Leaked</em> adalah</p>
+
+<pre><code># cat Leaked
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00
+(...)
+[HKEY_CURRENT_USER\Software\Microsoft\XboxLive]
+(...)
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
+</code></pre>
+
+<p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa&hellip; di awal file dan AAAAA&hellip; di akhir file</p>
+
+<pre><code># python
+Python 2.7.15+ (default, Feb  3 2019, 13:13:16) 
+[GCC 8.2.0] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; f = open('Leaked','r').read()
+&gt;&gt;&gt; g = f[205:-243]
+&gt;&gt;&gt; h = open('Leaked.reg','wb')
+&gt;&gt;&gt; h.write(g)
+&gt;&gt;&gt; h.close()
+</code></pre>
+
+<p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
+
+<pre><code># file Leaked.reg 
+Leaked.reg: Windows Registry little-endian text (Win2K or above)
+</code></pre>
+
+<p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
+
+<pre><code>&quot;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&quot;=hex:53,41,\
+  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,\
+  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,\
+  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,\
+  00,00,01,00,00,00
+&quot;C:\\Users\\hanyi\\Desktop\\Flag.exe&quot;=hex:53,41,43,50,01,00,00,00,00,00,00,00,\
+  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,\
+  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,\
+  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
+</code></pre>
+
+<p>Langkah selanjutnya adalah melakukan <em>Import</em> <em>Leaked.reg</em> menggunakan <em>regedit</em>. Hal yang aman adalah dengan menggunakan <em>Virtual Machine</em>, namun ketika pelaksanaan kemarin karena tidak memiliki VM yang <em>ready</em>, saya <strong>yolo</strong> saja dengan mengimport-nya ke <em>regedit</em> di <em>Wine</em> (setidaknya kalau broken, yang broken hanya Wine saja).</p>
+
+<pre><code># wine regedit
+</code></pre>
+
+<p><img src="pic1" alt="Import Regedit" /></p>
+
+<p>Ditemukan Flag.exe di [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store]
+<img src="pic2" alt="Lokasi Flag.exe" /></p>
+
+<p>Hint yang diberikan panitia adalah:</p>
+
+<pre><code>1. Display Opened Application in Jendela
+2. ROT-13
+</code></pre>
+
+<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan <em>keyword:</em></p>
+
+<blockquote>
+<p>windows registry rot 13</p>
+</blockquote>
+
+<p>dari referensi [1] diketahui bahwa <em>system objects</em> seperti <em>program, shortcut</em>, dan <em>control panel applets</em> yang baru saja diakses akan disimpan di</p>
+
+<blockquote>
+<p>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</p>
+</blockquote>
+
+<p>dalam bentuk <em>ROT-13 Encoded</em></p>
+
+<p>Setelah dicari dengan <em>regedit</em>, ditemukan <strong>IHYA_INYHRF</strong> yang jika dilakukan <em>ROT-13</em> menjadi <strong>VULN_VALUES</strong>, kami mengasumsikan bahwa ini merupakan hasil <em>run</em> dari file <em>flag.exe</em> tadi.
+<img src="pic3" alt="IHYA_INYHRF" /></p>
+
+<p>Ambil data-nya, kemudian buat <em>script</em>-nya</p>
+
+<p><strong>solver.py</strong></p>
+
+<pre><code>from Crypto.Util.number import long_to_bytes
+
+ihya=&quot;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&quot;.split(',')
+flag=''
+for i in ihya:
+    flag+=i.decode('hex')
+
+print(long_to_bytes(int(flag,2)))
+</code></pre>
+
+<h2 id="flag">Flag</h2>
+
+<p><strong>hctf{r0t_13_defaUl7_r3g1stry_mak35_3a5y}</strong></p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/">https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/</a></li>
+</ol>
+
+<h2 id="rant">Rant</h2>
+
+<p>Baru dapet <em>step</em> 4 waktu tinggal 30 detik, alhasil gagal <em>solve on time</em> alias woe tambahin 5 menit lagi aja <em>solve</em> ini saya &hellip;</p>
 
                 
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2019/10/29/hello-world/" data-toggle="tooltip" data-placement="top" title="Welcome to rmn0x01 Blog">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/10/30/writeup-hology-final-icmp/" data-toggle="tooltip" data-placement="top" title="Writeup I(Co)MP">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

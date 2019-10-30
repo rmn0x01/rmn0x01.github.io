@@ -38,12 +38,22 @@
   </url>
   
   <url>
+    <loc>/tags/windows-registry/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/wireshark/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/2019/10/30/writeup-hology-final-icmp/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/10/30/writeup-hology-final-jendeladunia/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
