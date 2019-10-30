@@ -8,7 +8,17 @@
   </url>
   
   <url>
+    <loc>/tags/ext2/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/forensic/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/linux-filesystem/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,6 +39,11 @@
   
   <url>
     <loc>/tags/windows-registry/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/10/30/writeup-hology-final-jendeladunia/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
