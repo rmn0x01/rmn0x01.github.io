@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Writeup Jendela Dunia" />
-    <meta property="og:title" content="Writeup Jendela Dunia" />
-    <meta property="twitter:title" content="Writeup Jendela Dunia" />
+    <meta name="title" content="Writeup I(Co)MP" />
+    <meta property="og:title" content="Writeup I(Co)MP" />
+    <meta property="twitter:title" content="Writeup I(Co)MP" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup Jendela Dunia-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup I(Co)MP-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/2019/10/30/writeup-hology-final-jendeladunia/">
+    <link rel="canonical" href="/2019/10/29/writeup-hology-final-icmp/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -165,12 +165,20 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/windows-registry" title="Windows Registry">
-                            Windows Registry
+                        <a class="tag" href="/tags/icmp" title="ICMP">
+                            ICMP
+                        </a>
+                        
+                        <a class="tag" href="/tags/wireshark" title="Wireshark">
+                            Wireshark
+                        </a>
+                        
+                        <a class="tag" href="/tags/iso" title="ISO">
+                            ISO
                         </a>
                         
                     </div>
-                    <h1>Writeup Jendela Dunia</h1>
+                    <h1>Writeup I(Co)MP</h1>
                     <h2 class="subheading">Final Hology 2.0</h2>
                     <span class="meta">
                         Posted by 
@@ -178,7 +186,7 @@
                             rmn0x01
                          
                         on 
-                        Wednesday, October 30, 2019
+                        Tuesday, October 29, 2019
                         
                         
                         
@@ -222,131 +230,243 @@
                 
                 <h2 id="intro">Intro</h2>
 
-<p>Soal Forensik pertama yang diberikan saat final Hology 2.0, <em>starting points</em>: 100.</p>
+<p>Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.</p>
 
 <p>File yang diberikan berupa</p>
 
-<pre><code># file Leaked
-Leaked: data
+<pre><code># file icomp.iso 
+icomp.iso: ISO 9660 CD-ROM filesystem data 'CDROM'
 </code></pre>
 
 <h2 id="tldr">TLDR</h2>
 
 <ol>
-<li>Perbaiki file</li>
-<li>Import registry</li>
-<li>Analisis registry</li>
-<li>Extract hex value</li>
-<li>Decode</li>
+<li>Mount file <em>icomp.iso</em></li>
+<li>Analisis file <em>_not_imp/capture.pca</em></li>
+<li>Dapatkan potongan string</li>
+<li><em>Caesar cipher</em>, kemudian gabungkan</li>
 <li>Get the <strong>Flag</strong></li>
 </ol>
 
 <h2 id="full-steps">Full Steps</h2>
 
-<p>Isi dari file <em>Leaked</em> adalah</p>
+<p>File merupakan <em>filesystem</em> yang tidak <em>corrupt</em> sehingga dapat langsung dilakukan <em>mount</em></p>
 
-<pre><code># cat Leaked
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00
-(...)
-[HKEY_CURRENT_USER\Software\Microsoft\XboxLive]
-(...)
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
+<pre><code># mkdir mont
+# mount -o loop icomp.iso mont/
+mount: /root/ctf/games/hology/final/foren/ico/mont: WARNING: device write-protected, mounted read-only.
 </code></pre>
 
-<p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa&hellip; di awal file dan AAAAA&hellip; di akhir file</p>
+<p>List direktori dan files dari file yang telah di-<em>mount</em> adalah</p>
 
-<pre><code># python
-Python 2.7.15+ (default, Feb  3 2019, 13:13:16) 
-[GCC 8.2.0] on linux2
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; f = open('Leaked','r').read()
-&gt;&gt;&gt; g = f[205:-243]
-&gt;&gt;&gt; h = open('Leaked.reg','wb')
-&gt;&gt;&gt; h.write(g)
-&gt;&gt;&gt; h.close()
+<pre><code># tree .
+.
+├── music
+│   ├── lofi_hip.mp3
+│   ├── lofi_hip.mp4
+│   └── ________.mp4
+├── _not_imp
+│   └── capture.pca
+├── o_rly_me
+│   ├── 0134yojs.png
+│   ├── 0am9d54g.jpg
+│   ├── 0bo6tiwq.png
+│   ├── 0bwodqzz.png
+│   ├── 0_tj42qm.png
+│   ├── 2dxjsn8b.png
+│   ├── 2gosupce.png
+│   ├── 2i94r0q6.jpg
+│   ├── 3n33b9ti.jpg
+│   ├── 4eray631.png
+│   ├── 57899685.jpg
+│   ├── 5wq2il5c.png
+│   ├── 606760dd.jpg
+│   ├── 67edfcd4.jpg
+│   ├── 69fk05db.png
+│   ├── 7s9dknao.png
+│   ├── 7waytk88.jpg
+│   ├── 7yfq6f5m.jpg
+│   ├── 93t0ge4y.png
+│   ├── 9j9f409i.png
+│   ├── 9jrng7ex.jpg
+│   ├── bu33hug8.png
+│   ├── cctdqdgh.jpg
+│   ├── cihhf9_u.jpg
+│   ├── cj0up_hu.jpg
+│   ├── clzal9h8.png
+│   ├── cmddopvx.jpg
+│   ├── cndd1t0x.jpg
+│   ├── co3d6_xw.jpg
+│   ├── co8uv3xw.jpg
+│   ├── cp6wqqdw.jpg
+│   ├── cpwvvoow.jpg
+│   ├── cqemzsrx.jpg
+│   ├── cqtrep7g.png
+│   ├── faihjt65.png
+│   ├── fawrchqg.jpg
+│   ├── fhgzvetg.jpg
+│   ├── fkfpsjkh.png
+│   ├── fyyavzuh.png
+│   ├── gh8in6ib.png
+│   ├── hede7w7k.png
+│   ├── hyi92jlx.png
+│   ├── i3r_rzzh.png
+│   ├── i7gy2y2s.jpg
+│   ├── ix4dn2p1.png
+│   ├── j6638u57.png
+│   ├── jwaujogf.jpg
+│   ├── kdodwcrl.jpg
+│   ├── lceoati.jpg
+│   ├── mtfa94x8.png
+│   ├── n32e9i08.png
+│   ├── ngakak_w.png
+│   ├── njxds2vz.png
+│   ├── obd9qsjr.png
+│   ├── od3hwsrg.jpg
+│   ├── okw4hy2d.png
+│   ├── oquydsz6.png
+│   ├── p8vphvxr.jpg
+│   ├── pg92harf.jpg
+│   ├── qevqfrs5.png
+│   ├── qt2sq6d4.png
+│   ├── s1n03jz.png
+│   ├── s8d1oirm.png
+│   ├── svqff1yh.png
+│   ├── ttu7zma3.jpg
+│   ├── uryclcdz.png
+│   ├── ust5yuxf.png
+│   ├── v8hvvdfg.jpg
+│   ├── wfev4lgv.png
+│   ├── wn76ycse.png
+│   ├── xotgimmi.png
+│   ├── zpch0vlq.png
+│   └── zpcqgkuy.png
+├── template
+│   ├── fedora_s
+│   │   ├── license.txt
+│   │   ├── otp
+│   │   │   ├── fedor000.otp
+│   │   │   ├── fedor001.otp
+│   │   │   ├── fedor002.otp
+│   │   │   ├── fedor003.otp
+│   │   │   ├── fedor004.otp
+│   │   │   ├── fedor005.otp
+│   │   │   ├── fedor006.otp
+│   │   │   ├── fedor007.otp
+│   │   │   ├── fedor008.otp
+│   │   │   ├── fedora_b.otp
+│   │   │   ├── fedora_c.otp
+│   │   │   ├── fedora_f.otp
+│   │   │   ├── fedora_g.otp
+│   │   │   ├── fedora_m.otp
+│   │   │   ├── fedora_o.otp
+│   │   │   ├── fedora_p.otp
+│   │   │   ├── fedora_s.otp
+│   │   │   └── fedora_t.otp
+│   │   ├── project_.md
+│   │   ├── project_.txt
+│   │   └── readme.md
+│   ├── license.txt
+│   ├── otp
+│   │   ├── aquarell.otp
+│   │   ├── blue_gul.otp
+│   │   ├── dark_fad.otp
+│   │   ├── dark_gra.otp
+│   │   ├── dark_gre.otp
+│   │   ├── kanagawa.otp
+│   │   ├── oschl000.otp
+│   │   ├── oschl001.otp
+│   │   ├── oschl002.otp
+│   │   ├── oschloe_.otp
+│   │   ├── purple_a.otp
+│   │   ├── red_menu.otp
+│   │   ├── sunflowe.otp
+│   │   ├── winter_m.otp
+│   │   ├── xinxi000.otp
+│   │   ├── xinxi001.otp
+│   │   ├── xinxi002.otp
+│   │   ├── xinxi003.otp
+│   │   ├── xinxi004.otp
+│   │   └── xinxinli.otp
+│   ├── project_.md
+│   ├── project_.txt
+│   └── readme.md
+└── videos
+    └── web_php_
+        ├── oop_d000.mp4
+        ├── oop_d001.mp4
+        ├── oop_d002.mp4
+        ├── oop_d003.mp4
+        ├── oop_d004.mp4
+        ├── oop_d005.mp4
+        ├── oop_d006.mp4
+        ├── oop_d007.mp4
+        ├── oop_d008.mp4
+        ├── oop_d009.mp4
+        ├── oop_d00a.mp4
+        ├── oop_d00b.mp4
+        ├── oop_d00c.mp4
+        ├── oop_d00d.mp4
+        └── oop_dasa.mp4
+
+9 directories, 138 files
 </code></pre>
 
-<p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
+<p>Meskipun file dan direktorinya cukup banyak, fokus langsung ditujukan pada <em>_not_imp/capture.pca</em> karena judul soal adalah <strong>I(Co)MP</strong> yang diasumsikan berasal dari <em>ICMP (Internet Control Message Protocol)</em></p>
 
-<pre><code># file Leaked.reg 
-Leaked.reg: Windows Registry little-endian text (Win2K or above)
-</code></pre>
+<p>Dengan menggunakan Wireshark, file <em>capture.pca</em> dapat dianalisis
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-icmp/pic1.png" alt="Analisis Wireshark" /></p>
 
-<p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
+<p>Pada bagian Data (48 Bytes) di ICMP Protocol, terdapat dua string yang diulang-ulang setiap melakukan <em>request</em> dan <em>reply</em>.</p>
 
-<pre><code>&quot;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&quot;=hex:53,41,\
-  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,\
-  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,\
-  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,\
-  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,\
-  00,00,01,00,00,00
-&quot;C:\\Users\\hanyi\\Desktop\\Flag.exe&quot;=hex:53,41,43,50,01,00,00,00,00,00,00,00,\
-  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,\
-  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,\
-  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
-</code></pre>
-
-<p>Langkah selanjutnya adalah melakukan <em>Import</em> <em>Leaked.reg</em> menggunakan <em>regedit</em>. Hal yang aman adalah dengan menggunakan <em>Virtual Machine</em>, namun ketika pelaksanaan kemarin karena tidak memiliki VM yang <em>ready</em>, saya <strong>yolo</strong> saja dengan mengimport-nya ke <em>regedit</em> di <em>Wine</em> (setidaknya kalau broken, yang broken hanya Wine saja).</p>
-
-<pre><code># wine regedit
-</code></pre>
-
-<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic1.png" alt="Import Regedit" /></p>
-
-<p>Ditemukan Flag.exe di [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store]
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic2.png" alt="Lokasi Flag.exe" /></p>
-
-<p>Hint yang diberikan panitia adalah:</p>
-
-<pre><code>1. Display Opened Application in Jendela
-2. ROT-13
-</code></pre>
-
-<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan <em>keyword:</em></p>
+<p>String 1</p>
 
 <blockquote>
-<p>windows registry rot 13</p>
+<p><em>MP1ayha3kp0u</em> MP1aYha3kp0u<em>MP1 aYha3kp0u</em></p>
 </blockquote>
 
-<p>dari referensi [1] diketahui bahwa <em>system objects</em> seperti <em>program, shortcut</em>, dan <em>control panel applets</em> yang baru saja diakses akan disimpan di</p>
+<p>String 2</p>
 
 <blockquote>
-<p>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</p>
+<p>jtw_3em1say4a pjtw_3em1say4a.p jtw_3em1sa</p>
 </blockquote>
 
-<p>dalam bentuk <em>ROT-13 Encoded</em></p>
+<p>Dengan sedikit menebak, diketahui bahwa string tersebut merupakan hasil <em>Caesar Cipher</em> dengan <em>n=19</em>, sehingga cukup dilakukan <em>decrypt</em> dengan <em>n</em> yang sama. String tersebut menjadi</p>
 
-<p>Setelah dicari dengan <em>regedit</em>, ditemukan <strong>IHYA_INYHRF</strong> yang jika dilakukan <em>ROT-13</em> menjadi <strong>VULN_VALUES</strong>, kami mengasumsikan bahwa ini merupakan hasil <em>run</em> dari file <em>flag.exe</em> tadi.
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic3.png" alt="IHYA_INYHRF" /></p>
+<p>String 1</p>
 
-<p>Ambil data-nya, kemudian buat <em>script</em>-nya</p>
+<blockquote>
+<p><em>FI1trat3di0n</em> FI1tRat3di0n<em>FI1 tRat3di0n</em></p>
+</blockquote>
 
-<p><strong>solver.py</strong></p>
+<p>String 2</p>
 
-<pre><code>from Crypto.Util.number import long_to_bytes
+<blockquote>
+<p>cmp_3xf1ltr4t icmp_3xf1ltr4t.i cmp_3xf1lt</p>
+</blockquote>
 
-ihya=&quot;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&quot;.split(',')
-flag=''
-for i in ihya:
-    flag+=i.decode('hex')
+<p>Potongan flag tersebut kemudian harus disusun agar menjadi flag yang utuh. Sempat bingung dan mengakibatkan submit flag berulang-ulang karena tidak jelas bagaimana penyusunan flag-nya, sampai di 15 menit terakhir lomba muncul <strong>Hint</strong> yang sangat penting, berisi</p>
 
-print(long_to_bytes(int(flag,2)))
+<pre><code>1. i0n
+2. 3d
 </code></pre>
+
+<p>Pola flag langsung ketemu dan <strong>solved</strong></p>
 
 <h2 id="flag">Flag</h2>
 
-<p><strong>hctf{r0t_13_defaUl7_r3g1stry_mak35_3a5y}</strong></p>
+<p><strong>hctf{icmp_3xf1ltr4ti0n_FI1trat3d}</strong></p>
 
 <h2 id="references">References</h2>
 
 <ol>
-<li><a href="https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/">https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/</a></li>
+<li><a href="http://rumkin.com/tools/cipher/caesar.php">http://rumkin.com/tools/cipher/caesar.php</a></li>
+<li><a href="https://medium.com/infofl00d1ng/another-shellmates-ctf-write-up-eye-see-ummm-p-e4894bb1f1ae">https://medium.com/infofl00d1ng/another-shellmates-ctf-write-up-eye-see-ummm-p-e4894bb1f1ae</a></li>
 </ol>
 
 <h2 id="rant">Rant</h2>
 
-<p>Baru dapet <em>step</em> 4 waktu tinggal 30 detik, alhasil gagal <em>solve on time</em> alias woe tambahin 5 menit lagi aja <em>solve</em> ini saya &hellip;</p>
+<p>Total file sekitar 1 GB, yang kepake cuma 8.1 MB.<br>Ngerambo submit flag sampe ada 15 kali gara-gara <em>pattern</em> flag-nya kurang jelas, baru setelah <em>Hint</em> muncul bisa <em>solved</em></p>
 
                 
 
@@ -354,10 +474,15 @@ print(long_to_bytes(int(flag,2)))
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/10/29/writeup-hology-final-icmp/" data-toggle="tooltip" data-placement="top" title="Writeup I(Co)MP">&larr;
+                        <a href="/2019/10/28/hello-world/" data-toggle="tooltip" data-placement="top" title="Welcome to rmn0x01 Blog">&larr;
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2019/10/30/writeup-hology-final-jendeladunia/" data-toggle="tooltip" data-placement="top" title="Writeup Jendela Dunia">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

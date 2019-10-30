@@ -12,17 +12,6 @@
     
     
     <item>
-      <title>Writeup I(Co)MP</title>
-      <link>/2019/10/30/writeup-hology-final-icmp/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/10/30/writeup-hology-final-icmp/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Writeup Jendela Dunia</title>
       <link>/2019/10/30/writeup-hology-final-jendeladunia/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
@@ -34,11 +23,22 @@
     </item>
     
     <item>
-      <title>Welcome to rmn0x01 Blog</title>
-      <link>/2019/10/29/hello-world/</link>
+      <title>Writeup I(Co)MP</title>
+      <link>/2019/10/29/writeup-hology-final-icmp/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/29/hello-world/</guid>
+      <guid>/2019/10/29/writeup-hology-final-icmp/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Welcome to rmn0x01 Blog</title>
+      <link>/2019/10/28/hello-world/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/10/28/hello-world/</guid>
       <description>  “Yeah It&amp;rsquo;s on. ”
  Hello World! </description>
     </item>
