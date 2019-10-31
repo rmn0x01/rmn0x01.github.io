@@ -63,6 +63,16 @@
   </url>
   
   <url>
+    <loc>/tags/rsa/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rsa-small-exponent/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/script/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
@@ -109,6 +119,11 @@
   
   <url>
     <loc>/tags/utf-8/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/10/31/writeup-slashroot4-quals-b64/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   

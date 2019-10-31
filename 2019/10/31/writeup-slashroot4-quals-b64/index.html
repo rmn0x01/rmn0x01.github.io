@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Writeup bASe64 encRyption" />
+    <meta property="og:title" content="Writeup bASe64 encRyption" />
+    <meta property="twitter:title" content="Writeup bASe64 encRyption" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup bASe64 encRyption-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/2019/10/31/writeup-slashroot4-quals-b64/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -163,7 +163,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-bg-sven.jpg')
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-slashroot.png')
     }
 </style>
 <header class="intro-header">
@@ -173,16 +173,28 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/rsa" title="rsa">
+                            rsa
+                        </a>
+                        
+                        <a class="tag" href="/tags/rsa-small-exponent" title="rsa-small-exponent">
+                            rsa-small-exponent
+                        </a>
+                        
+                        <a class="tag" href="/tags/slashroot" title="slashroot">
+                            slashroot
+                        </a>
+                        
                     </div>
-                    <h1></h1>
-                    <h2 class="subheading"></h2>
+                    <h1>Writeup bASe64 encRyption</h1>
+                    <h2 class="subheading">SlashRoot 4.0 Quals</h2>
                     <span class="meta">
                         Posted by 
                         
-                                rmn0x01
+                            rmn0x01
                          
                         on 
-                        Monday, January 1, 0001
+                        Thursday, October 31, 2019
                         
                         
                         
@@ -210,14 +222,165 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
                 
-                
-                
+                <h2 id="intro">Intro</h2>
+
+<p>Soal kriptografi penyisihan Slashroot 4.0 dengan poin 150.</p>
+
+<p>File yang diberikan berupa</p>
+
+<pre><code>BASe64.py:             Python script, ASCII text executable
+flag.enc:              ASCII text, with no line terminators
+public.key:            ASCII text            
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
+<ol>
+<li>Reverse</li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
+
+<h2 id="full-steps">Full Steps</h2>
+
+<p><em>Script</em> yang digunakan untuk enkripsi adalah sebagai berikut:</p>
+
+<p><strong>BASe64.py</strong></p>
+
+<pre><code>from base64 import b64encode as b64
+from Crypto.PublicKey import RSA
+from Crypto.Util.number import bytes_to_long, long_to_bytes
+
+FLAG = &quot;SlashRootCTF&quot;
+
+def enc(key, msg, b6=&quot;&quot;, b4=&quot;&quot;):
+    key = RSA.importKey(key)
+    for i in msg:
+        b6 += chr(ord(i) ^ 6)
+    msg = pow(int(str(bytes_to_long(b6))[::-1]), key.e, key.n)
+    for i in long_to_bytes(msg):
+        b4 += chr(ord(i) ^ 4)
+    with open(&quot;flag.enc&quot;, &quot;w&quot;) as f:
+        f.write(b64(b4))
+    return True
+
+def main():
+    with open(&quot;public.key&quot;, &quot;r&quot;) as f:
+        key = f.read()
+    print enc(key, FLAG)
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<p>Sedangkan, isi <em>public.key</em> adalah:</p>
+
+<p><strong>public.key</strong></p>
+
+<pre><code>-----BEGIN PUBLIC KEY-----
+MIICIDANBgkqhkiG9w0BAQEFAAOCAg0AMIICCAKCAgEAzQWEvaQim2OTjvYaAUfd
+YaBxMFPkBst4SQEd2+5pO4pbr1fK44hoEHQFYo5Ha7guyDoqno5fTu4m5M2KqNnL
+uARaunefB8rT6fnCSjW/CJxpwZdX5AaIbWayJ6huVrCQCzx2+VgqrtWhPRbHD6jf
+4GGDDwVrNRlOQbJ3RMg7J/15T2DPloVyRoYsmtCyGmIzivUFkdgbkMdlXRJZ7TVn
+cOo7DA4h38+nMPwIJIAHqn1R3lP0FzUlo//uatyJaQ5jatQlDB5x/vgJPeeBHdmM
+u3lNdVsUzjy33NKVoIZWfqxJpYKxJwX+bZQ42Ec1NN2Ke7SUGXX5aDpPKlP2whNM
+Ov6P+wuVxidlf1qhRBNhWvWrH4fH4W7xe5IAxOBCK1HM6eYAFxPLVDYK/7kMo4Pt
+llDTWu4Ltx1QjcD9uz9TDQ3VkMILkublVroA8YqHYYo/aWA/P0uZ904Xf19ir/C+
+XvW1KJQptAMlGQpjMF9iLfyTlCwLKF8yJO+jsAWV/Lt5ZoX6CxjTZxLdMGe7y0/Y
+JQ7zgTPTXjg0ahoaxba/P1aP18XCfoxRQiouLB9PQYrMnvt2amXoLE63uZWoeXOD
+KYdVY9BGAibBWrhMbfipbrvbJJujdsCg3JYZtDjzaPGdNgeYvNt6isxSoXfWyS2H
+Ly3wns237b8o9KKtrH7safMCAQM=
+-----END PUBLIC KEY-----
+</code></pre>
+
+<p>Dari <em>script</em> enkripsi, diketahui bahwa <em>flag</em> melalui 4 proses untuk menjadi <em>ciphertext</em>, yaitu ketika diubah menjadi variabel <strong>b6</strong>, <strong>msg</strong>, <strong>b4</strong> dan diakhiri dengan <em>encode base-64</em> <br>
+Untuk <em>b6</em>, <em>b4</em> dan <em>base-64 encoded</em> cukup mudah untuk di-<em>reverse</em>, sedangkan untuk variabl <em>msg</em> :</p>
+
+<blockquote>
+<p>msg = pow(int(str(bytes_to_long(b6))[::-1]), key.e, key.n)</p>
+</blockquote>
+
+<p>Merupakan tahap enkripsi dari Rivest-Shamir-Adleman (RSA) [1], dengan menggunakan <em>public.key</em> yang telah diberikan sebelumnya.<br>
+Analisis <em>public.key</em></p>
+
+<pre><code>&gt;&gt;&gt; from Crypto.PublicKey import RSA
+&gt;&gt;&gt; f = open('public.key')
+&gt;&gt;&gt; key = RSA.importKey(f)
+&gt;&gt;&gt; key.e
+3L
+&gt;&gt;&gt; key.n
+836414977663093498775759020216084836787420889747126742590222185854655649873073300791388963754403587619900430690389934186556282921785037091589805802826975820835166555627383959573375136711725774406116744692068193869589975717330800216005499087088494925927014327106360539922969286048894096410595742930323646596100878026252182713607742090636350504755352743292192405445839235128399327562037361366282105095014339073306609318841094957471802025270431848632243971424509555603647057234859069806180843788643128732190794500160434421798288673361619358217792550868485866040698826656938130700425323076978350701743200524803990078316159539695961739443046404629652547008820956213066323862018864932528085519326267283169595263900555186081276632605668995689486184080220667713976574792165849198380630122640260570312634961955644417515208749099360863694638193878941457840863969700429613149615536210644219382544437563645304476810236583979502546800239799053984786414379132055277660873373112256477793540281201972249753036734243617427751951270679600494519213513255294979092208148143404145593464164806722183210920156429454257439313931990312733878634792913952731264476551969757599618884629710842993473677629101653755931029328588298297605000132481726448430532553203L
+</code></pre>
+
+<p><em>Vulnerability</em> yang ditampilkan dari <em>public.key</em> tersebut ada pada eksponen-nya yang sangat kecil (3), seperti yang tertulis di [1]:</p>
+
+<blockquote>
+<p>When encrypting with low encryption exponents (e.g., e = 3) and small values of the m, (i.e., m &lt; n<sup>1/e</sup>) the result of me is strictly less than the modulus n. In this case, ciphertexts can be easily decrypted by taking the eth root of the ciphertext over the integers.</p>
+</blockquote>
+
+<p>Artinya, <em>plaintext</em> dapat di-<em>recover</em> dengan cara mencari akar pangkat <em>e</em> (dalam soal ini, e = 3) dari <em>ciphertext</em>.</p>
+
+<p><em>Script solver</em>-nya menjadi:</p>
+
+<p><strong>solver.py</strong></p>
+
+<pre><code>import base64
+from Crypto.PublicKey import RSA
+from Crypto.Util.number import bytes_to_long, long_to_bytes
+import gmpy2
+
+f = open('public.key','r')
+key = RSA.importKey(f)
+g = open('flag.enc','r').read()
+b4 = base64.b64decode(g)
+msg = ''
+for i in b4:
+    msg+=chr(ord(i)^4)
+msg = bytes_to_long(msg)
+b6 = str(gmpy2.iroot(msg,3)[0])
+b6 = b6[::-1]
+b6 = long_to_bytes(b6)
+flag = ''
+for i in b6:
+    flag+=chr(ord(i)^6)
+
+print flag
+</code></pre>
+
+<h2 id="flag">Flag</h2>
+
+<p><strong>SlashRootCTF{L0W_l0w_low4x_low_E_599d8554a71caf3d}</strong></p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem">https://en.wikipedia.org/wiki/RSA_(cryptosystem</a>)</li>
+<li><a href="https://crypto.stackexchange.com/questions/6713/low-public-exponent-attack-for-rsa">https://crypto.stackexchange.com/questions/6713/low-public-exponent-attack-for-rsa</a></li>
+<li><a href="https://cims.nyu.edu/~regev/teaching/lattices_fall_2004/ln/rsa.pdf">https://cims.nyu.edu/~regev/teaching/lattices_fall_2004/ln/rsa.pdf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Coppersmith%27s_attack">https://en.wikipedia.org/wiki/Coppersmith%27s_attack</a></li>
+</ol>
 
                 
 
                 <hr>
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/10/31/writeup-compfest11-quals-cnn/" data-toggle="tooltip" data-placement="top" title="Writeup Cable News Network">&larr;
+                            Previous Post</a>
+                    </li>
                     
                     
                 </ul>
