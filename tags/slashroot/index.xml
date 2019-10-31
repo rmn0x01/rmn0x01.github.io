@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>slashroot on rmn0x01</title>
+    <link>/tags/slashroot/</link>
+    <description>Recent content in slashroot on rmn0x01</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/slashroot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Writeup ReUse</title>
+      <link>/2019/10/31/writeup-slashroot4-quals-reuse/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/10/31/writeup-slashroot4-quals-reuse/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Soal kategori Kriptografi dengan poin 100, salah satu soal yang muncul pada gelombang pertama penyisihan Slashroot 4.0&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
