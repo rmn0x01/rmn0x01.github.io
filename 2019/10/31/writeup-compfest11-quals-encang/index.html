@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="ext2" />
-    <meta property="og:title" content="ext2" />
-    <meta property="twitter:title" content="ext2" />
+    <meta name="title" content="Writeup Encang Maman Belajar Ngoding" />
+    <meta property="og:title" content="Writeup Encang Maman Belajar Ngoding" />
+    <meta property="twitter:title" content="Writeup Encang Maman Belajar Ngoding" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>ext2-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Encang Maman Belajar Ngoding-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/tags/ext2/">
+    <link rel="canonical" href="/2019/10/31/writeup-compfest11-quals-encang/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,14 +156,41 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/home-bg-sven.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-compfest.png')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>rmn0x01 </h1>
-                    
-		    <span class="subheading">Cheese Kimbap</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/" title="">
+                            
+                        </a>
+                        
+                        <a class="tag" href="/tags/compfest11" title="compfest11">
+                            compfest11
+                        </a>
+                        
+                    </div>
+                    <h1>Writeup Encang Maman Belajar Ngoding</h1>
+                    <h2 class="subheading">Compfest 11 Quals</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            rmn0x01
+                         
+                        on 
+                        Wednesday, October 30, 2019
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -172,185 +199,202 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="/2019/10/30/writeup-gemastik12-final-disk/">
-        <h2 class="post-title">
-            Writeup Disk Forensic
-        </h2>
-	
-        <h3 class="post-subtitle">
-            Gemastik XII Final
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            <h2 id="intro">Intro</h2>
-
-<p>Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by rmn0x01 Wednesday, October 30, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
+<article>
+    <div class="container">
+        <div class="row">
 
             
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#explanation">Explanation</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <h2 id="intro">Intro</h2>
 
+<p>Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?</p>
 
-       	</div>
-        
+<p>File yang diberikan berupa</p>
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-             
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                    <a href="/tags/gemastik12" title="gemastik12">
-                        gemastik12
-                    </a>
-                
-            
-                
-                    <a href="/tags/hology" title="hology">
-                        hology
-                    </a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                    <a href="/tags/wireshark" title="wireshark">
-                        wireshark
-                    </a>
-                
-            
-        </div>
-    </section>
-    
+<pre><code># file pesan.zip 
+pesan.zip: Zip archive data, at least v2.0 to extract
 
-    
-	
-    <section class="visible-md visible-lg">
-	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
-        <div class="short-about">
-            
-            <a href="/top/about">
-               <img src="/img/avatar.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Computer Science Student</p>
-            
-           
-           <ul class="list-inline"> 
-               
-               
-               <li>
-                   <a href="https://twitter.com/nizarahman_">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/rmn0x01/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-            
-            
-               
+# unzip pesan.zip 
+Archive:  pesan.zip
+  inflating: pesan2                  
+  inflating: pesan1                  
+
+# file *
+pesan1:    data
+pesan2:    data
+pesan.zip: Zip archive data, at least v2.0 to extract
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
+<ol>
+<li>Konversi UTF-16</li>
+<li>Konversi UTF-32</li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
+
+<h2 id="full-steps">Full Steps</h2>
+
+<p>Kedua file (<em>pesan1</em> dan <em>pesan2</em>) ketika dibaca hanya menampilkan data yang tidak dapat dipahami.</p>
+
+<p><em>Hint</em> yang diberikan berupa:</p>
+
+<blockquote>
+<p>2 file (UTF-16; UTF-32) tersebut adalah 2 file yang ditulis dengan encoding tertentu, dengan penanda encoding yang dihapus</p>
+</blockquote>
+
+<p>Pencarian menggunakan <em>Google</em> dengan <em>keyword encoding utf-16 linux</em> mengembalikan referensi [1] yang kemudian dicoba pada <em>file</em> soal.</p>
+
+<pre><code># iconv -f UTF-16LE -t UTF-8 pesan1 -o flag1
+# strings flag1
+COMPFEST11{p14Y1n6_
+</code></pre>
+
+<p>Didapatkan potongan <em>flag</em> pertama. Sedangkan untuk pesan2, sesuai dengan <em>hint</em> akan dilakukan konversi dari UTF-32</p>
+
+<pre><code># iconv -f UTF-32LE -t UTF-8 pesan2 -o flag2
+# strings flag2
+wITH_un1C0D3_uWu}
+</code></pre>
+
+<h2 id="flag">Flag</h2>
+
+<p><strong>COMPFEST11{p14Y1n6_wITH_un1C0D3_uWu}</strong></p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Berdasarkan referensi [2], tertulis bahwa</p>
+
+<blockquote>
+<p>The encoding used by Windows for Unicode is UTF-16, to be specific, UTF-16LE (Little Endian). Linux uses UTF-8 to encode Unicode. A file encoded with Unicode can optionally contain a Byte Order Mark(BOM) which is a special magic number at the start of file. Byte Order Mark(BOM) is optional for UTF-8, but mandatory for UTF-16 as per Unicode standard. So, Linux does not use BOM for Unicode files as it uses UTF-8. But Windows applications look for BOM in Unicode encoded file as they use UTF-16.</p>
+</blockquote>
+
+<p>artinya secara singkat adalah</p>
+
+<blockquote>
+<p>Windows uses <strong>UTF-16LE with BOM</strong>, and Linux uses <strong>UTF-8 without BOM</strong>.</p>
+</blockquote>
+
+<p>sehingga harus dilakukan konversi terlebih dahulu agar <em>flag</em> dapat dibaca</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://stackoverflow.com/questions/17287713/using-iconv-to-convert-from-utf-16le-to-utf-8">https://stackoverflow.com/questions/17287713/using-iconv-to-convert-from-utf-16le-to-utf-8</a></li>
+<li><a href="http://murty4all.blogspot.com/2016/12/conversion-between-utf-16-utf-8-encoded.html">http://murty4all.blogspot.com/2016/12/conversion-between-utf-16-utf-8-encoded.html</a></li>
+</ol>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/10/30/writeup-gemastik12-final-ftp/" data-toggle="tooltip" data-placement="top" title="Writeup FTP Forensik">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/10/30/writeup-gemastik12-final-disk/" data-toggle="tooltip" data-placement="top" title="Writeup Disk Forensic">Next
+                            Post &rarr;</a>
+                    </li>
+                    
                 </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
             </div>
-    </section>
-	
-    
-    
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
-</div>
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/gemastik12" title="gemastik12">
+                            gemastik12
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/hology" title="hology">
+                            hology
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/wireshark" title="wireshark">
+                            wireshark
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
 
-	</div>
-</div>
-
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
