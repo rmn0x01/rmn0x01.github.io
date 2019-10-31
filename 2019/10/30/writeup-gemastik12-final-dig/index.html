@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="icmp" />
-    <meta property="og:title" content="icmp" />
-    <meta property="twitter:title" content="icmp" />
+    <meta name="title" content="Writeup Digging Deeper" />
+    <meta property="og:title" content="Writeup Digging Deeper" />
+    <meta property="twitter:title" content="Writeup Digging Deeper" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>icmp-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Digging Deeper-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/tags/icmp/">
+    <link rel="canonical" href="/2019/10/30/writeup-gemastik12-final-dig/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,14 +156,45 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/home-bg-sven.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-gemastik.png')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>rmn0x01 </h1>
-                    
-		    <span class="subheading">Cheese Kimbap</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/steghide" title="steghide">
+                            steghide
+                        </a>
+                        
+                        <a class="tag" href="/tags/stegcracker" title="stegcracker">
+                            stegcracker
+                        </a>
+                        
+                        <a class="tag" href="/tags/brute-force" title="brute force">
+                            brute force
+                        </a>
+                        
+                    </div>
+                    <h1>Writeup Digging Deeper</h1>
+                    <h2 class="subheading">Final Gemastik XII</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            rmn0x01
+                         
+                        on 
+                        Thursday, October 31, 2019
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -172,169 +203,214 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="/2019/10/29/writeup-hology-final-icmp/">
-        <h2 class="post-title">
-            Writeup I(Co)MP
-        </h2>
-	
-        <h3 class="post-subtitle">
-            Final Hology 2.0
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            <h2 id="intro">Intro</h2>
-
-<p>Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by rmn0x01 Tuesday, October 29, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
+<article>
+    <div class="container">
+        <div class="row">
 
             
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#tldr">TLDR</a></li>
+<li><a href="#full-steps">Full Steps</a></li>
+<li><a href="#flag">Flag</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#rant">Rant</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <h2 id="intro">Intro</h2>
 
+<p>Satu-satunya soal steganografi di final Gemastik XII, poin 200.</p>
 
-       	</div>
-        
+<p>File yang diberikan berupa</p>
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-             
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                    <a href="/tags/wireshark" title="wireshark">
-                        wireshark
-                    </a>
-                
-            
-        </div>
-    </section>
-    
+<pre><code># file minatozaki.bmp 
+minatozaki.bmp: bzip2 compressed data, block size = 600k
+</code></pre>
 
-    
-	
-    <section class="visible-md visible-lg">
-	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
-        <div class="short-about">
-            
-            <a href="/top/about">
-               <img src="/img/avatar.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Computer Science Student</p>
-            
-           
-           <ul class="list-inline"> 
-               
-               
-               <li>
-                   <a href="https://twitter.com/nizarahman_">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/rmn0x01/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-            
-            
-               
+<h2 id="tldr">TLDR</h2>
+
+<ol>
+<li>Extract</li>
+<li>Extract</li>
+<li>Brute-force password to extract</li>
+<li>Extract</li>
+<li>Baca Spectogram</li>
+<li>Get the <strong>Flag</strong></li>
+</ol>
+
+<h2 id="full-steps">Full Steps</h2>
+
+<p>Meskipun file berekstensi <em>bmp</em>, ketika dicek dengan <em>file</em> menandakan bahwa file tersebut adalah <em>bzip compressed data</em> sehingga dilakukan ekstraksi data</p>
+
+<pre><code># 7z e minatozaki.bmp 
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 6737180 bytes (6580 KiB)
+
+Extracting archive: minatozaki.bmp
+--
+Path = minatozaki.bmp
+Type = bzip2
+
+Everything is Ok 
+
+Size:       9652224
+Compressed: 6737180
+</code></pre>
+
+<p>Didapatkan file minatozaki</p>
+
+<pre><code># file minatozaki 
+minatozaki: POSIX tar archive
+</code></pre>
+
+<p><em>Extract</em> lagi</p>
+
+<pre><code># tar -xvf minatozaki
+cheese_kimbap.wav
+</code></pre>
+
+<pre><code># file cheese_kimbap.wav 
+cheese_kimbap.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, stereo 44100 Hz
+</code></pre>
+
+<p>Merupakan audio potongan dari sebuah acara TV dan ketika dibuka dengan Audacity, tidak ada pola-pola yang mengarah pada analisis Spectogram maupun SSTV, sehingga kemungkinannya antara Steghide atau LSB.</p>
+
+<pre><code># steghide extract -sf cheese_kimbap.wav 
+Enter passphrase: 
+steghide: could not extract any data with that passphrase!
+</code></pre>
+
+<p>Steghide dengan <em>password</em> kosong tidak dapat mengekstrak data apapun, kemungkinan <em>password</em> harus ditebak. Gunakan tool StegCracker [1] dan <em>wordlist</em> <em>00-indonesian-wordlist.lst</em> [2] untuk mencari <em>password</em>-nya</p>
+
+<pre><code># stegcracker cheese_kimbap.wav ~/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst 
+StegCracker 2.0.7 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2019 - Luke Paris (Paradoxis)
+
+Counting lines in wordlist..
+Attacking file 'cheese_kimbap.wav' with wordlist '/root/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst'..
+6/79898 (0.72%) Attempted: afkirorns
+</code></pre>
+
+<p>Didapatkan <em>password</em>-nya adalah</p>
+
+<blockquote>
+<p>patriot</p>
+</blockquote>
+
+<p>File berikutnya memiliki ekstensi <em>.zip</em>, extract lagi</p>
+
+<pre><code># file cheese_kimbap.wav.out 
+cheese_kimbap.wav.out: Zip archive data, at least v?[0x314] to extract
+# mv cheese_kimbap.wav.out cheese_kimbap.wav.zip
+# unzip cheese_kimbap.wav.zip 
+Archive:  cheese_kimbap.wav.zip
+  inflating: further.wav             
+</code></pre>
+
+<p>Buka dengan <em>Audacity</em>
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-digg/pic1.png" alt="Spectogram Audacity" /></p>
+
+<h2 id="flag">Flag</h2>
+
+<p><strong>gemastik12{looK_FuRth3R}</strong></p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://github.com/Paradoxis/StegCracker">https://github.com/Paradoxis/StegCracker</a></li>
+<li><a href="https://github.com/geovedi/indonesian-wordlist">https://github.com/geovedi/indonesian-wordlist</a></li>
+</ol>
+
+<h2 id="rant">Rant</h2>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-digg/pic2.jpeg" alt="Dukun" /></p>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/10/30/writeup-gemastik12-final-disk/" data-toggle="tooltip" data-placement="top" title="Writeup Disk Forensic">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
                 </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
             </div>
-    </section>
-	
-    
-    
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
-</div>
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/wireshark" title="wireshark">
+                            wireshark
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
 
-	</div>
-</div>
-
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
