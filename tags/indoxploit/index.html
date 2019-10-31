@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Writeup Cable News Network" />
-    <meta property="og:title" content="Writeup Cable News Network" />
-    <meta property="twitter:title" content="Writeup Cable News Network" />
+    <meta name="title" content="indoxploit" />
+    <meta property="og:title" content="indoxploit" />
+    <meta property="twitter:title" content="indoxploit" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup Cable News Network-  CTF Writeup Archive | rmn0x01</title>
+    <title>indoxploit-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/2019/10/31/writeup-compfest11-quals-cnn/">
+    <link rel="canonical" href="/tags/indoxploit/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,41 +156,14 @@
 
 
 
-
-<style type="text/css">
-    header.intro-header {
-        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-compfest.png')
-    }
-</style>
-<header class="intro-header">
+<header class="intro-header" style="background-image: url('/img/home-bg-sven.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/stegsolve" title="stegsolve">
-                            stegsolve
-                        </a>
-                        
-                        <a class="tag" href="/tags/compfest11" title="compfest11">
-                            compfest11
-                        </a>
-                        
-                    </div>
-                    <h1>Writeup Cable News Network</h1>
-                    <h2 class="subheading">Compfest 11 Quals</h2>
-                    <span class="meta">
-                        Posted by 
-                        
-                            rmn0x01
-                         
-                        on 
-                        Thursday, October 31, 2019
-                        
-                        
-                        
-                    </span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>rmn0x01 </h1>
+                    
+		    <span class="subheading">Cheese Kimbap</span>
                 </div>
             </div>
         </div>
@@ -199,176 +172,205 @@
 
 
 
-
-<article>
-    <div class="container">
-        <div class="row">
-
+  
+<div class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
             
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
 
-                
-                <header>
-                    <h2>TOC</h2>
-                </header>
-                <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#intro">Intro</a></li>
-<li><a href="#tldr">TLDR</a></li>
-<li><a href="#full-steps">Full Steps</a></li>
-<li><a href="#flag">Flag</a></li>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
-</nav>
-                
-                <h2 id="intro">Intro</h2>
+<div class="post-preview">
+    <a href="/2019/10/31/writeup-indoxploit-bane/">
+        <h2 class="post-title">
+            Writeup Stegano2
+        </h2>
+	
+        <h3 class="post-subtitle">
+            Indoxploit
+        </h3>
+	
+        <div class="post-content-preview">
+	
+            <h2 id="intro">Intro</h2>
 
-<p>Salah satu soal penyisihan Compfest 11 gelombang pertama.</p>
-
-<p>File yang diberikan berupa</p>
-
-<pre><code># file soal.png 
-soal.png: PNG image data, 700 x 700, 8-bit/color RGBA, non-interlaced
-</code></pre>
-
-<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/compfest11-cnn/pic1.png" alt="soal.png" /></p>
-
-<h2 id="tldr">TLDR</h2>
-
-<ol>
-<li>Stegsolve</li>
-<li>Get the <strong>Flag</strong></li>
-</ol>
-
-<h2 id="full-steps">Full Steps</h2>
-
-<p>Biasanya jika diberikan <em>challenge</em> forensic maupun steganografi dengan file <em>PNG</em>, akan dilakukan beberapa perintah-perintah <em>mainstream</em> terlebih dahulu untuk mendapatkan <em>flag</em>-nya, salah satunya adalah <strong>Stegsolve</strong></p>
-
-<pre><code># stegsolve
-</code></pre>
-
-<p>Flag didapatkan di <em>Colour Inversion (XOR)</em>
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/compfest11-cnn/pic2.png" alt="flag" /></p>
-
-<h2 id="flag">Flag</h2>
-
-<p><strong>COMPFEST11{pre_processing_convolutional_neural_network_yeay}</strong></p>
-
-<h2 id="references">References</h2>
-
-<ol>
-<li><a href="https://en.kali.tools/all/?tool=1762">https://en.kali.tools/all/?tool=1762</a></li>
-</ol>
-
-                
-
-                <hr>
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2019/10/30/writeup-gemastik12-final-dig/" data-toggle="tooltip" data-placement="top" title="Writeup Digging Deeper">&larr;
-                            Previous Post</a>
-                    </li>
-                    
-                    
-                </ul>
-
-                
-<div id="disqus-comment"></div>
-
-
-
-            </div>
-            
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/compfest11" title="compfest11">
-                            compfest11
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/gemastik12" title="gemastik12">
-                            gemastik12
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/hology" title="hology">
-                            hology
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/steghide" title="steghide">
-                            steghide
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/wireshark" title="wireshark">
-                            wireshark
-                        </a>
-                        
-                        
-                    </div>
-                </section>
-                
-
-                
-                
-            </div>
+<p>Stegano 2 Indoxploit</p>
+       
         </div>
-    </div>
-</article>
+    </a>
+    <p class="post-meta">
+    Posted by rmn0x01 Thursday, October 31, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+
+            
+
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+             
+            
+                
+            
+                
+                    <a href="/tags/compfest11" title="compfest11">
+                        compfest11
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/gemastik12" title="gemastik12">
+                        gemastik12
+                    </a>
+                
+            
+                
+                    <a href="/tags/hology" title="hology">
+                        hology
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/steghide" title="steghide">
+                        steghide
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/wireshark" title="wireshark">
+                        wireshark
+                    </a>
+                
+            
+        </div>
+    </section>
+    
+
+    
+	
+    <section class="visible-md visible-lg">
+	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            <a href="/top/about">
+               <img src="/img/avatar.png" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>Computer Science Student</p>
+            
+           
+           <ul class="list-inline"> 
+               
+               
+               <li>
+                   <a href="https://twitter.com/nizarahman_">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/rmn0x01/">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+            
+            
+               
+                </ul>
+            </div>
+    </section>
+	
+    
+    
+
+    
+    
+</div>
+
+	</div>
+</div>
+
 
 
 

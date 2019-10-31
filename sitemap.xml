@@ -33,12 +33,22 @@
   </url>
   
   <url>
+    <loc>/tags/indoxploit/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/script/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,6 +104,11 @@
   
   <url>
     <loc>/2019/10/31/writeup-compfest11-quals-encang/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/10/31/writeup-indoxploit-bane/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   

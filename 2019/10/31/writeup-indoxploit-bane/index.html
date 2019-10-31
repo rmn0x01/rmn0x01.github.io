@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Writeup Encang Maman Belajar Ngoding" />
-    <meta property="og:title" content="Writeup Encang Maman Belajar Ngoding" />
-    <meta property="twitter:title" content="Writeup Encang Maman Belajar Ngoding" />
+    <meta name="title" content="Writeup Stegano2" />
+    <meta property="og:title" content="Writeup Stegano2" />
+    <meta property="twitter:title" content="Writeup Stegano2" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup Encang Maman Belajar Ngoding-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Stegano2-  CTF Writeup Archive | rmn0x01</title>
 
-    <link rel="canonical" href="/2019/10/31/writeup-compfest11-quals-encang/">
+    <link rel="canonical" href="/2019/10/31/writeup-indoxploit-bane/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -159,7 +159,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-compfest.png')
+        background-image: url('/img/home-bg-sven.jpg')
     }
 </style>
 <header class="intro-header">
@@ -169,29 +169,21 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/encoding" title="encoding">
-                            encoding
+                        <a class="tag" href="/tags/steghide" title="steghide">
+                            steghide
                         </a>
                         
-                        <a class="tag" href="/tags/utf-8" title="utf-8">
-                            utf-8
+                        <a class="tag" href="/tags/script" title="script">
+                            script
                         </a>
                         
-                        <a class="tag" href="/tags/utf-16" title="utf-16">
-                            utf-16
-                        </a>
-                        
-                        <a class="tag" href="/tags/utf-32" title="utf-32">
-                            utf-32
-                        </a>
-                        
-                        <a class="tag" href="/tags/compfest11" title="compfest11">
-                            compfest11
+                        <a class="tag" href="/tags/indoxploit" title="indoxploit">
+                            indoxploit
                         </a>
                         
                     </div>
-                    <h1>Writeup Encang Maman Belajar Ngoding</h1>
-                    <h2 class="subheading">Compfest 11 Quals</h2>
+                    <h1>Writeup Stegano2</h1>
+                    <h2 class="subheading">Indoxploit</h2>
                     <span class="meta">
                         Posted by 
                         
@@ -234,90 +226,127 @@
 <li><a href="#tldr">TLDR</a></li>
 <li><a href="#full-steps">Full Steps</a></li>
 <li><a href="#flag">Flag</a></li>
-<li><a href="#explanation">Explanation</a></li>
-<li><a href="#references">References</a></li>
+<li><a href="#rant">Rant</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 <h2 id="intro">Intro</h2>
 
-<p>Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?</p>
+<p>Stegano 2 Indoxploit</p>
 
 <p>File yang diberikan berupa</p>
 
-<pre><code># file pesan.zip 
-pesan.zip: Zip archive data, at least v2.0 to extract
-
-# unzip pesan.zip 
-Archive:  pesan.zip
-  inflating: pesan2                  
-  inflating: pesan1                  
-
-# file *
-pesan1:    data
-pesan2:    data
-pesan.zip: Zip archive data, at least v2.0 to extract
+<pre><code># file who-is-this.zip 
+who-is-this.zip: Zip archive data, at least v?[0x314] to extract
+# unzip who-is-this.zip 
+Archive:  who-is-this.zip
+   creating: who-is-this/
+  inflating: who-is-this/lol.jpg     
+  inflating: who-is-this/readme-first  
 </code></pre>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/indoxploit-steg2/pic1.jpg" alt="lol.jpg" /></p>
 
 <h2 id="tldr">TLDR</h2>
 
 <ol>
-<li>Konversi UTF-16</li>
-<li>Konversi UTF-32</li>
+<li>Steghide</li>
+<li>Susun <em>script solver</em>-nya</li>
 <li>Get the <strong>Flag</strong></li>
 </ol>
 
 <h2 id="full-steps">Full Steps</h2>
 
-<p>Kedua file (<em>pesan1</em> dan <em>pesan2</em>) ketika dibaca hanya menampilkan data yang tidak dapat dipahami.</p>
+<p>Baca pesan di <em>readme-first</em> terlebih dahulu</p>
 
-<p><em>Hint</em> yang diberikan berupa:</p>
+<pre><code># can u read this bruh ??
 
-<blockquote>
-<p>2 file (UTF-16; UTF-32) tersebut adalah 2 file yang ditulis dengan encoding tertentu, dengan penanda encoding yang dihapus</p>
-</blockquote>
-
-<p>Pencarian menggunakan <em>Google</em> dengan <em>keyword encoding utf-16 linux</em> mengembalikan referensi [1] yang kemudian dicoba pada <em>file</em> soal.</p>
-
-<pre><code># iconv -f UTF-16LE -t UTF-8 pesan1 -o flag1
-# strings flag1
-COMPFEST11{p14Y1n6_
+aGVsbC1vIG04LCBpIGFtICJoaWRpbmciIGluc2lkZSB0aGUgcGljdHogLi4= 
+aWYgdSB3YW50IHRvIGxvb2sgYXQgbWUsIHBseiB1c2UgYSB0ZXh0IGluc2lkZSBhICJyZWQgbGluZSIgYXMgYSBrZXkgLi4=
+R0xIRiAhISBpdCBjb3VsZCBiZSBFWiA0IFUgLi4=
 </code></pre>
 
-<p>Didapatkan potongan <em>flag</em> pertama. Sedangkan untuk pesan2, sesuai dengan <em>hint</em> akan dilakukan konversi dari UTF-32</p>
+<p>Decode Base-64, menjadi</p>
 
-<pre><code># iconv -f UTF-32LE -t UTF-8 pesan2 -o flag2
-# strings flag2
-wITH_un1C0D3_uWu}
+<pre><code>hell-o m8, i am &quot;hiding&quot; inside the pictz ..
+if u want to look at me, plz use a text inside a &quot;red line&quot; as a key ..
+GLHF !! it could be EZ 4 U ..
+</code></pre>
+
+<p>Ada sesuatu yang disembunyikan di gambar <em>lol.jpg</em> dan <em>hint</em>-nya adalah teks di <em>red line</em>, yaitu kata <strong>BANE</strong>.
+<em>Extract</em> menggunakan <em>steghide</em></p>
+
+<pre><code># steghide extract -sf lol.jpg -p &quot;BANE&quot;
+wrote extracted data to &quot;g3t_th1s.py&quot;.
+</code></pre>
+
+<p><em>File g3t_th1s.py</em> berhasil didapatkan, dan berisi</p>
+
+<pre><code>#! /usr/bin/python
+
+# Flag = Password
+
+
+if __name__ == '__main__':
+ 	p4ssw0rd = raw_input('passwd --&gt; ')
+ 	if len(p4ssw0rd) !=  27:
+ 		print 'nope'
+ 	else:
+	 	if ord(p4ssw0rd[25]) != 110 or ord(p4ssw0rd[8]) != 110 or ord(p4ssw0rd[2]) != 116 or ord(p4ssw0rd[3]) != 95 or ord(p4ssw0rd[9]) != 49 or ord(p4ssw0rd[6]) != 101 or ord(p4ssw0rd[7]) != 95 or ord(p4ssw0rd[1]) != 51 or ord(p4ssw0rd[4]) != 116 or ord(p4ssw0rd[10]) != 103 or ord(p4ssw0rd[18]) != 110 or ord(p4ssw0rd[17]) != 95 or ord(p4ssw0rd[12]) != 116 or ord(p4ssw0rd[0]) != 108 or ord(p4ssw0rd[16]) != 51 or ord(p4ssw0rd[22]) != 114 or ord(p4ssw0rd[26]) != 100 or ord(p4ssw0rd[24]) != 101 or ord(p4ssw0rd[23]) != 95 or ord(p4ssw0rd[20]) != 118 or ord(p4ssw0rd[15]) != 114 or ord(p4ssw0rd[19]) != 51 or ord(p4ssw0rd[5]) != 104 or ord(p4ssw0rd[11]) != 104 or ord(p4ssw0rd[14]) != 52 or ord(p4ssw0rd[21]) != 51 or ord(p4ssw0rd[13]) != 109 :
+	 		print 'nope'
+	 	else:
+	 		print 'GGWP m8 ..'
+</code></pre>
+
+<p>Susun ulang <em>string</em> p4ssw0rd dan dapatkan <em>flag</em>-nya. Operasi pengecekan (!=) diubah menjadi operasi <em>assignment</em> (=) untuk mendapatkan <em>flag</em>-nya</p>
+
+<p><strong>solver.py</strong></p>
+
+<pre><code>p4ssw0rd= [0 for i in range(27)]
+
+p4ssw0rd[25]=110
+p4ssw0rd[8]=110
+p4ssw0rd[2]=116
+p4ssw0rd[3]=95
+p4ssw0rd[9]=49
+p4ssw0rd[6]=101
+p4ssw0rd[7]=95
+p4ssw0rd[1]=51
+p4ssw0rd[4]=116
+p4ssw0rd[10]=103
+p4ssw0rd[18]=110
+p4ssw0rd[17]=95
+p4ssw0rd[12]=116
+p4ssw0rd[0]=108
+p4ssw0rd[16]=51
+p4ssw0rd[22]=114
+p4ssw0rd[26]=100
+p4ssw0rd[24]=101
+p4ssw0rd[23]=95
+p4ssw0rd[20]=118
+p4ssw0rd[15]=114
+p4ssw0rd[19]=51
+p4ssw0rd[5]=104
+p4ssw0rd[11]=104
+p4ssw0rd[14]=52
+p4ssw0rd[21]=51
+p4ssw0rd[13]=109
+
+flag=''
+for i in p4ssw0rd:
+    flag+=chr(i)
+
+print flag
 </code></pre>
 
 <h2 id="flag">Flag</h2>
 
-<p><strong>COMPFEST11{p14Y1n6_wITH_un1C0D3_uWu}</strong></p>
+<p><strong>l3t_the_n1ghtm4r3_n3v3r_end</strong></p>
 
-<h2 id="explanation">Explanation</h2>
+<h2 id="rant">Rant</h2>
 
-<p>Berdasarkan referensi [2], tertulis bahwa</p>
-
-<blockquote>
-<p>The encoding used by Windows for Unicode is UTF-16, to be specific, UTF-16LE (Little Endian). Linux uses UTF-8 to encode Unicode. A file encoded with Unicode can optionally contain a Byte Order Mark(BOM) which is a special magic number at the start of file. Byte Order Mark(BOM) is optional for UTF-8, but mandatory for UTF-16 as per Unicode standard. So, Linux does not use BOM for Unicode files as it uses UTF-8. But Windows applications look for BOM in Unicode encoded file as they use UTF-16.</p>
-</blockquote>
-
-<p>artinya secara singkat adalah</p>
-
-<blockquote>
-<p>Windows uses <strong>UTF-16LE with BOM</strong>, and Linux uses <strong>UTF-8 without BOM</strong>.</p>
-</blockquote>
-
-<p>sehingga harus dilakukan konversi terlebih dahulu agar <em>flag</em> dapat dibaca</p>
-
-<h2 id="references">References</h2>
-
-<ol>
-<li><a href="https://stackoverflow.com/questions/17287713/using-iconv-to-convert-from-utf-16le-to-utf-8">https://stackoverflow.com/questions/17287713/using-iconv-to-convert-from-utf-16le-to-utf-8</a></li>
-<li><a href="http://murty4all.blogspot.com/2016/12/conversion-between-utf-16-utf-8-encoded.html">http://murty4all.blogspot.com/2016/12/conversion-between-utf-16-utf-8-encoded.html</a></li>
-</ol>
+<p>Sebenernya lupa ini soal dari mana, tapi tersimpan di folder bernama Indoxploit maka jadilah ini Soal Indoxploit Stegano 2</p>
 
                 
 
@@ -325,13 +354,13 @@ wITH_un1C0D3_uWu}
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/10/31/writeup-indoxploit-bane/" data-toggle="tooltip" data-placement="top" title="Writeup Stegano2">&larr;
+                        <a href="/2019/10/30/writeup-gemastik12-final-disk/" data-toggle="tooltip" data-placement="top" title="Writeup Disk Forensic">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/10/30/writeup-gemastik12-final-dig/" data-toggle="tooltip" data-placement="top" title="Writeup Digging Deeper">Next
+                        <a href="/2019/10/31/writeup-compfest11-quals-encang/" data-toggle="tooltip" data-placement="top" title="Writeup Encang Maman Belajar Ngoding">Next
                             Post &rarr;</a>
                     </li>
                     
