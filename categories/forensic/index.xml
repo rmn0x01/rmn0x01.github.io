@@ -6,10 +6,21 @@
     <description>Recent content in Forensic on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/forensic/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writeup Encang Maman Belajar Ngoding</title>
+      <link>/2019/10/31/writeup-compfest11-quals-encang/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/10/31/writeup-compfest11-quals-encang/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Writeup Disk Forensic</title>
@@ -20,17 +31,6 @@
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 
 &lt;p&gt;Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Writeup Encang Maman Belajar Ngoding</title>
-      <link>/2019/10/31/writeup-compfest11-quals-encang/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/10/31/writeup-compfest11-quals-encang/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>compfest11</title>
+      <link>/tags/compfest11/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/compfest11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>encoding</title>
+      <link>/tags/encoding/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/encoding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>gemastik12</title>
       <link>/tags/gemastik12/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
@@ -48,11 +66,29 @@
     </item>
     
     <item>
-      <title>compfest11</title>
-      <link>/tags/compfest11/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      <title>utf-16</title>
+      <link>/tags/utf-16/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/compfest11/</guid>
+      <guid>/tags/utf-16/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utf-32</title>
+      <link>/tags/utf-32/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/utf-32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utf-8</title>
+      <link>/tags/utf-8/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/utf-8/</guid>
       <description></description>
     </item>
     

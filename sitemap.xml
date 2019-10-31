@@ -13,6 +13,21 @@
   </url>
   
   <url>
+    <loc>/tags/compfest11/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/encoding/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/forensic/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/gemastik12/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
@@ -48,22 +63,32 @@
   </url>
   
   <url>
+    <loc>/tags/utf-16/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/utf-32/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/utf-8/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2019/10/30/writeup-gemastik12-final-dig/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/compfest11/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <loc>/2019/10/31/writeup-compfest11-quals-encang/</loc>
+    <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/ext2/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/forensic/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,11 +119,6 @@
   
   <url>
     <loc>/2019/10/30/writeup-gemastik12-final-disk/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2019/10/31/writeup-compfest11-quals-encang/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
