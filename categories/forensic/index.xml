@@ -6,10 +6,21 @@
     <description>Recent content in Forensic on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/forensic/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writeup c0rrupt</title>
+      <link>/2019/11/02/writeup-pico2019-corrupt/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/02/writeup-pico2019-corrupt/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;We found this file. Recover the flag&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Writeup WhitePages</title>
