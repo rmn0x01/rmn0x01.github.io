@@ -6,10 +6,21 @@
     <description>Recent content on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writeup VaultDoor Series</title>
+      <link>/2019/11/02/writeup-pico2019-vaultdoor/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/02/writeup-pico2019-vaultdoor/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Rangkaian soal Reversing-VaultDoor picoCTF&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Writeup WhitePages</title>
