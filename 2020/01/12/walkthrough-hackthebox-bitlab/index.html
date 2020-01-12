@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="rmn0x01">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="//img/home-bg-sven.jpg">
+    <meta property="twitter:image" content="//img/home-bg-sven.jpg" />
+    
+
+    
+    <meta name="title" content="[USER] Walkthrough Bitlab" />
+    <meta property="og:title" content="[USER] Walkthrough Bitlab" />
+    <meta property="twitter:title" content="[USER] Walkthrough Bitlab" />
+    
+
+    
+    <meta name="description" content="Arsip writeup CTF">
+    <meta property="og:description" content="Arsip writeup CTF" />
+    <meta property="twitter:description" content="Arsip writeup CTF" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>[USER] Walkthrough Bitlab-  CTF Writeup Archive | rmn0x01</title>
+
+    <link rel="canonical" href="/2020/01/12/walkthrough-hackthebox-bitlab/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rmn0x01</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/cryptography">cryptography</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/forensic">forensic</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/pentest">pentest</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/reverse">reverse</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/steganography">steganography</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-hackthebox.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/penetration-testing" title="penetration-testing">
+                            penetration-testing
+                        </a>
+                        
+                    </div>
+                    <h1>[USER] Walkthrough Bitlab</h1>
+                    <h2 class="subheading">Hackthebox - Linux Machine</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            rmn0x01
+                         
+                        on 
+                        Sunday, January 12, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#recon">Recon</a></li>
+<li><a href="#php-reverse-shell">PHP Reverse Shell</a></li>
+<li><a href="#root">Root</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <h2 id="intro">Intro</h2>
+
+<p>Post pertama di tahun 2020. Kali ini mencoba untuk bermain <a href="https://www.hackthebox.eu/">Hackthebox</a> dimana user diberikan sebuah target mesin dengan tujuan mendapatkan akses user dan root-nya.</p>
+
+<p>Bitlab merupakan mesin linux yang retired pada 11 Januari 2020, sehingga walkthrough-nya sudah dapat dipublikasikan.</p>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic1.png" alt="Bitlab Info Card" /></p>
+
+<h2 id="recon">Recon</h2>
+
+<p>Scan port pakai <a href="https://github.com/robertdavidgraham/masscan">Masscan</a> dan <a href="https://nmap.org/">NMAP</a>
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic2.png" alt="Hasil scan" /></p>
+
+<p>Open port 22 (SSH) dan port 80 (HTTP). Pada port 80 yang dibuka di browser, muncul Gitlab
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic3.png" alt="Bitlab? Gitlab?" /></p>
+
+<p>Sebelum melakukan directory enumeration, terdapat banyak pilihan dari hasil scan port sehingga dicoba satu per satu terlebih dahulu, dan didapatkan hasil yang menarik dari</p>
+
+<blockquote>
+<p>/help</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic4.png" alt="direktori help" /></p>
+
+<p>Lanjut ke bookmarks.html
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic5.png" alt="bookmarks" /></p>
+
+<p>Ditemukan kode javascript yang di-obfuscate, sehingga perlu di-deobfuscate terlebih dahulu
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic6.png" alt="javascript code" /></p>
+
+<p>Dari hasil deobfuscate, didapatkan informasi akun</p>
+
+<pre><code>user_login = clave
+user_password = 11des0081x
+</code></pre>
+
+<p>Gunakan informasi untuk login ke bitlab
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic7.png" alt="bitlab dashboard" /></p>
+
+<p>Telah terdapat repository di dalamnya, dan salah satu tombol di web tersebut mengarah pada website live dari repository tersebut, yaitu di</p>
+
+<blockquote>
+<p>/profile</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic8.png" alt="live website" /></p>
+
+<h2 id="php-reverse-shell">PHP Reverse Shell</h2>
+
+<p>Setelah diketahui user clave memiliki akses repository sampai fungsi merge, serta terdapat website di /profile, saatnya menyisipkan PHP Reverse Shell dari <a href="https://github.com/pentestmonkey/php-reverse-shell">pentestmonkey</a>. Ubah credentials, sesuaikan dengan IP local, dan kemudian request ke repository untuk di-merge
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic9.png" alt="Request" /></p>
+
+<p>Set listenernya</p>
+
+<blockquote>
+<p>netcat -lvp 6969</p>
+</blockquote>
+
+<p>Trigger shell-nya dengan mengunjungi</p>
+
+<blockquote>
+<p>/profile/php-reverse-shell.php</p>
+</blockquote>
+
+<p>We&rsquo;re in
+<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic10.png" alt="www-data shell" /></p>
+
+<p>Informasi yang bisa didapatkan adalah database yang digunakan merupakan PostgreSQL, sehingga digunakan script PHP untuk melakukan dump terhadap informasi akun</p>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic11.png" alt="snip.php" /></p>
+
+<p>Akses ke</p>
+
+<blockquote>
+<p>/profile/snip.php</p>
+</blockquote>
+
+<p>Didapatkan</p>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic12.png" alt="creds" /></p>
+
+<p>Gunakan informasi tersebut untuk login SSH</p>
+
+<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hackthebox-bitlab/pic13.png" alt="login SSH" /></p>
+
+<p>Gotcha! user.txt found</p>
+
+<h2 id="root">Root</h2>
+
+<p>Untuk root, diharuskan melakukan reversing terhadap file</p>
+
+<blockquote>
+<p>/home/clave/RemoteConnection.exe</p>
+</blockquote>
+
+<p>dan belum saya lakukan sampai mesin retired.</p>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/11/02/writeup-pico2019-corrupt/" data-toggle="tooltip" data-placement="top" title="Writeup c0rrupt">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/compfest11" title="compfest11">
+                            compfest11
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/gemastik12" title="gemastik12">
+                            gemastik12
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/hology" title="hology">
+                            hology
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/picoctf2019" title="picoctf2019">
+                            picoctf2019
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/slashroot" title="slashroot">
+                            slashroot
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/steghide" title="steghide">
+                            steghide
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/wireshark" title="wireshark">
+                            wireshark
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:m.nizar.rahman@protonmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/nizarahman_">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/rmn0x01/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; rmn0x01 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

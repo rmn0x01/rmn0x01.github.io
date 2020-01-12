@@ -6,10 +6,21 @@
     <description>Recent content on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[USER] Walkthrough Bitlab</title>
+      <link>/2020/01/12/walkthrough-hackthebox-bitlab/</link>
+      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/01/12/walkthrough-hackthebox-bitlab/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Post pertama di tahun 2020. Kali ini mencoba untuk bermain &lt;a href=&#34;https://www.hackthebox.eu/&#34;&gt;Hackthebox&lt;/a&gt; dimana user diberikan sebuah target mesin dengan tujuan mendapatkan akses user dan root-nya.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Writeup c0rrupt</title>
