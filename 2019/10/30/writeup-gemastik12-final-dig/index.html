@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="//img/home-bg-sven.jpg">
-    <meta property="twitter:image" content="//img/home-bg-sven.jpg" />
+    <meta property="og:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg">
+    <meta property="twitter:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg" />
     
 
     
@@ -21,9 +21,9 @@
     
 
     
-    <meta name="description" content="Arsip writeup CTF">
-    <meta property="og:description" content="Arsip writeup CTF" />
-    <meta property="twitter:description" content="Arsip writeup CTF" />
+    <meta name="description" content="Satu-satunya soal steganografi di final Gemastik XII, poin 200.">
+    <meta property="og:description" content="Satu-satunya soal steganografi di final Gemastik XII, poin 200." />
+    <meta property="twitter:description" content="Satu-satunya soal steganografi di final Gemastik XII, poin 200." />
     
 
     
@@ -31,29 +31,26 @@
     
     
 
-    <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
+    <meta name="keyword"  content="rmn0x01, Forensics, Cryptography, Pentest">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup Digging Deeper-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Digging Deeper-rmn0x01 Documentation Archive</title>
 
     <link rel="canonical" href="/2019/10/30/writeup-gemastik12-final-dig/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-	
+
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
-    <link rel="stylesheet" href="/css/syntax.css">
-    
-    
     <link rel="stylesheet" href="/css/zanshang.css">
+
     
-    
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
 
     
     
@@ -61,19 +58,12 @@
     
     
     <script src="/js/jquery.min.js"></script>
-    
-    
-    <script src="/js/bootstrap.min.js"></script>
-    
-    
-    <script src="/js/hux-blog.min.js"></script>
 
     
+    <script src="/js/bootstrap.min.js"></script>
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +72,9 @@
 
 
 
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -104,28 +96,20 @@
                         <a href="/">Home</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/cryptography">cryptography</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/forensic">forensic</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/pentest">pentest</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/reverse">reverse</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/steganography">steganography</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/ctf">ctf</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/penetration-testing">penetration-testing</a>
+                        </li>
+                        
                     
                     
 		    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
                         <li><a href="/top/about/">ABOUT</a></li>
                     
 
@@ -171,15 +155,21 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-gemastik.png')
+        background-image: url('/img/banner-gemastik.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
+                        
+                        <a class="tag" href="/tags/forensic" title="Forensic">
+                            Forensic
+                        </a>
                         
                         <a class="tag" href="/tags/steghide" title="steghide">
                             steghide
@@ -201,15 +191,17 @@
                     <h1>Writeup Digging Deeper</h1>
                     <h2 class="subheading">Gemastik XII Final</h2>
                     <span class="meta">
-                        Posted by 
                         
-                            rmn0x01
-                         
-                        on 
-                        Thursday, October 31, 2019
-                        
-                        
-                        
+                            Posted by 
+                            
+                                 rmn0x01
+                             
+                            on 
+                            Wednesday, October 30, 2019
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -231,134 +223,85 @@
                 post-container">
 
                 
-                <header>
-                    <h2>TOC</h2>
-                </header>
-                <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#intro">Intro</a></li>
-<li><a href="#tldr">TLDR</a></li>
-<li><a href="#full-steps">Full Steps</a></li>
-<li><a href="#flag">Flag</a></li>
-<li><a href="#references">References</a></li>
-<li><a href="#rant">Rant</a></li>
-</ul></li>
-</ul>
-</nav>
-                
-                <h2 id="intro">Intro</h2>
-
-<p>Satu-satunya soal steganografi di final Gemastik XII, poin 200.</p>
-
+                <p>Satu-satunya soal steganografi di final Gemastik XII, poin 200.</p>
+<h2 id="intro">Intro</h2>
 <p>File yang diberikan berupa</p>
-
-<pre><code># file minatozaki.bmp 
-minatozaki.bmp: bzip2 compressed data, block size = 600k
-</code></pre>
-
-<h2 id="tldr">TLDR</h2>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file minatozaki.bmp 
+minatozaki.bmp: bzip2 compressed data, block <span style="color:#8be9fd;font-style:italic">size</span> <span style="color:#ff79c6">=</span> 600k
+</code></pre></div><h2 id="tldr">TLDR</h2>
 <ol>
 <li>Extract</li>
 <li>Extract</li>
-<li>Brute-force password to extract</li>
+<li>Brute force password to extract</li>
 <li>Extract</li>
 <li>Baca Spectogram</li>
-<li>Get the <strong>Flag</strong></li>
+<li>Get the <strong>flag</strong></li>
 </ol>
-
 <h2 id="full-steps">Full Steps</h2>
+<p>Meskipun file berekstensi <em>bmp</em>, ketika dicek dengan <code>file</code> menandakan bahwa file tersebut adalah <em>bzip compressed data</em> sehingga dilakukan ekstraksi data</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ 7z e minatozaki.bmp 
 
-<p>Meskipun file berekstensi <em>bmp</em>, ketika dicek dengan <em>file</em> menandakan bahwa file tersebut adalah <em>bzip compressed data</em> sehingga dilakukan ekstraksi data</p>
+7-Zip <span style="color:#ff79c6">[</span>64<span style="color:#ff79c6">]</span> 16.02 : Copyright <span style="color:#ff79c6">(</span>c<span style="color:#ff79c6">)</span> 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 <span style="color:#ff79c6">(</span><span style="color:#8be9fd;font-style:italic">locale</span><span style="color:#ff79c6">=</span>en_US.UTF-8,Utf16<span style="color:#ff79c6">=</span>on,HugeFiles<span style="color:#ff79c6">=</span>on,64 bits,4 CPUs Intel<span style="color:#ff79c6">(</span>R<span style="color:#ff79c6">)</span> Core<span style="color:#ff79c6">(</span>TM<span style="color:#ff79c6">)</span> i5-6200U CPU @ 2.30GHz <span style="color:#ff79c6">(</span>406E3<span style="color:#ff79c6">)</span>,ASM,AES-NI<span style="color:#ff79c6">)</span>
 
-<pre><code># 7z e minatozaki.bmp 
-
-7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
-p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
-
-Scanning the drive for archives:
-1 file, 6737180 bytes (6580 KiB)
+Scanning the drive <span style="color:#ff79c6">for</span> archives:
+<span style="color:#bd93f9">1</span> file, <span style="color:#bd93f9">6737180</span> bytes <span style="color:#ff79c6">(</span><span style="color:#bd93f9">6580</span> KiB<span style="color:#ff79c6">)</span>
 
 Extracting archive: minatozaki.bmp
 --
-Path = minatozaki.bmp
-Type = bzip2
+<span style="color:#8be9fd;font-style:italic">Path</span> <span style="color:#ff79c6">=</span> minatozaki.bmp
+<span style="color:#8be9fd;font-style:italic">Type</span> <span style="color:#ff79c6">=</span> bzip2
 
 Everything is Ok 
 
-Size:       9652224
-Compressed: 6737180
-</code></pre>
-
-<p>Didapatkan file minatozaki</p>
-
-<pre><code># file minatozaki 
+Size:       <span style="color:#bd93f9">9652224</span>
+Compressed: <span style="color:#bd93f9">6737180</span>
+</code></pre></div><p>Didapatkan file minatozaki</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file minatozaki 
 minatozaki: POSIX tar archive
-</code></pre>
-
-<p><em>Extract</em> lagi</p>
-
-<pre><code># tar -xvf minatozaki
+</code></pre></div><p><em>Extract</em> lagi</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ tar -xvf minatozaki
 cheese_kimbap.wav
-</code></pre>
-
-<pre><code># file cheese_kimbap.wav 
-cheese_kimbap.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, stereo 44100 Hz
-</code></pre>
-
-<p>Merupakan audio potongan dari sebuah acara TV dan ketika dibuka dengan Audacity, tidak ada pola-pola yang mengarah pada analisis Spectogram maupun SSTV, sehingga kemungkinannya antara Steghide atau LSB.</p>
-
-<pre><code># steghide extract -sf cheese_kimbap.wav 
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file cheese_kimbap.wav 
+cheese_kimbap.wav: RIFF <span style="color:#ff79c6">(</span>little-endian<span style="color:#ff79c6">)</span> data, WAVE audio, Microsoft PCM, <span style="color:#bd93f9">16</span> bit, stereo <span style="color:#bd93f9">44100</span> Hz
+</code></pre></div><p>Merupakan audio potongan dari sebuah acara TV dan ketika dibuka dengan <code>Audacity</code>, tidak ada pola-pola yang mengarah pada analisis Spectogram maupun SSTV, sehingga kemungkinannya antara <code>Steghide</code> atau <code>LSB</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ steghide extract -sf cheese_kimbap.wav 
 Enter passphrase: 
 steghide: could not extract any data with that passphrase!
-</code></pre>
-
-<p>Steghide dengan <em>password</em> kosong tidak dapat mengekstrak data apapun, kemungkinan <em>password</em> harus ditebak. Gunakan tool StegCracker [1] dan <em>wordlist</em> <em>00-indonesian-wordlist.lst</em> [2] untuk mencari <em>password</em>-nya</p>
-
-<pre><code># stegcracker cheese_kimbap.wav ~/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst 
-StegCracker 2.0.7 - (https://github.com/Paradoxis/StegCracker)
-Copyright (c) 2019 - Luke Paris (Paradoxis)
+</code></pre></div><p><code>Steghide</code> dengan <em>password</em> kosong tidak dapat mengekstrak data apapun, kemungkinan <em>password</em> harus ditebak. Gunakan tool <code>StegCracker</code> [1] dan <em>wordlist</em> 00-indonesian-wordlist.lst [2] untuk mencari <em>password</em>-nya</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ stegcracker cheese_kimbap.wav ~/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst 
+StegCracker 2.0.7 - <span style="color:#ff79c6">(</span>https://github.com/Paradoxis/StegCracker<span style="color:#ff79c6">)</span>
+Copyright <span style="color:#ff79c6">(</span>c<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">2019</span> - Luke Paris <span style="color:#ff79c6">(</span>Paradoxis<span style="color:#ff79c6">)</span>
 
 Counting lines in wordlist..
-Attacking file 'cheese_kimbap.wav' with wordlist '/root/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst'..
-6/79898 (0.72%) Attempted: afkirorns
-</code></pre>
-
-<p>Didapatkan <em>password</em>-nya adalah</p>
-
+Attacking file <span style="color:#f1fa8c">&#39;cheese_kimbap.wav&#39;</span> with wordlist <span style="color:#f1fa8c">&#39;/root/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst&#39;</span>..
+6/79898 <span style="color:#ff79c6">(</span>0.72%<span style="color:#ff79c6">)</span> Attempted: afkirorns
+</code></pre></div><p>Didapatkan <em>password</em>-nya adalah</p>
 <blockquote>
 <p>patriot</p>
 </blockquote>
-
-<p>File berikutnya memiliki ekstensi <em>.zip</em>, extract lagi</p>
-
-<pre><code># file cheese_kimbap.wav.out 
-cheese_kimbap.wav.out: Zip archive data, at least v?[0x314] to extract
-# mv cheese_kimbap.wav.out cheese_kimbap.wav.zip
-# unzip cheese_kimbap.wav.zip 
+<p>File berikutnya memiliki ekstensi .zip, extract lagi</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file cheese_kimbap.wav.out 
+cheese_kimbap.wav.out: Zip archive data, at least v?<span style="color:#ff79c6">[</span>0x314<span style="color:#ff79c6">]</span> to extract
+$ mv cheese_kimbap.wav.out cheese_kimbap.wav.zip
+$ unzip cheese_kimbap.wav.zip 
 Archive:  cheese_kimbap.wav.zip
-  inflating: further.wav             
-</code></pre>
+  inflating: further.wav   
+</code></pre></div><p>Buka dengan <code>Audacity</code>
 
-<p>Buka dengan <em>Audacity</em>
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/gemastik12-digg/pic1.png" alt="Spectogram Audacity" /></p>
+  <img src="/img/gemastik12-digg/pic1.png" alt="Audacity">
 
+</p>
 <h2 id="flag">Flag</h2>
-
 <p><strong>gemastik12{looK_FuRth3R}</strong></p>
-
 <h2 id="references">References</h2>
-
 <ol>
 <li><a href="https://github.com/Paradoxis/StegCracker">https://github.com/Paradoxis/StegCracker</a></li>
 <li><a href="https://github.com/geovedi/indonesian-wordlist">https://github.com/geovedi/indonesian-wordlist</a></li>
 </ol>
-
 <h2 id="rant">Rant</h2>
-
 <p>Selesaikan apa yang sedang dijalankan, jangan baru 40% langsung di-<strong>CTRL+C</strong> dudul</p>
+
 
                 
 
@@ -366,27 +309,43 @@ Archive:  cheese_kimbap.wav.zip
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/10/31/writeup-compfest11-quals-encang/" data-toggle="tooltip" data-placement="top" title="Writeup Encang Maman Belajar Ngoding">&larr;
+                        <a href="/2019/10/30/writeup-gemastik12-final-disk/" data-toggle="tooltip" data-placement="top" title="Writeup Disk Forensic">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/10/31/writeup-compfest11-quals-cnn/" data-toggle="tooltip" data-placement="top" title="Writeup Cable News Network">Next
+                        <a href="/2019/10/31/writeup-indoxploit-steg2/" data-toggle="tooltip" data-placement="top" title="Writeup Stegano2">Next
                             Post &rarr;</a>
                     </li>
                     
                 </ul>
-
                 
 <div id="disqus-comment"></div>
 
 
-
             </div>
+
+            
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -403,10 +362,14 @@ Archive:  cheese_kimbap.wav.zip
                         
                         
                         
-                        
-                        
                         <a href="/tags/compfest11" title="compfest11">
                             compfest11
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cryptography" title="cryptography">
+                            cryptography
                         </a>
                         
                         
@@ -414,6 +377,10 @@ Archive:  cheese_kimbap.wav.zip
                         
                         
                         
+                        
+                        <a href="/tags/forensic" title="forensic">
+                            forensic
+                        </a>
                         
                         
                         
@@ -425,9 +392,19 @@ Archive:  cheese_kimbap.wav.zip
                         
                         
                         
+                        
+                        
                         <a href="/tags/hology" title="hology">
                             hology
                         </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         
@@ -459,6 +436,12 @@ Archive:  cheese_kimbap.wav.zip
                         
                         <a href="/tags/slashroot" title="slashroot">
                             slashroot
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/steganography" title="steganography">
+                            steganography
                         </a>
                         
                         
@@ -510,19 +493,19 @@ Archive:  cheese_kimbap.wav.zip
                     <li>
                         <a href="mailto:m.nizar.rahman@protonmail.com">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
-                    
+
                     
                     <li>
                         <a href="https://twitter.com/nizarahman_">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -536,22 +519,31 @@ Archive:  cheese_kimbap.wav.zip
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/rmn0x01/">
+                        <a target="_blank" href="https://github.com/rmn0x01">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
                     
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/rmn0x01">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
                     
                     
                     <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
+                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -561,9 +553,12 @@ Archive:  cheese_kimbap.wav.zip
                     
                     
                     
+            
+            
+            
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2020
+                    Copyright &copy; rmn0x01 2021
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
@@ -581,7 +576,7 @@ Archive:  cheese_kimbap.wav.zip
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -599,7 +594,7 @@ Archive:  cheese_kimbap.wav.zip
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -611,7 +606,7 @@ Archive:  cheese_kimbap.wav.zip
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -620,6 +615,80 @@ Archive:  cheese_kimbap.wav.zip
 
 
 
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'uNoiE2c2dldl1ar_IYL44vZdzXaZk2EeCSqkOldQAig', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 </body>

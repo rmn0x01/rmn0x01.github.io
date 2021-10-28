@@ -1,25 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rsa-small-exponent on rmn0x01</title>
-    <link>/tags/rsa-small-exponent/</link>
+    <link>https://rmn0x01.github.io/tags/rsa-small-exponent/</link>
     <description>Recent content in rsa-small-exponent on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/rsa-small-exponent/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/rsa-small-exponent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup bASe64 encRyption</title>
-      <link>/2019/10/31/writeup-slashroot4-quals-b64/</link>
+      <link>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/31/writeup-slashroot4-quals-b64/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal kriptografi penyisihan Slashroot 4.0 dengan poin 150.&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</guid>
+      <description>Soal kriptografi penyisihan Slashroot 4.0 dengan poin 150.
+Intro File yang diberikan berupa
+BASe64.py: Python script, ASCII text executable flag.enc: ASCII text, with no line terminators public.key: ASCII text TLDR  Reverse Get the flag  Full Steps Script yang digunakan untuk enkripsi adalah sebagai berikut:
+BASe64.py
+from base64 import b64encode as b64 from Crypto.PublicKey import RSA from Crypto.Util.number import bytes_to_long, long_to_bytes FLAG = &amp;#34;SlashRootCTF&amp;#34; def enc(key, msg, b6=&amp;#34;&amp;#34;, b4=&amp;#34;&amp;#34;): key = RSA.</description>
     </item>
     
   </channel>

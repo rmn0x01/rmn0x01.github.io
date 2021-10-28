@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Penetration Testing on rmn0x01</title>
+    <link>https://rmn0x01.github.io/categories/penetration-testing/</link>
+    <description>Recent content in Penetration Testing on rmn0x01</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/categories/penetration-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[USER] Walkthrough Bitlab</title>
+      <link>https://rmn0x01.github.io/2020/01/12/walkthrough-hackthebox-bitlab/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2020/01/12/walkthrough-hackthebox-bitlab/</guid>
+      <description>Post pertama di tahun 2020. Kali ini mencoba untuk bermain Hackthebox dimana user diberikan sebuah target mesin dengan tujuan mendapatkan akses user dan root-nya.
+Intro Bitlab merupakan mesin linux yang retired pada 11 Januari 2020, sehingga walkthrough-nya sudah dapat dipublikasikan. Recon Scan port pakai Masscan dan NMAP Open port 22 (SSH) dan port 80 (HTTP). Pada port 80 yang dibuka di browser, muncul Gitlab Sebelum melakukan directory enumeration, terdapat banyak pilihan dari hasil scan port sehingga dicoba satu per satu terlebih dahulu, dan didapatkan hasil yang menarik dari</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,58 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on rmn0x01</title>
-    <link>/categories/</link>
+    <link>https://rmn0x01.github.io/categories/</link>
     <description>Recent content in Categories on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jan 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pentest</title>
-      <link>/categories/pentest/</link>
-      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/pentest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Forensic</title>
-      <link>/categories/forensic/</link>
+      <title>CTF</title>
+      <link>https://rmn0x01.github.io/categories/ctf/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/forensic/</guid>
+      <guid>https://rmn0x01.github.io/categories/ctf/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Reverse</title>
-      <link>/categories/reverse/</link>
+      <title>Penetration Testing</title>
+      <link>https://rmn0x01.github.io/categories/penetration-testing/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/reverse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cryptography</title>
-      <link>/categories/cryptography/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/cryptography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Steganography</title>
-      <link>/categories/steganography/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/steganography/</guid>
+      <guid>https://rmn0x01.github.io/categories/penetration-testing/</guid>
       <description></description>
     </item>
     

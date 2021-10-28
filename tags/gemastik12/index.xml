@@ -1,47 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gemastik12 on rmn0x01</title>
-    <link>/tags/gemastik12/</link>
+    <link>https://rmn0x01.github.io/tags/gemastik12/</link>
     <description>Recent content in gemastik12 on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/gemastik12/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/gemastik12/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Digging Deeper</title>
-      <link>/2019/10/30/writeup-gemastik12-final-dig/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-dig/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-gemastik12-final-dig/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Satu-satunya soal steganografi di final Gemastik XII, poin 200.&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-dig/</guid>
+      <description>Satu-satunya soal steganografi di final Gemastik XII, poin 200.
+Intro File yang diberikan berupa
+$ file minatozaki.bmp minatozaki.bmp: bzip2 compressed data, block size = 600k TLDR  Extract Extract Brute force password to extract Extract Baca Spectogram Get the flag  Full Steps Meskipun file berekstensi bmp, ketika dicek dengan file menandakan bahwa file tersebut adalah bzip compressed data sehingga dilakukan ekstraksi data
+$ 7z e minatozaki.bmp 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21 p7zip Version 16.</description>
     </item>
     
     <item>
       <title>Writeup Disk Forensic</title>
-      <link>/2019/10/30/writeup-gemastik12-final-disk/</link>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-disk/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-gemastik12-final-disk/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-disk/</guid>
+      <description>Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200
+Intro File yang diberikan berupa
+$ file forensic.img forensic.img: data TLDR  Perbaiki file Mount file Get the flag  Full Steps File forensic.img perlu diperbaiki terlebih dahulu agar dapat dilakukan mounting dengan menggunakan fsck
+$ fsck.ext2 forensic.img e2fsck 1.44.5 (15-Dec-2018) ext2fs_open2: Bad magic number in super-block fsck.ext2: Superblock invalid, trying backup blocks... forensic.img was not cleanly unmounted, check forced.</description>
     </item>
     
     <item>
       <title>Writeup FTP Forensik</title>
-      <link>/2019/10/30/writeup-gemastik12-final-ftp/</link>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-ftp/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-gemastik12-final-ftp/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal forensik final Gemastik XII di Telkom University. Poin 200&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-ftp/</guid>
+      <description>Soal forensik final Gemastik XII di Telkom University. Poin 200
+Intro File yang diberikan berupa
+$ file * images.png: PNG image data, 358 x 141, 8-bit colormap, non-interlaced trafik-gemastik12.pcapng: pcap-ng capture file - version 1.0 images.png yang diterima menerangkan bagaimana File Transfer Protocol (FTP) bekerja TLDR  FTP Packet filter Analisis paket Dump JPG File Recover file Dapatkan password ZIP Get the flag  Full Steps Sesuai dengan judul soal dan images.</description>
     </item>
     
   </channel>

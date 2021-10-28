@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>utf-16 on rmn0x01</title>
-    <link>/tags/utf-16/</link>
+    <link>https://rmn0x01.github.io/tags/utf-16/</link>
     <description>Recent content in utf-16 on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/utf-16/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/utf-16/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Encang Maman Belajar Ngoding</title>
-      <link>/2019/10/31/writeup-compfest11-quals-encang/</link>
+      <link>https://rmn0x01.github.io/2019/10/31/writeup-compfest11-quals-encang/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/31/writeup-compfest11-quals-encang/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/31/writeup-compfest11-quals-encang/</guid>
+      <description>Encang Maman belajar ngoding. Dia mengirim pesan untuk kalian. Dapatkah kalian membaca kode dari Encang Maman?
+Intro File yang diberikan berupa
+$ file pesan.zip pesan.zip: Zip archive data, at least v2.0 to extract $ unzip pesan.zip Archive: pesan.zip inflating: pesan2 inflating: pesan1 $ file * pesan1: data pesan2: data pesan.zip: Zip archive data, at least v2.0 to extract TLDR  Konversi UTF-16 Konversi UTF-32 Get the flag  Full Steps Kedua file (pesan1 dan pesan2) ketika dibaca hanya menampilkan data yang tidak dapat dipahami.</description>
     </item>
     
   </channel>

@@ -1,283 +1,333 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on rmn0x01</title>
-    <link>/tags/</link>
+    <link>https://rmn0x01.github.io/tags/</link>
     <description>Recent content in Tags on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jan 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>penetration-testing</title>
-      <link>/tags/penetration-testing/</link>
-      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      <title>Forensic</title>
+      <link>https://rmn0x01.github.io/tags/forensic/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/penetration-testing/</guid>
+      <guid>https://rmn0x01.github.io/tags/forensic/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>bless</title>
-      <link>/tags/bless/</link>
+      <title>gitlab</title>
+      <link>https://rmn0x01.github.io/tags/gitlab/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/bless/</guid>
+      <guid>https://rmn0x01.github.io/tags/gitlab/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>file-header</title>
-      <link>/tags/file-header/</link>
+      <title>javascript</title>
+      <link>https://rmn0x01.github.io/tags/javascript/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/file-header/</guid>
+      <guid>https://rmn0x01.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux-machine</title>
+      <link>https://rmn0x01.github.io/tags/linux-machine/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/linux-machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>masscan</title>
+      <link>https://rmn0x01.github.io/tags/masscan/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/masscan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nmap</title>
+      <link>https://rmn0x01.github.io/tags/nmap/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/nmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php-reverse-shell</title>
+      <link>https://rmn0x01.github.io/tags/php-reverse-shell/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/php-reverse-shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>picoctf2019</title>
-      <link>/tags/picoctf2019/</link>
+      <link>https://rmn0x01.github.io/tags/picoctf2019/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/picoctf2019/</guid>
+      <guid>https://rmn0x01.github.io/tags/picoctf2019/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>pngcheck</title>
-      <link>/tags/pngcheck/</link>
+      <title>postgresql</title>
+      <link>https://rmn0x01.github.io/tags/postgresql/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/pngcheck/</guid>
+      <guid>https://rmn0x01.github.io/tags/postgresql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aes-ofb</title>
-      <link>/tags/aes-ofb/</link>
+      <link>https://rmn0x01.github.io/tags/aes-ofb/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/aes-ofb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>brute force</title>
-      <link>/tags/brute-force/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/brute-force/</guid>
+      <guid>https://rmn0x01.github.io/tags/aes-ofb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>compfest11</title>
-      <link>/tags/compfest11/</link>
+      <link>https://rmn0x01.github.io/tags/compfest11/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/compfest11/</guid>
+      <guid>https://rmn0x01.github.io/tags/compfest11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cryptography</title>
+      <link>https://rmn0x01.github.io/tags/cryptography/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/cryptography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>encoding</title>
-      <link>/tags/encoding/</link>
+      <link>https://rmn0x01.github.io/tags/encoding/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/encoding/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gemastik12</title>
-      <link>/tags/gemastik12/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/gemastik12/</guid>
+      <guid>https://rmn0x01.github.io/tags/encoding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>indoxploit</title>
-      <link>/tags/indoxploit/</link>
+      <link>https://rmn0x01.github.io/tags/indoxploit/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/indoxploit/</guid>
+      <guid>https://rmn0x01.github.io/tags/indoxploit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>key-reuse</title>
-      <link>/tags/key-reuse/</link>
+      <link>https://rmn0x01.github.io/tags/key-reuse/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/key-reuse/</guid>
+      <guid>https://rmn0x01.github.io/tags/key-reuse/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rsa</title>
-      <link>/tags/rsa/</link>
+      <link>https://rmn0x01.github.io/tags/rsa/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rsa/</guid>
+      <guid>https://rmn0x01.github.io/tags/rsa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rsa-small-exponent</title>
-      <link>/tags/rsa-small-exponent/</link>
+      <link>https://rmn0x01.github.io/tags/rsa-small-exponent/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rsa-small-exponent/</guid>
+      <guid>https://rmn0x01.github.io/tags/rsa-small-exponent/</guid>
       <description></description>
     </item>
     
     <item>
       <title>script</title>
-      <link>/tags/script/</link>
+      <link>https://rmn0x01.github.io/tags/script/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/script/</guid>
+      <guid>https://rmn0x01.github.io/tags/script/</guid>
       <description></description>
     </item>
     
     <item>
       <title>slashroot</title>
-      <link>/tags/slashroot/</link>
+      <link>https://rmn0x01.github.io/tags/slashroot/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/slashroot/</guid>
+      <guid>https://rmn0x01.github.io/tags/slashroot/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>stegcracker</title>
-      <link>/tags/stegcracker/</link>
+      <title>Steganography</title>
+      <link>https://rmn0x01.github.io/tags/steganography/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/stegcracker/</guid>
+      <guid>https://rmn0x01.github.io/tags/steganography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>steghide</title>
-      <link>/tags/steghide/</link>
+      <link>https://rmn0x01.github.io/tags/steghide/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/steghide/</guid>
+      <guid>https://rmn0x01.github.io/tags/steghide/</guid>
       <description></description>
     </item>
     
     <item>
       <title>stegsolve</title>
-      <link>/tags/stegsolve/</link>
+      <link>https://rmn0x01.github.io/tags/stegsolve/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/stegsolve/</guid>
+      <guid>https://rmn0x01.github.io/tags/stegsolve/</guid>
       <description></description>
     </item>
     
     <item>
       <title>utf-16</title>
-      <link>/tags/utf-16/</link>
+      <link>https://rmn0x01.github.io/tags/utf-16/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/utf-16/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>utf-32</title>
-      <link>/tags/utf-32/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/utf-32/</guid>
+      <guid>https://rmn0x01.github.io/tags/utf-16/</guid>
       <description></description>
     </item>
     
     <item>
       <title>utf-8</title>
-      <link>/tags/utf-8/</link>
+      <link>https://rmn0x01.github.io/tags/utf-8/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/utf-8/</guid>
+      <guid>https://rmn0x01.github.io/tags/utf-8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utf32</title>
+      <link>https://rmn0x01.github.io/tags/utf32/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/utf32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>brute force</title>
+      <link>https://rmn0x01.github.io/tags/brute-force/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/brute-force/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ext2</title>
-      <link>/tags/ext2/</link>
+      <link>https://rmn0x01.github.io/tags/ext2/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ext2/</guid>
+      <guid>https://rmn0x01.github.io/tags/ext2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ftp</title>
-      <link>/tags/ftp/</link>
+      <link>https://rmn0x01.github.io/tags/ftp/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ftp/</guid>
+      <guid>https://rmn0x01.github.io/tags/ftp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gemastik12</title>
+      <link>https://rmn0x01.github.io/tags/gemastik12/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/gemastik12/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hology</title>
-      <link>/tags/hology/</link>
+      <link>https://rmn0x01.github.io/tags/hology/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/hology/</guid>
+      <guid>https://rmn0x01.github.io/tags/hology/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux filesystem</title>
-      <link>/tags/linux-filesystem/</link>
+      <link>https://rmn0x01.github.io/tags/linux-filesystem/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/linux-filesystem/</guid>
+      <guid>https://rmn0x01.github.io/tags/linux-filesystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stegcracker</title>
+      <link>https://rmn0x01.github.io/tags/stegcracker/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/stegcracker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>windows registry</title>
-      <link>/tags/windows-registry/</link>
+      <link>https://rmn0x01.github.io/tags/windows-registry/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/windows-registry/</guid>
+      <guid>https://rmn0x01.github.io/tags/windows-registry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>wireshark</title>
-      <link>/tags/wireshark/</link>
+      <link>https://rmn0x01.github.io/tags/wireshark/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/wireshark/</guid>
+      <guid>https://rmn0x01.github.io/tags/wireshark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>icmp</title>
-      <link>/tags/icmp/</link>
+      <link>https://rmn0x01.github.io/tags/icmp/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/icmp/</guid>
+      <guid>https://rmn0x01.github.io/tags/icmp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iso</title>
-      <link>/tags/iso/</link>
+      <link>https://rmn0x01.github.io/tags/iso/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/iso/</guid>
+      <guid>https://rmn0x01.github.io/tags/iso/</guid>
       <description></description>
     </item>
     

@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="//img/home-bg-sven.jpg">
-    <meta property="twitter:image" content="//img/home-bg-sven.jpg" />
+    <meta property="og:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg">
+    <meta property="twitter:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg" />
     
 
     
@@ -21,9 +21,9 @@
     
 
     
-    <meta name="description" content="Arsip writeup CTF">
-    <meta property="og:description" content="Arsip writeup CTF" />
-    <meta property="twitter:description" content="Arsip writeup CTF" />
+    <meta name="description" content="Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.">
+    <meta property="og:description" content="Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100." />
+    <meta property="twitter:description" content="Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100." />
     
 
     
@@ -31,29 +31,26 @@
     
     
 
-    <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
+    <meta name="keyword"  content="rmn0x01, Forensics, Cryptography, Pentest">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup Jendela Dunia-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup Jendela Dunia-rmn0x01 Documentation Archive</title>
 
     <link rel="canonical" href="/2019/10/30/writeup-hology-final-jendeladunia/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-	
+
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
-    <link rel="stylesheet" href="/css/syntax.css">
-    
-    
     <link rel="stylesheet" href="/css/zanshang.css">
+
     
-    
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
 
     
     
@@ -61,19 +58,12 @@
     
     
     <script src="/js/jquery.min.js"></script>
-    
-    
-    <script src="/js/bootstrap.min.js"></script>
-    
-    
-    <script src="/js/hux-blog.min.js"></script>
 
     
+    <script src="/js/bootstrap.min.js"></script>
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +72,9 @@
 
 
 
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -104,28 +96,20 @@
                         <a href="/">Home</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/cryptography">cryptography</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/forensic">forensic</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/pentest">pentest</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/reverse">reverse</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/steganography">steganography</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/ctf">ctf</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/penetration-testing">penetration-testing</a>
+                        </li>
+                        
                     
                     
 		    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
                         <li><a href="/top/about/">ABOUT</a></li>
                     
 
@@ -171,10 +155,12 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-hology.png')
+        background-image: url('/img/banner-hology.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -193,15 +179,17 @@
                     <h1>Writeup Jendela Dunia</h1>
                     <h2 class="subheading">Hology 2.0 Final</h2>
                     <span class="meta">
-                        Posted by 
                         
-                            rmn0x01
-                         
-                        on 
-                        Wednesday, October 30, 2019
-                        
-                        
-                        
+                            Posted by 
+                            
+                                 rmn0x01
+                             
+                            on 
+                            Wednesday, October 30, 2019
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -223,150 +211,100 @@
                 post-container">
 
                 
-                <header>
-                    <h2>TOC</h2>
-                </header>
-                <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#intro">Intro</a></li>
-<li><a href="#tldr">TLDR</a></li>
-<li><a href="#full-steps">Full Steps</a></li>
-<li><a href="#flag">Flag</a></li>
-<li><a href="#references">References</a></li>
-<li><a href="#rant">Rant</a></li>
-</ul></li>
-</ul>
-</nav>
-                
-                <h2 id="intro">Intro</h2>
-
-<p>Soal Forensik pertama yang diberikan saat final Hology 2.0, <em>starting points</em>: 100.</p>
-
+                <p>Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.</p>
+<h2 id="intro">Intro</h2>
 <p>File yang diberikan berupa</p>
-
-<pre><code># file Leaked
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file Leaked
 Leaked: data
-</code></pre>
-
-<h2 id="tldr">TLDR</h2>
-
+</code></pre></div><h2 id="tldr">TLDR</h2>
 <ol>
 <li>Perbaiki file</li>
 <li>Import registry</li>
 <li>Analisis registry</li>
 <li>Extract hex value</li>
 <li>Decode</li>
-<li>Get the <strong>Flag</strong></li>
+<li>Get the <strong>flag</strong></li>
 </ol>
-
 <h2 id="full-steps">Full Steps</h2>
-
 <p>Isi dari file <em>Leaked</em> adalah</p>
-
-<pre><code># cat Leaked
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ cat Leaked
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00
-(...)
-[HKEY_CURRENT_USER\Software\Microsoft\XboxLive]
-(...)
+<span style="color:#ff79c6">(</span>...<span style="color:#ff79c6">)</span>
+<span style="color:#ff79c6">[</span>HKEY_CURRENT_USER<span style="color:#f1fa8c">\S</span>oftware<span style="color:#f1fa8c">\M</span>icrosoft<span style="color:#f1fa8c">\X</span>boxLive<span style="color:#ff79c6">]</span>
+<span style="color:#ff79c6">(</span>...<span style="color:#ff79c6">)</span>
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
-</code></pre>
+</code></pre></div><p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa… di awal file dan AAAAA… di akhir file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;Leaked&#39;</span>,<span style="color:#f1fa8c">&#39;r&#39;</span>)<span style="color:#ff79c6">.</span>read()
+g <span style="color:#ff79c6">=</span> f[<span style="color:#bd93f9">205</span>:<span style="color:#ff79c6">-</span><span style="color:#bd93f9">243</span>]
+h <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;Leaked.reg&#39;</span>,<span style="color:#f1fa8c">&#39;wb&#39;</span>)
+h<span style="color:#ff79c6">.</span>write(g)
+h<span style="color:#ff79c6">.</span>close()
+</code></pre></div><p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file Leaked.reg 
+Leaked.reg: Windows Registry little-endian text <span style="color:#ff79c6">(</span>Win2K or above<span style="color:#ff79c6">)</span>
+</code></pre></div><p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh"><span style="color:#f1fa8c">&#34;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&#34;</span><span style="color:#ff79c6">=</span>hex:53,41,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,01,00,00,00
+<span style="color:#f1fa8c">&#34;C:\\Users\\hanyi\\Desktop\\Flag.exe&#34;</span><span style="color:#ff79c6">=</span>hex:53,41,43,50,01,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
+</code></pre></div><p>Langkah selanjutnya adalah melakukan <em>Import Leaked.reg</em> menggunakan <code>regedit</code>. Hal yang aman adalah dengan menggunakan <code>Virtual Machine</code>, namun ketika pelaksanaan kemarin karena tidak memiliki <code>VM</code> yang ready, saya <strong>yolo</strong> saja dengan mengimport-nya ke regedit di <code>Wine</code> (setidaknya kalau broken, yang broken hanya <code>Wine</code> saja).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ wine regedit
+</code></pre></div><p>
+  <img src="/img/hology-jendela/pic1.png" alt="Registry">
 
-<p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa&hellip; di awal file dan AAAAA&hellip; di akhir file</p>
+</p>
+<p>Ditemukan Flag.exe di <strong>[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store]</strong>
 
-<pre><code># python
-Python 2.7.15+ (default, Feb  3 2019, 13:13:16) 
-[GCC 8.2.0] on linux2
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; f = open('Leaked','r').read()
-&gt;&gt;&gt; g = f[205:-243]
-&gt;&gt;&gt; h = open('Leaked.reg','wb')
-&gt;&gt;&gt; h.write(g)
-&gt;&gt;&gt; h.close()
-</code></pre>
+  <img src="/img/hology-jendela/pic2.png" alt="Flag located">
 
-<p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
-
-<pre><code># file Leaked.reg 
-Leaked.reg: Windows Registry little-endian text (Win2K or above)
-</code></pre>
-
-<p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
-
-<pre><code>&quot;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&quot;=hex:53,41,\
-  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,\
-  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,\
-  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,\
-  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,\
-  00,00,01,00,00,00
-&quot;C:\\Users\\hanyi\\Desktop\\Flag.exe&quot;=hex:53,41,43,50,01,00,00,00,00,00,00,00,\
-  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,\
-  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,\
-  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
-</code></pre>
-
-<p>Langkah selanjutnya adalah melakukan <em>Import</em> <em>Leaked.reg</em> menggunakan <em>regedit</em>. Hal yang aman adalah dengan menggunakan <em>Virtual Machine</em>, namun ketika pelaksanaan kemarin karena tidak memiliki VM yang <em>ready</em>, saya <strong>yolo</strong> saja dengan mengimport-nya ke <em>regedit</em> di <em>Wine</em> (setidaknya kalau broken, yang broken hanya Wine saja).</p>
-
-<pre><code># wine regedit
-</code></pre>
-
-<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic1.png" alt="Import Regedit" /></p>
-
-<p>Ditemukan Flag.exe di [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store]
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic2.png" alt="Lokasi Flag.exe" /></p>
-
+</p>
 <p>Hint yang diberikan panitia adalah:</p>
-
-<pre><code>1. Display Opened Application in Jendela
-2. ROT-13
-</code></pre>
-
-<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan <em>keyword:</em></p>
-
+<blockquote>
+<ol>
+<li>Display Opened Application in Jendela</li>
+<li>ROT-13</li>
+</ol>
+</blockquote>
+<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan keyword:</p>
 <blockquote>
 <p>windows registry rot 13</p>
 </blockquote>
-
-<p>dari referensi [1] diketahui bahwa <em>system objects</em> seperti <em>program, shortcut</em>, dan <em>control panel applets</em> yang baru saja diakses akan disimpan di</p>
-
+<p>dari referensi [1] diketahui bahwa system objects seperti program, shortcut, dan control panel applets yang baru saja diakses akan disimpan di</p>
 <blockquote>
 <p>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</p>
 </blockquote>
-
 <p>dalam bentuk <em>ROT-13 Encoded</em></p>
+<p>Setelah dicari dengan regedit, ditemukan <strong>IHYA_INYHRF</strong> yang jika dilakukan <code>ROT-13</code> menjadi <strong>VULN_VALUES</strong>, kami mengasumsikan bahwa ini merupakan hasil run dari file <em>flag.exe</em> tadi.
 
-<p>Setelah dicari dengan <em>regedit</em>, ditemukan <strong>IHYA_INYHRF</strong> yang jika dilakukan <em>ROT-13</em> menjadi <strong>VULN_VALUES</strong>, kami mengasumsikan bahwa ini merupakan hasil <em>run</em> dari file <em>flag.exe</em> tadi.
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/hology-jendela/pic3.png" alt="IHYA_INYHRF" /></p>
+  <img src="/img/hology-jendela/pic3.png" alt="Flag located">
 
-<p>Ambil data-nya, kemudian buat <em>script</em>-nya</p>
-
+</p>
+<p>Ambil <em>data</em>-nya, kemudian buat <em>script</em>-nya</p>
 <p><strong>solver.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> Crypto.Util.number <span style="color:#ff79c6">import</span> long_to_bytes
 
-<pre><code>from Crypto.Util.number import long_to_bytes
+ihya<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&#34;</span><span style="color:#ff79c6">.</span>split(<span style="color:#f1fa8c">&#39;,&#39;</span>)
+flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</span>
+<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> ihya:
+    flag<span style="color:#ff79c6">+=</span>i<span style="color:#ff79c6">.</span>decode(<span style="color:#f1fa8c">&#39;hex&#39;</span>)
 
-ihya=&quot;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&quot;.split(',')
-flag=''
-for i in ihya:
-    flag+=i.decode('hex')
-
-print(long_to_bytes(int(flag,2)))
-</code></pre>
-
-<h2 id="flag">Flag</h2>
-
+<span style="color:#8be9fd;font-style:italic">print</span>(long_to_bytes(<span style="color:#8be9fd;font-style:italic">int</span>(flag,<span style="color:#bd93f9">2</span>)))
+</code></pre></div><h2 id="flag">Flag</h2>
 <p><strong>hctf{r0t_13_defaUl7_r3g1stry_mak35_3a5y}</strong></p>
-
 <h2 id="references">References</h2>
-
 <ol>
 <li><a href="https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/">https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/</a></li>
 </ol>
-
 <h2 id="rant">Rant</h2>
+<p>Baru dapet step 4 waktu tinggal 30 detik, alhasil gagal solve on time alias woe tambahin 5 menit lagi aja solve ini saya …</p>
 
-<p>Baru dapet <em>step</em> 4 waktu tinggal 30 detik, alhasil gagal <em>solve on time</em> alias woe tambahin 5 menit lagi aja <em>solve</em> ini saya &hellip;</p>
 
                 
 
@@ -385,16 +323,32 @@ print(long_to_bytes(int(flag,2)))
                     </li>
                     
                 </ul>
-
                 
 <div id="disqus-comment"></div>
 
 
-
             </div>
+
+            
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -411,10 +365,14 @@ print(long_to_bytes(int(flag,2)))
                         
                         
                         
-                        
-                        
                         <a href="/tags/compfest11" title="compfest11">
                             compfest11
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cryptography" title="cryptography">
+                            cryptography
                         </a>
                         
                         
@@ -422,6 +380,10 @@ print(long_to_bytes(int(flag,2)))
                         
                         
                         
+                        
+                        <a href="/tags/forensic" title="forensic">
+                            forensic
+                        </a>
                         
                         
                         
@@ -433,9 +395,19 @@ print(long_to_bytes(int(flag,2)))
                         
                         
                         
+                        
+                        
                         <a href="/tags/hology" title="hology">
                             hology
                         </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         
@@ -467,6 +439,12 @@ print(long_to_bytes(int(flag,2)))
                         
                         <a href="/tags/slashroot" title="slashroot">
                             slashroot
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/steganography" title="steganography">
+                            steganography
                         </a>
                         
                         
@@ -518,19 +496,19 @@ print(long_to_bytes(int(flag,2)))
                     <li>
                         <a href="mailto:m.nizar.rahman@protonmail.com">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
-                    
+
                     
                     <li>
                         <a href="https://twitter.com/nizarahman_">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -544,22 +522,31 @@ print(long_to_bytes(int(flag,2)))
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/rmn0x01/">
+                        <a target="_blank" href="https://github.com/rmn0x01">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
                     
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/rmn0x01">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
                     
                     
                     <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
+                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -569,9 +556,12 @@ print(long_to_bytes(int(flag,2)))
                     
                     
                     
+            
+            
+            
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2020
+                    Copyright &copy; rmn0x01 2021
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
@@ -589,7 +579,7 @@ print(long_to_bytes(int(flag,2)))
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -607,7 +597,7 @@ print(long_to_bytes(int(flag,2)))
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -619,7 +609,7 @@ print(long_to_bytes(int(flag,2)))
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -628,6 +618,80 @@ print(long_to_bytes(int(flag,2)))
 
 
 
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'uNoiE2c2dldl1ar_IYL44vZdzXaZk2EeCSqkOldQAig', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 </body>

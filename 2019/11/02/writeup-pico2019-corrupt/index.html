@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="//img/home-bg-sven.jpg">
-    <meta property="twitter:image" content="//img/home-bg-sven.jpg" />
+    <meta property="og:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg">
+    <meta property="twitter:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg" />
     
 
     
@@ -21,9 +21,9 @@
     
 
     
-    <meta name="description" content="Arsip writeup CTF">
-    <meta property="og:description" content="Arsip writeup CTF" />
-    <meta property="twitter:description" content="Arsip writeup CTF" />
+    <meta name="description" content="We found this file. Recover the flag">
+    <meta property="og:description" content="We found this file. Recover the flag" />
+    <meta property="twitter:description" content="We found this file. Recover the flag" />
     
 
     
@@ -31,29 +31,26 @@
     
     
 
-    <meta name="keyword"  content="rmn0x01, capture the flag, cryptography, forensic, wireshark, network">
+    <meta name="keyword"  content="rmn0x01, Forensics, Cryptography, Pentest">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Writeup c0rrupt-  CTF Writeup Archive | rmn0x01</title>
+    <title>Writeup c0rrupt-rmn0x01 Documentation Archive</title>
 
     <link rel="canonical" href="/2019/11/02/writeup-pico2019-corrupt/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-	
+
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
-    <link rel="stylesheet" href="/css/syntax.css">
-    
-    
     <link rel="stylesheet" href="/css/zanshang.css">
+
     
-    
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
 
     
     
@@ -61,19 +58,12 @@
     
     
     <script src="/js/jquery.min.js"></script>
-    
-    
-    <script src="/js/bootstrap.min.js"></script>
-    
-    
-    <script src="/js/hux-blog.min.js"></script>
 
     
+    <script src="/js/bootstrap.min.js"></script>
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +72,9 @@
 
 
 
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -104,28 +96,20 @@
                         <a href="/">Home</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/cryptography">cryptography</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/forensic">forensic</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/pentest">pentest</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/reverse">reverse</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/steganography">steganography</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/ctf">ctf</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/penetration-testing">penetration-testing</a>
+                        </li>
+                        
                     
                     
 		    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
                         <li><a href="/top/about/">ABOUT</a></li>
                     
 
@@ -171,26 +155,20 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/banner-pico.png')
+        background-image: url('/img/banner-pico.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/file-header" title="file-header">
-                            file-header
-                        </a>
-                        
-                        <a class="tag" href="/tags/pngcheck" title="pngcheck">
-                            pngcheck
-                        </a>
-                        
-                        <a class="tag" href="/tags/bless" title="bless">
-                            bless
+                        <a class="tag" href="/tags/forensic" title="Forensic">
+                            Forensic
                         </a>
                         
                         <a class="tag" href="/tags/picoctf2019" title="picoctf2019">
@@ -201,15 +179,17 @@
                     <h1>Writeup c0rrupt</h1>
                     <h2 class="subheading">picoCTF 2019</h2>
                     <span class="meta">
-                        Posted by 
                         
-                            rmn0x01
-                         
-                        on 
-                        Saturday, November 2, 2019
-                        
-                        
-                        
+                            Posted by 
+                            
+                                 rmn0x01
+                             
+                            on 
+                            Saturday, November 2, 2019
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -231,228 +211,159 @@
                 post-container">
 
                 
-                <header>
-                    <h2>TOC</h2>
-                </header>
-                <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#intro">Intro</a></li>
-<li><a href="#tldr">TLDR</a></li>
-<li><a href="#full-steps">Full Steps</a></li>
-<li><a href="#flag">Flag</a></li>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
-</nav>
-                
-                <h2 id="intro">Intro</h2>
-
-<p>We found this file. Recover the flag</p>
-
+                <p>We found this file. Recover the flag</p>
+<h2 id="intro">Intro</h2>
 <p>File yang diberikan berupa</p>
-
-<pre><code># file mystery 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file mystery 
 mystery: data
-</code></pre>
-
-<h2 id="tldr">TLDR</h2>
-
+</code></pre></div><h2 id="tldr">TLDR</h2>
 <ol>
 <li>Perbaiki file-header</li>
 <li>Perbaiki chunks</li>
-<li>Get the <strong>Flag</strong></li>
+<li>Get the <strong>flag</strong></li>
 </ol>
-
 <h2 id="full-steps">Full Steps</h2>
-
 <p><em>Hint</em> yang diberikan adalah</p>
-
 <blockquote>
 <p>Try fixing the file header</p>
 </blockquote>
+<p>Sehingga langkah pertama yang dilakukan adalah menganalisis <em>hex</em>-<em>value</em>-nya menggunakan <em>hex editor</em> atau <em>hex viewer</em>, disini saya menggunakan <code>Bless</code>
 
-<p>Sehingga langkah pertama yang dilakukan adalah menganalisis <em>hex-value</em>-nya menggunakan <em>hex editor</em> atau <em>hex viewer</em>, disini saya menggunakan <strong>Bless</strong>
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/pico2019-corrupt/pic1.png" alt="Bless View" /></p>
+  <img src="/img/pico2019-corrupt/pic1.png" alt="Bless">
 
-<p>Delapan <em>bytes</em> pertama terlihat seperti membentuk <em>file header PNG</em> namun tidak sempurna, sehingga diubah ke <em>file header PNG</em> yang benar<br>
-Dari</p>
-
+</p>
+<p>Delapan <em>bytes</em> pertama terlihat seperti membentuk <em>file header PNG</em> namun tidak sempurna, sehingga diubah ke <em>file header PNG</em> yang benar</p>
+<p>Dari</p>
 <blockquote>
 <p>89 65 4E 34 0D 0A B0 AA</p>
 </blockquote>
-
 <p>Ke</p>
-
 <blockquote>
 <p>89 50 4E 47 0D 0A 1A 0A</p>
 </blockquote>
-
-<p>Pengecekan dengan <em>command file</em> masih belum berubah, namun dengan <em>pngcheck</em> terdapat informasi lain</p>
-
-<pre><code># pngcheck -v mystery 
-File: mystery (202940 bytes)
-  invalid chunk name &quot;C&quot;DR&quot; (43 22 44 52)
-ERRORS DETECTED in mystery
-</code></pre>
-
-<p>Berdasarkan referensi [1], diketahui bahwa:</p>
-
+<p>Pengecekan dengan command <code>file</code> masih belum berubah, namun dengan <code>pngcheck</code> terdapat informasi lain</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
+File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
+  invalid chunk name <span style="color:#f1fa8c">&#34;C&#34;</span>DR<span style="color:#f1fa8c">&#34; (43 22 44 52)
+</span><span style="color:#f1fa8c">ERRORS DETECTED in mystery
+</span></code></pre></div><p>Berdasarkan referensi [1], diketahui bahwa:</p>
 <blockquote>
 <p>The PNG datastream consists of a PNG signature (see 5.2: PNG signature) followed by a sequence of chunks. Each chunk has a chunk type which specifies its function. This clause defines the PNG chunk types standardized in this International Standard</p>
 </blockquote>
-
-<p>Dengan <em>Critical Chunks</em> dari <em>PNG</em> adalah:</p>
-
+<p>Dengan <em>Critical Chunks</em> dari PNG adalah:</p>
 <ol>
 <li>IHDR: image header, which is the first chunk in a PNG datastream.</li>
 <li>PLTE: palette table associated with indexed PNG images.</li>
 <li>IDAT: image data chunks.</li>
 <li>IEND: image trailer, which is the last chunk in a PNG datastream.</li>
 </ol>
+<p>Berdasarkan informasi tersebut, diasumsikan <em>invalid chunk name <strong>C”DR</strong>”</em> seharusnya <em><strong>IHDR</strong></em>, ubah kembali menggunakan <code>Bless</code>
 
-<p>Berdasarkan informasi tersebut, diasumsikan *invalid chunk name <em>C&rdquo;DR&rdquo;</em> seharusnya <em>IHDR</em>, ubah kembali menggunakan <em>Bless</em></p>
+  <img src="/img/pico2019-corrupt/pic2.png" alt="Bless 2">
 
-<p><img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/pico2019-corrupt/pic2.png" alt="Bless View" /></p>
-
-<p>Kini <em>file mystery</em> telah terbaca, meskipun belum dapat dilihat gambarnya karena masih terdapat <em>error</em> lain</p>
-
-<pre><code># file mystery 
-mystery: PNG image data, 1642 x 1095, 8-bit/color RGB, non-interlaced
-</code></pre>
-
-<pre><code># pngcheck -v mystery 
-File: mystery (202940 bytes)
-  chunk IHDR at offset 0x0000c, length 13
-    1642 x 1095 image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length 1
-    rendering intent = perceptual
+</p>
+<p>Kini file <em>mystery</em> telah terbaca, meskipun belum dapat dilihat gambarnya karena masih terdapat error lain</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file mystery 
+mystery: PNG image data, <span style="color:#bd93f9">1642</span> x 1095, 8-bit/color RGB, non-interlaced
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
+File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
+  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
+    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
+    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
   chunk pHYs at offset 0x00042, length 9: 2852132389x5669 pixels/meter
-  CRC error in chunk pHYs (computed 38d82c82, expected 495224f0)
+  CRC error in chunk pHYs <span style="color:#ff79c6">(</span>computed 38d82c82, expected 495224f0<span style="color:#ff79c6">)</span>
 ERRORS DETECTED in mystery
-</code></pre>
-
-<p>Masih berdasarkan referensi [1], diketahui bahwa <em>layout</em> sebuah <em>chunk</em> adalah:</p>
-
+</code></pre></div><p>Masih berdasarkan referensi [1], diketahui bahwa <em>layout</em> sebuah <em>chunk</em> adalah:</p>
 <ul>
 <li>4-bytes Length</li>
 <li>4-bytes Chunk Type</li>
 <li>x-bytes Chunk Data (x tergantung Length yang didefinisikan sebelumnya)</li>
 <li>4-bytes Cyclic Redundancy Cycle (CRC)</li>
 </ul>
-
-<p>Berdasarkan <em>error message</em> terdapat kesalahan di CRC milik chunk pHYs, namun jika diteliti lebih lanjut terdapat angka yang terlalu besar di chunk pHYs tersebut, yaitu <em>2852132389</em>, sehingga inisiatif yang dilakukan adalah mengubah ukuran tersebut menjadi <em>5669</em> daripada memperbaiki CRC-nya.<br>
-Cari <em>layout chunk data</em> milik <em>pHYs</em> (<em>offset 00000046</em>), ubah dari</p>
-
+<p>Berdasarkan error message terdapat kesalahan di CRC milik chunk <strong>pHYs</strong>, namun jika diteliti lebih lanjut terdapat angka yang terlalu besar di chunk pHYs tersebut, yaitu <strong>2852132389</strong>, sehingga inisiatif yang dilakukan adalah mengubah ukuran tersebut menjadi <strong>5669</strong> daripada memperbaiki <em>CRC</em>-nya.
+Cari layout <em>chunk data</em> milik <strong>pHYs</strong> (offset <strong>00000046</strong>), ubah dari</p>
 <blockquote>
 <p>AA 00 16 25</p>
 </blockquote>
-
-<p>karena 0xaa001625 = 2852132389</p>
-
-<p>menjadi</p>
-
+<p>karena 0xaa001625 = 2852132389
+menjadi</p>
 <blockquote>
 <p>00 00 16 25</p>
 </blockquote>
-
 <p>0x00001625 = 5669</p>
-
 <p>Simpan, kemudian cek kembali <em>error message</em>-nya</p>
-
-<pre><code># pngcheck -v mystery 
-File: mystery (202940 bytes)
-  chunk IHDR at offset 0x0000c, length 13
-    1642 x 1095 image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length 1
-    rendering intent = perceptual
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
+File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
+  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
+    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
+    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
-  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter (144 dpi)
-:  invalid chunk length (too large)
+  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter <span style="color:#ff79c6">(</span><span style="color:#bd93f9">144</span> dpi<span style="color:#ff79c6">)</span>
+:  invalid chunk length <span style="color:#ff79c6">(</span>too large<span style="color:#ff79c6">)</span>
 ERRORS DETECTED in mystery
-</code></pre>
-
-<p>Terdapat <em>error message invalid chunk length</em> namun tidak disebutkan <em>chunk</em> yang <em>error</em>, analisis <em>bytes</em> setelah <em>chunk pHYs</em> berakhir melalui <em>Bless</em> didapatkan:<br>
-<em>Bytes</em> penanda <em>chunk length</em></p>
-
+</code></pre></div><p>Terdapat error message invalid chunk length namun tidak disebutkan chunk yang error, analisis bytes setelah chunk pHYs berakhir melalui Bless didapatkan:</p>
+<p>Bytes penanda chunk length</p>
 <blockquote>
 <p>AA AA FF A5</p>
 </blockquote>
-
-<p>dan <em>Bytes</em> penanda <em>chunk type</em></p>
-
+<p>dan Bytes penanda chunk type</p>
 <blockquote>
 <p>AB 44 45 54</p>
 </blockquote>
-
-<p><em>Chunk Type</em> 0xab444554 = \xabDET tidak dikenali sebagai <em>chunk type</em> dari <em>PNG</em>, dan diasumsikan paling mendekati adalah <em>Chunk IDAT</em>, sehingga diubah menjadi 0x49444154</p>
-
-<p>Untuk <em>chunk length</em> 0xaaaaffa5 = 2863333285 diasumsikan terlalu besar, sehingga perlu diubah.<br>
+<p><em>Chunk Type</em> 0xab444554 = <strong>\xabDET</strong> tidak dikenali sebagai chunk type dari PNG, dan diasumsikan paling mendekati adalah Chunk <strong>IDAT</strong>, sehingga diubah menjadi 0x49444154</p>
+<p>Untuk chunk length 0xaaaaffa5 = 2863333285 diasumsikan terlalu besar, sehingga perlu diubah.
 Berdasarkan referensi [1], tertera bahwa:</p>
-
 <blockquote>
 <p>There can be multiple IDAT chunks; if so, they must appear consecutively with no other intervening chunks.</p>
 </blockquote>
-
-<p>Sehingga, untuk memperbaiki <em>chunk length</em> perlu dicari <em>chunk IDAT</em> lainnya, kemudian dihitung selisihnya. Apabila tidak ada <em>chunk IDAT</em> lain, selisih yang dicari adalah dengan <em>chunk IEND</em>.
-Analisis dari <em>Bless</em>, terdapat total 4 <em>chunk IDAT</em> dimana <em>IDAT</em> pertama (yang sedang diperbaiki) berada pada <em>offset 0x00057</em>, sedangkan <em>IDAT</em> kedua berada pada <em>offset 0x10008</em>.<br>
+<p>Sehingga, untuk memperbaiki chunk length perlu dicari chunk <strong>IDAT</strong> lainnya, kemudian dihitung selisihnya. Apabila tidak ada chunk <strong>IDAT</strong> lain, selisih yang dicari adalah dengan chunk IEND. Analisis dari Bless, terdapat total 4 chunk <strong>IDAT</strong> dimana <strong>IDAT</strong> pertama (yang sedang diperbaiki) berada pada offset 0x00057, sedangkan <strong>IDAT</strong> kedua berada pada offset 0x10008.
 Selisih keduanya adalah</p>
-
 <blockquote>
 <p>0x10008 - 0x00057 = 0xFFB1</p>
 </blockquote>
-
-<p><em>0xFFB1</em> masih harus dikurangi dengan <em>bytes length</em> dari <em>IDAT</em> 1 (4 bytes), <em>CRC</em> dari <em>IDAT</em> 1 (4 bytes) dan <em>chunk type</em> dari <em>IDAT</em> 2 (4 bytes), sehingga total 12 <em>bytes</em></p>
-
+<p>0xFFB1 masih harus dikurangi dengan bytes length dari <strong>IDAT</strong> 1 (4 bytes), CRC dari <strong>IDAT</strong> 1 (4 bytes) dan chunk type dari <strong>IDAT</strong> 2 (4 bytes), sehingga total 12 bytes</p>
 <blockquote>
 <p>0xFFB1 - 0xC = 0xFFA5</p>
 </blockquote>
-
-<p><em>0xFFA5</em> merupakan <em>length</em> dari <em>IDAT</em> pertama, sehingga edit kembali <em>bytes</em> penanda <em>length IDAT</em> pertama dari</p>
-
+<p>0xFFA5 merupakan length dari <strong>IDAT</strong> pertama, sehingga edit kembali bytes penanda length <strong>IDAT</strong> pertama dari</p>
 <blockquote>
 <p>AA AA FF A5</p>
 </blockquote>
-
 <p>menjadi</p>
-
 <blockquote>
 <p>00 00 FF A5</p>
 </blockquote>
-
-<p>Hasil dari <em>pngcheck</em> menandakan tidak ada <em>error</em> lagi</p>
-
-<pre><code># pngcheck -v mystery 
-File: mystery (202940 bytes)
-  chunk IHDR at offset 0x0000c, length 13
-    1642 x 1095 image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length 1
-    rendering intent = perceptual
+<p>Hasil dari <code>pngcheck</code> menandakan tidak ada <em>error</em> lagi</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
+File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
+  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
+    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
+    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
-  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter (144 dpi)
-  chunk IDAT at offset 0x00057, length 65445
+  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter <span style="color:#ff79c6">(</span><span style="color:#bd93f9">144</span> dpi<span style="color:#ff79c6">)</span>
+  chunk IDAT at offset 0x00057, length <span style="color:#bd93f9">65445</span>
     zlib: deflated, 32K window, fast compression
-  chunk IDAT at offset 0x10008, length 65524
-  chunk IDAT at offset 0x20008, length 65524
-  chunk IDAT at offset 0x30008, length 6304
-  chunk IEND at offset 0x318b4, length 0
-No errors detected in mystery (9 chunks, 96.3% compression).
-</code></pre>
+  chunk IDAT at offset 0x10008, length <span style="color:#bd93f9">65524</span>
+  chunk IDAT at offset 0x20008, length <span style="color:#bd93f9">65524</span>
+  chunk IDAT at offset 0x30008, length <span style="color:#bd93f9">6304</span>
+  chunk IEND at offset 0x318b4, length <span style="color:#bd93f9">0</span>
+No errors detected in mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">9</span> chunks, 96.3% compression<span style="color:#ff79c6">)</span>.
+</code></pre></div><p>Sehingga file <em>mystery</em> dapat dibuka
 
-<p>Sehingga <em>file mystery</em> dapat dibuka
-<img src="https://raw.githubusercontent.com/rmn0x01/rmn0x01.github.io/master/img/pico2019-corrupt/pic3.png" alt="Mystery" /></p>
+  <img src="/img/pico2019-corrupt/pic3.png" alt="mystery">
 
+</p>
 <h2 id="flag">Flag</h2>
-
 <p><strong>picoCTF{c0rrupt10n_1847995}</strong></p>
-
 <h2 id="references">References</h2>
-
 <ol>
 <li><a href="https://www.w3.org/TR/PNG">https://www.w3.org/TR/PNG</a></li>
 </ol>
+
 
                 
 
@@ -460,7 +371,7 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/11/02/writeup-pico2019-vaultdoor/" data-toggle="tooltip" data-placement="top" title="Writeup VaultDoor Series">&larr;
+                        <a href="/2019/11/02/writeup-pico2019-vaultdoor-series/" data-toggle="tooltip" data-placement="top" title="Writeup VaultDoor Series">&larr;
                             Previous Post</a>
                     </li>
                     
@@ -471,16 +382,32 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                     </li>
                     
                 </ul>
-
                 
 <div id="disqus-comment"></div>
 
 
-
             </div>
+
+            
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -497,10 +424,14 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                         
                         
                         
-                        
-                        
                         <a href="/tags/compfest11" title="compfest11">
                             compfest11
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cryptography" title="cryptography">
+                            cryptography
                         </a>
                         
                         
@@ -508,6 +439,10 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                         
                         
                         
+                        
+                        <a href="/tags/forensic" title="forensic">
+                            forensic
+                        </a>
                         
                         
                         
@@ -519,9 +454,19 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                         
                         
                         
+                        
+                        
                         <a href="/tags/hology" title="hology">
                             hology
                         </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         
@@ -553,6 +498,12 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                         
                         <a href="/tags/slashroot" title="slashroot">
                             slashroot
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/steganography" title="steganography">
+                            steganography
                         </a>
                         
                         
@@ -604,19 +555,19 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                     <li>
                         <a href="mailto:m.nizar.rahman@protonmail.com">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
-                    
+
                     
                     <li>
                         <a href="https://twitter.com/nizarahman_">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -630,22 +581,31 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/rmn0x01/">
+                        <a target="_blank" href="https://github.com/rmn0x01">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
 		    
                     
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/rmn0x01">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
                     
                     
                     <li>
-                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126/">
+                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -655,9 +615,12 @@ No errors detected in mystery (9 chunks, 96.3% compression).
                     
                     
                     
+            
+            
+            
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2020
+                    Copyright &copy; rmn0x01 2021
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
@@ -675,7 +638,7 @@ No errors detected in mystery (9 chunks, 96.3% compression).
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -693,7 +656,7 @@ No errors detected in mystery (9 chunks, 96.3% compression).
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -705,7 +668,7 @@ No errors detected in mystery (9 chunks, 96.3% compression).
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -714,6 +677,80 @@ No errors detected in mystery (9 chunks, 96.3% compression).
 
 
 
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'uNoiE2c2dldl1ar_IYL44vZdzXaZk2EeCSqkOldQAig', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 </body>

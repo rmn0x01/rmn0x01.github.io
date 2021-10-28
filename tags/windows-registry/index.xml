@@ -1,25 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>windows registry on rmn0x01</title>
-    <link>/tags/windows-registry/</link>
+    <link>https://rmn0x01.github.io/tags/windows-registry/</link>
     <description>Recent content in windows registry on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/windows-registry/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/windows-registry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Jendela Dunia</title>
-      <link>/2019/10/30/writeup-hology-final-jendeladunia/</link>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-hology-final-jendeladunia/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-hology-final-jendeladunia/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal Forensik pertama yang diberikan saat final Hology 2.0, &lt;em&gt;starting points&lt;/em&gt;: 100.&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-hology-final-jendeladunia/</guid>
+      <description>Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.
+Intro File yang diberikan berupa
+$ file Leaked Leaked: data TLDR  Perbaiki file Import registry Analisis registry Extract hex value Decode Get the flag  Full Steps Isi dari file Leaked adalah
+$ cat Leaked aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00 (...) [HKEY_CURRENT_USER\Software\Microsoft\XboxLive] (...) AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa Yang pertama dilakukan adalah menghapus string sampah aaaaaa… di awal file dan AAAAA… di akhir file</description>
     </item>
     
   </channel>

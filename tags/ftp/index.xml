@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ftp on rmn0x01</title>
-    <link>/tags/ftp/</link>
+    <link>https://rmn0x01.github.io/tags/ftp/</link>
     <description>Recent content in ftp on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup FTP Forensik</title>
-      <link>/2019/10/30/writeup-gemastik12-final-ftp/</link>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-ftp/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-gemastik12-final-ftp/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal forensik final Gemastik XII di Telkom University. Poin 200&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-gemastik12-final-ftp/</guid>
+      <description>Soal forensik final Gemastik XII di Telkom University. Poin 200
+Intro File yang diberikan berupa
+$ file * images.png: PNG image data, 358 x 141, 8-bit colormap, non-interlaced trafik-gemastik12.pcapng: pcap-ng capture file - version 1.0 images.png yang diterima menerangkan bagaimana File Transfer Protocol (FTP) bekerja TLDR  FTP Packet filter Analisis paket Dump JPG File Recover file Dapatkan password ZIP Get the flag  Full Steps Sesuai dengan judul soal dan images.</description>
     </item>
     
   </channel>

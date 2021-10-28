@@ -1,36 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hology on rmn0x01</title>
-    <link>/tags/hology/</link>
+    <link>https://rmn0x01.github.io/tags/hology/</link>
     <description>Recent content in hology on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/hology/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/hology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Jendela Dunia</title>
-      <link>/2019/10/30/writeup-hology-final-jendeladunia/</link>
+      <link>https://rmn0x01.github.io/2019/10/30/writeup-hology-final-jendeladunia/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/30/writeup-hology-final-jendeladunia/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal Forensik pertama yang diberikan saat final Hology 2.0, &lt;em&gt;starting points&lt;/em&gt;: 100.&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/30/writeup-hology-final-jendeladunia/</guid>
+      <description>Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.
+Intro File yang diberikan berupa
+$ file Leaked Leaked: data TLDR  Perbaiki file Import registry Analisis registry Extract hex value Decode Get the flag  Full Steps Isi dari file Leaked adalah
+$ cat Leaked aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00 (...) [HKEY_CURRENT_USER\Software\Microsoft\XboxLive] (...) AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa Yang pertama dilakukan adalah menghapus string sampah aaaaaa… di awal file dan AAAAA… di akhir file</description>
     </item>
     
     <item>
       <title>Writeup I(Co)MP</title>
-      <link>/2019/10/29/writeup-hology-final-icmp/</link>
+      <link>https://rmn0x01.github.io/2019/10/29/writeup-hology-final-icmp/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/10/29/writeup-hology-final-icmp/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-
-&lt;p&gt;Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.&lt;/p&gt;</description>
+      <guid>https://rmn0x01.github.io/2019/10/29/writeup-hology-final-icmp/</guid>
+      <description>Soal Forensik terakhir yang diberikan saat final Hology 2.0 sekitar satu jam sebelum lomba selesai.
+Intro File yang diberikan berupa
+$ file icomp.iso icomp.iso: ISO 9660 CD-ROM filesystem data &amp;#39;CDROM&amp;#39; TLDR  Mount file icomp.iso Analisis file _not_imp/capture.pca Dapatkan potongan string Caesar cipher, kemudian gabungkan Get the flag  Full Steps File merupakan filesystem yang tidak corrupt sehingga dapat langsung dilakukan mount
+$ mkdir mont $ mount -o loop icomp.iso mont/ mount: /root/ctf/games/hology/final/foren/ico/mont: WARNING: device write-protected, mounted read-only.</description>
     </item>
     
   </channel>

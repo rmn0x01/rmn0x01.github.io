@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Steganography on rmn0x01</title>
+    <link>https://rmn0x01.github.io/tags/steganography/</link>
+    <description>Recent content in Steganography on rmn0x01</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/steganography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeup Cable News Network</title>
+      <link>https://rmn0x01.github.io/2019/10/31/writeup-compfest11-quals-cnn/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2019/10/31/writeup-compfest11-quals-cnn/</guid>
+      <description>Salah satu soal penyisihan Compfest 11 gelombang pertama.
+Intro File yang diberikan berupa
+$ file soal.png soal.png: PNG image data, 700 x 700, 8-bit/color RGBA, non-interlaced  TLDR  Stegsolve Get the flag  Full Steps Biasanya jika diberikan challenge forensic maupun steganografi dengan file PNG, akan dilakukan beberapa perintah-perintah mainstream terlebih dahulu untuk mendapatkan flag-nya, salah satunya adalah Stegsolve
+$ stegsolve Flag didapatkan di Colour Inversion (XOR) Flag COMPFEST11{pre_processing_convolutional_neural_network_yeay}</description>
+    </item>
+    
+    <item>
+      <title>Writeup Stegano2</title>
+      <link>https://rmn0x01.github.io/2019/10/31/writeup-indoxploit-steg2/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2019/10/31/writeup-indoxploit-steg2/</guid>
+      <description>Stegano 2 Indoxploit
+Intro File yang diberikan berupa
+$ file who-is-this.zip who-is-this.zip: Zip archive data, at least v?[0x314] to extract $ unzip who-is-this.zip Archive: who-is-this.zip creating: who-is-this/ inflating: who-is-this/lol.jpg inflating: who-is-this/readme-first  TLDR  Steghide Susun script solver-nya Get the flag  Full Steps Baca pesan di readme-first terlebih dahulu
+# can u read this bruh ?? aGVsbC1vIG04LCBpIGFtICJoaWRpbmciIGluc2lkZSB0aGUgcGljdHogLi4= aWYgdSB3YW50IHRvIGxvb2sgYXQgbWUsIHBseiB1c2UgYSB0ZXh0IGluc2lkZSBhICJyZWQgbGluZSIgYXMgYSBrZXkgLi4= R0xIRiAhISBpdCBjb3VsZCBiZSBFWiA0IFUgLi4= Decode Base-64, menjadi
+hell-o m8, i am &amp;quot;hiding&amp;quot; inside the pictz .</description>
+    </item>
+    
+  </channel>
+</rss>
