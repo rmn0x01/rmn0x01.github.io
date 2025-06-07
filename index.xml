@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 07 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>[ROOT] Walkthrough Openadmin</title>
+      <link>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-openadmin/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-openadmin/</guid>
+      <description>Exploiting Linux Machine with an outdated OpenNetAdmin CMS Instance
+Intro  Recon Scan IPs using NMAP Found port 80 (HTTP), bruteforce directory using Dirbuster, found interesting directory: 10.10.10.171/ona
+This directory mark the usage of OpenNetAdmin v18.1.1, which an outdated version of OpenNetAdmin with known RCE
+Remote Code Execution Run the exploit, shell for www-data is executed Explore and enumerate directories within, found mysql credentials in local/config/database_settings.inc.php Given 2 users, jimmy and joana, try n1nj4W4rri0R!</description>
+    </item>
+    
+    <item>
       <title>[ROOT] Walkthrough Traverxec</title>
       <link>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-traverxec/</link>
       <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
