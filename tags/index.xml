@@ -6,7 +6,79 @@
     <description>Recent content in Tags on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dirbuster</title>
+      <link>https://rmn0x01.github.io/tags/dirbuster/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/dirbuster/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exploit-db</title>
+      <link>https://rmn0x01.github.io/tags/exploit-db/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/exploit-db/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>john the ripper</title>
+      <link>https://rmn0x01.github.io/tags/john-the-ripper/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/john-the-ripper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>journalctl</title>
+      <link>https://rmn0x01.github.io/tags/journalctl/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/journalctl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux-machine</title>
+      <link>https://rmn0x01.github.io/tags/linux-machine/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/linux-machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nmap</title>
+      <link>https://rmn0x01.github.io/tags/nmap/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/nmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nostromo</title>
+      <link>https://rmn0x01.github.io/tags/nostromo/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/nostromo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://rmn0x01.github.io/tags/ssh/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>paragon</title>
       <link>https://rmn0x01.github.io/tags/paragon/</link>
@@ -44,29 +116,11 @@
     </item>
     
     <item>
-      <title>linux-machine</title>
-      <link>https://rmn0x01.github.io/tags/linux-machine/</link>
-      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rmn0x01.github.io/tags/linux-machine/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>masscan</title>
       <link>https://rmn0x01.github.io/tags/masscan/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://rmn0x01.github.io/tags/masscan/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nmap</title>
-      <link>https://rmn0x01.github.io/tags/nmap/</link>
-      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rmn0x01.github.io/tags/nmap/</guid>
       <description></description>
     </item>
     

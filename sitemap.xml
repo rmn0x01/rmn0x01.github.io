@@ -2,8 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-traverxec/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://rmn0x01.github.io/categories/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/dirbuster/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/exploit-db/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/john-the-ripper/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/journalctl/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/linux-machine/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/nmap/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/nostromo/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/categories/penetration-testing/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/post/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/ssh/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rmn0x01.github.io/tags/</loc>
+    <lastmod>2025-06-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://rmn0x01.github.io/2022/02/09/hello-from-a-paragonian/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
@@ -11,16 +50,7 @@
     <loc>https://rmn0x01.github.io/tags/paragon/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rmn0x01.github.io/post/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rmn0x01.github.io/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://rmn0x01.github.io/categories/story/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rmn0x01.github.io/tags/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://rmn0x01.github.io/2020/01/12/walkthrough-hackthebox-bitlab/</loc>
@@ -38,16 +68,7 @@
     <loc>https://rmn0x01.github.io/tags/javascript/</loc>
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://rmn0x01.github.io/tags/linux-machine/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://rmn0x01.github.io/tags/masscan/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rmn0x01.github.io/tags/nmap/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://rmn0x01.github.io/categories/penetration-testing/</loc>
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://rmn0x01.github.io/tags/php-reverse-shell/</loc>

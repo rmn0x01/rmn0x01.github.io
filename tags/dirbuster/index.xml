@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dirbuster on rmn0x01</title>
+    <link>https://rmn0x01.github.io/tags/dirbuster/</link>
+    <description>Recent content in dirbuster on rmn0x01</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/dirbuster/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[ROOT] Walkthrough Traverxec</title>
+      <link>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-traverxec/</link>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2025/06/07/walkthrough-hackthebox-traverxec/</guid>
+      <description>Melanjutkan posting writeup hackthebox pada masa dahulu kala, karena draft-nya menganggur di Google Drive
+Intro  Recon Scan port pakai NMAP Open port 22 (SSH) dan port 80 (HTTP). Pada port 80 yang dibuka di browser, muncul Website Enumerasi direktori pakai Dirb Googling Nostromo versi 1.9.6, ditemukan exploit RCE
+Remote Code Execution  Lakukan modifikasi script agar selalu while(True), lanjutkan recon, ditemukan file menarik di Terdapat backup file SSH di direktori /home/david/public_www/protected-file-area/, retrieve dan convert ke original file Bruteforce SSH Password id_rsa digunakan untuk koneksi ssh, namun dibutuhkan password yang dapat di-brute force menggunakan John The Ripper dan ssh2john Ditemukan password: Hunter, lanjutkan koneksi SSH FLAG USER: 7db0b48469606a42cec20750d9782f3d</description>
+    </item>
+    
+  </channel>
+</rss>
