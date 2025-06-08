@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/john-the-ripper/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>[ROOT] Walkthrough Obscurity</title>
+      <link>https://rmn0x01.github.io/2025/06/08/walkthrough-hackthebox-obscurity/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2025/06/08/walkthrough-hackthebox-obscurity/</guid>
+      <description>Medium difficulty Linux Machine on custom web server with a taste of cryptography.
+Intro  Recon Scan port using NMAP Default webserver on port 80 is closed, but port 8080 is open, start analyzing this port Check the source code From the source code, file SuperSecureServer.py is interesting, use ffuf to fuzz the directory to get the file.
+./ffuf -w /usr/share/dirb/wordlists/common.txt -u http://10.10.10.168:8080/FUZZ/SuperSecureServer.py  From downloaded SuperSecureServer.py file, we can analyze it that the function ServeDoc is having a possibility to be exploited The variable path is an input from an URL (IP/Path), therefore we can craft a payload here</description>
+    </item>
+    
+    <item>
       <title>[ROOT] Walkthrough Postman</title>
       <link>https://rmn0x01.github.io/2025/06/08/walkthrough-hackthebox-postman/</link>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>

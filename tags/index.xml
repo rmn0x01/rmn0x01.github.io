@@ -8,6 +8,33 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Cryptography</title>
+      <link>https://rmn0x01.github.io/tags/cryptography/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dirb</title>
+      <link>https://rmn0x01.github.io/tags/dirb/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/dirb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ffuf</title>
+      <link>https://rmn0x01.github.io/tags/ffuf/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/ffuf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>john-the-ripper</title>
       <link>https://rmn0x01.github.io/tags/john-the-ripper/</link>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
@@ -53,11 +80,47 @@
     </item>
     
     <item>
+      <title>remote-code-execution</title>
+      <link>https://rmn0x01.github.io/tags/remote-code-execution/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/remote-code-execution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reverse-shell</title>
+      <link>https://rmn0x01.github.io/tags/reverse-shell/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/reverse-shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ssh</title>
       <link>https://rmn0x01.github.io/tags/ssh/</link>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
       
       <guid>https://rmn0x01.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unshadow</title>
+      <link>https://rmn0x01.github.io/tags/unshadow/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/unshadow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web-server</title>
+      <link>https://rmn0x01.github.io/tags/web-server/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/web-server/</guid>
       <description></description>
     </item>
     
@@ -220,15 +283,6 @@
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://rmn0x01.github.io/tags/compfest11/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cryptography</title>
-      <link>https://rmn0x01.github.io/tags/cryptography/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rmn0x01.github.io/tags/cryptography/</guid>
       <description></description>
     </item>
     

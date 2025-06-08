@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="rmn0x01">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg">
+    <meta property="twitter:image" content="https://rmn0x01.github.io/img/home-bg-moon.jpg" />
+    
+
+    
+    <meta name="title" content="[ROOT] Walkthrough Obscurity" />
+    <meta property="og:title" content="[ROOT] Walkthrough Obscurity" />
+    <meta property="twitter:title" content="[ROOT] Walkthrough Obscurity" />
+    
+
+    
+    <meta name="description" content="Medium difficulty Linux Machine on custom web server with a taste of cryptography">
+    <meta property="og:description" content="Medium difficulty Linux Machine on custom web server with a taste of cryptography" />
+    <meta property="twitter:description" content="Medium difficulty Linux Machine on custom web server with a taste of cryptography" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="rmn0x01, Forensics, Cryptography, Pentest">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>[ROOT] Walkthrough Obscurity-rmn0x01 Documentation Archive</title>
+
+    <link rel="canonical" href="/2025/06/08/walkthrough-hackthebox-obscurity/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rmn0x01</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/ctf">ctf</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/penetration-testing">penetration-testing</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/story">story</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner-hackthebox.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/linux-machine" title="linux-machine">
+                            linux-machine
+                        </a>
+                        
+                        <a class="tag" href="/tags/nmap" title="nmap">
+                            nmap
+                        </a>
+                        
+                        <a class="tag" href="/tags/web-server" title="web-server">
+                            web-server
+                        </a>
+                        
+                        <a class="tag" href="/tags/ffuf" title="ffuf">
+                            ffuf
+                        </a>
+                        
+                        <a class="tag" href="/tags/dirb" title="dirb">
+                            dirb
+                        </a>
+                        
+                        <a class="tag" href="/tags/remote-code-execution" title="remote-code-execution">
+                            remote-code-execution
+                        </a>
+                        
+                        <a class="tag" href="/tags/reverse-shell" title="reverse-shell">
+                            reverse-shell
+                        </a>
+                        
+                        <a class="tag" href="/tags/cryptography" title="cryptography">
+                            cryptography
+                        </a>
+                        
+                        <a class="tag" href="/tags/ssh" title="ssh">
+                            ssh
+                        </a>
+                        
+                        <a class="tag" href="/tags/unshadow" title="unshadow">
+                            unshadow
+                        </a>
+                        
+                        <a class="tag" href="/tags/john-the-ripper" title="john-the-ripper">
+                            john-the-ripper
+                        </a>
+                        
+                    </div>
+                    <h1>[ROOT] Walkthrough Obscurity</h1>
+                    <h2 class="subheading">Hackthebox - Linux Machine</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                 rmn0x01
+                             
+                            on 
+                            Sunday, June 8, 2025
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>Medium difficulty Linux Machine on custom web server with a taste of cryptography.</p>
+<h2 id="intro">Intro</h2>
+<p>
+  <img src="/img/hackthebox-obscurity/pic1.png" alt="Obscurity">
+
+</p>
+<h2 id="recon">Recon</h2>
+<p>Scan port using NMAP
+
+  <img src="/img/hackthebox-obscurity/pic2.png" alt="nmap1">
+
+
+
+  <img src="/img/hackthebox-obscurity/pic3.png" alt="nmap2">
+
+
+
+  <img src="/img/hackthebox-obscurity/pic4.png" alt="nmap3">
+
+
+
+  <img src="/img/hackthebox-obscurity/pic5.png" alt="nmap4">
+
+</p>
+<p>Default webserver on port 80 is closed, but port 8080 is open, start analyzing this port
+
+  <img src="/img/hackthebox-obscurity/pic6.png" alt="8080">
+
+</p>
+<p>Check the source code
+
+  <img src="/img/hackthebox-obscurity/pic7.png" alt="Source Code">
+
+</p>
+<p>From the source code, file SuperSecureServer.py is interesting, use <a href="https://github.com/ffuf/ffuf">ffuf</a> to fuzz the directory to get the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./ffuf -w /usr/share/dirb/wordlists/common.txt -u http://10.10.10.168:8080/FUZZ/SuperSecureServer.py
+</code></pre></div><p>
+  <img src="/img/hackthebox-obscurity/pic8.png" alt="ffuf">
+
+</p>
+<p>From downloaded SuperSecureServer.py file, we can analyze it that the function <code>ServeDoc</code> is having a possibility to be exploited
+
+  <img src="/img/hackthebox-obscurity/pic9.png" alt="possible exploit">
+
+</p>
+<p>The variable <code>path</code> is an input from an URL (IP/Path), therefore we can craft a payload here</p>
+<h2 id="script-exploit">Script Exploit</h2>
+<p>
+  <img src="/img/hackthebox-obscurity/pic10.png" alt="payload">
+
+</p>
+<p>We can test it by setting up a listener, then ping it via crafted payload
+
+  <img src="/img/hackthebox-obscurity/pic11.png" alt="test">
+
+</p>
+<p>Ping is detected, therefore we successfully triggered an RCE
+
+  <img src="/img/hackthebox-obscurity/pic12.png" alt="rce">
+
+</p>
+<p>Now is the main exploit, we have information that the target machine has RCE, triggered via URL. Grab a payload from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings">PayloadAllTheThings</a>, in this case we will use Python Reverse Shell. Convert it to URL-encoded</p>
+<p>
+  <img src="/img/hackthebox-obscurity/pic13.png" alt="payload">
+
+</p>
+<p>Payload is ready, now setup a listener on our local, set to port 4242, then trigger it.
+
+  <img src="/img/hackthebox-obscurity/pic14.png" alt="listener">
+
+</p>
+<p>We got shell! This time as user <code>www-data</code></p>
+<h2 id="recon-as-www-data">Recon as www-data</h2>
+<p>Enumerate and explore files and dictionaries in the machine as <code>www-data</code>, we found interesting files under robert&rsquo;s user in <code>/home/robert</code>
+
+  <img src="/img/hackthebox-obscurity/pic15.png" alt="robert">
+
+
+Download those files to local to be analyzed</p>
+<h2 id="cryptography-analysis">Cryptography Analysis</h2>
+<p>On the <code>SuperSecureCrypt.py</code> we need to analyze both encrypt and decrypt function
+
+  <img src="/img/hackthebox-obscurity/pic16.png" alt="crypt">
+
+
+From here we know that the encypt-decrypt function is doing a sum from character of the plaintext with a key, and vice versa (reversing it by subtracting). File is in UTF-8 encoded, so will be run via python3</p>
+<p>To test the theory, we will try it with a string <code>bajigur</code> and key <code>suw</code>
+
+  <img src="/img/hackthebox-obscurity/pic17.png" alt="test">
+
+</p>
+<p>After given the ciphertext <code>ct.txt</code>, how to get the key back is to subtract character in <code>ct.txt</code> modulo 255
+
+  <img src="/img/hackthebox-obscurity/pic18.png" alt="reverse">
+
+</p>
+<p>Getting the key:
+
+  <img src="/img/hackthebox-obscurity/pic19.png" alt="key">
+
+</p>
+<p>The theory is proven, now on to getting the real key, using file <code>check.txt</code> and <code>out.txt</code>
+
+  <img src="/img/hackthebox-obscurity/pic20.png" alt="rev1">
+
+
+
+  <img src="/img/hackthebox-obscurity/pic21.png" alt="rev2">
+
+</p>
+<p>Key: <strong>alexandrovich</strong></p>
+<p>With this key, we can get the password
+
+  <img src="/img/hackthebox-obscurity/pic22.png" alt="pass1">
+
+
+
+  <img src="/img/hackthebox-obscurity/pic23.png" alt="pass2">
+
+</p>
+<p>Use it as credentials for Robert&rsquo;s SSH login
+
+  <img src="/img/hackthebox-obscurity/pic24.png" alt="ssh">
+
+</p>
+<p>Welcome-welcome to Robert&rsquo;s access, get the user flag
+
+  <img src="/img/hackthebox-obscurity/pic25.png" alt="flag">
+
+</p>
+<p><strong>Flag User: e4493782066b55fe2755708736ada2d7</strong></p>
+<h2 id="recon-as-robert">Recon as Robert</h2>
+<p>Gaining Robert&rsquo;s access, we start another recon session by enumerating files and directories inside the machine, this file surely interesting
+
+  <img src="/img/hackthebox-obscurity/pic26.png" alt="file">
+
+</p>
+<h2 id="cryptography-analysis-1">Cryptography Analysis</h2>
+<p>The said file&rsquo;s content is:
+
+  <img src="/img/hackthebox-obscurity/pic27.png" alt="content">
+
+</p>
+<p>Analysis: After robert inputting the user password, file <code>/etc/shadow</code> will be read and written into <code>/tmp/SSH/random_char</code> while having pause for 0.1s each, then when finished it will be deleted</p>
+<p>Strategy: With knowing the process, we can create a bash that run a while loop to continuously read <code>/tmp/SSH/*</code> directory as long as the file <code>BetterSSH.py</code> is executed, with the goal is read any output to the directory when line <code>f.write</code> is executed, then we can get shadow file.</p>
+<ol>
+<li>
+<p>Prepare 1 terminal to read the <code>/tmp/SSH/*</code> directory
+
+  <img src="/img/hackthebox-obscurity/pic28.png" alt="Read">
+
+</p>
+</li>
+<li>
+<p>Open another terminal, execute <code>BetterSSH.py</code>
+
+  <img src="/img/hackthebox-obscurity/pic29.png" alt="BetterSSH">
+
+</p>
+</li>
+<li>
+<p>Watch the 1st terminal
+
+  <img src="/img/hackthebox-obscurity/pic30.png" alt="Terminal">
+
+</p>
+</li>
+</ol>
+<p>We got the shadow for <code>robert</code> and <code>root</code></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Arrange given shadow text so it mimics the real /etc/shadow file
+
+  <img src="/img/hackthebox-obscurity/pic31.png" alt="shadow">
+
+</p>
+<p>Read the /etc/passwd file
+
+  <img src="/img/hackthebox-obscurity/pic32.png" alt="passwd">
+
+</p>
+<p>Use <a href="https://manpages.ubuntu.com/manpages/noble/man8/unshadow.8.html">unshadow</a> to combine passwd and shadow files
+
+  <img src="/img/hackthebox-obscurity/pic33.png" alt="unshadow">
+
+</p>
+<p>Spin up john the ripper to bruteforce the password
+
+  <img src="/img/hackthebox-obscurity/pic34.png" alt="john">
+
+</p>
+<p>Password: <strong>mercedes</strong></p>
+<p>Use <code>BetterSSH.py</code> to gain access as root using password mercedes
+
+  <img src="/img/hackthebox-obscurity/pic35.png" alt="root">
+
+</p>
+<p>Voila! Root access taken, read the root flag:</p>
+<p><strong>Flag root : 512fd4429f33a113a44d5acde23609e3</strong></p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2025/06/08/walkthrough-hackthebox-postman/" data-toggle="tooltip" data-placement="top" title="[ROOT] Walkthrough Postman">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+<div id="disqus-comment"></div>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/compfest11" title="compfest11">
+                            compfest11
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cryptography" title="cryptography">
+                            cryptography
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/dirbuster" title="dirbuster">
+                            dirbuster
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/forensic" title="forensic">
+                            forensic
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/gemastik12" title="gemastik12">
+                            gemastik12
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hology" title="hology">
+                            hology
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/john-the-ripper" title="john-the-ripper">
+                            john-the-ripper
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/linux-machine" title="linux-machine">
+                            linux-machine
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nmap" title="nmap">
+                            nmap
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/picoctf2019" title="picoctf2019">
+                            picoctf2019
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/slashroot" title="slashroot">
+                            slashroot
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ssh" title="ssh">
+                            ssh
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/steganography" title="steganography">
+                            steganography
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/steghide" title="steghide">
+                            steghide
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/wireshark" title="wireshark">
+                            wireshark
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:m.nizar.rahman@protonmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    <li>
+                        <a href="https://twitter.com/nizarahman_">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/rmn0x01">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/rmn0x01">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/muhammad-nizar-rahman-77b1aa126">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; rmn0x01 2025
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'uNoiE2c2dldl1ar_IYL44vZdzXaZk2EeCSqkOldQAig', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+</body>
+</html>
