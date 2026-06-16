@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -219,31 +223,43 @@
                 post-container">
 
                 
-                <p>Salah satu soal penyisihan Compfest 11 gelombang pertama.</p>
-<h2 id="intro">Intro</h2>
-<p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file soal.png 
-soal.png: PNG image data, <span style="color:#bd93f9">700</span> x 700, 8-bit/color RGBA, non-interlaced
-</code></pre></div><p>
-  <img src="/img/compfest11-cnn/pic1.png" alt="soal.png">
+                
 
-</p>
+<p>Salah satu soal penyisihan Compfest 11 gelombang pertama.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>File yang diberikan berupa</p>
+
+<pre><code class="language-zsh">$ file soal.png 
+soal.png: PNG image data, 700 x 700, 8-bit/color RGBA, non-interlaced
+</code></pre>
+
+<p><img src="/img/compfest11-cnn/pic1.png" alt="soal.png" /></p>
+
 <h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Stegsolve</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>Biasanya jika diberikan <em>challenge</em> forensic maupun steganografi dengan file PNG, akan dilakukan beberapa perintah-perintah mainstream terlebih dahulu untuk mendapatkan <em>flag</em>-nya, salah satunya adalah <code>Stegsolve</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ stegsolve
-</code></pre></div><p>Flag didapatkan di <em>Colour Inversion (XOR)</em>
 
-  <img src="/img/compfest11-cnn/pic2.png" alt="xor">
+<pre><code class="language-zsh">$ stegsolve
+</code></pre>
 
-</p>
+<p>Flag didapatkan di <em>Colour Inversion (XOR)</em>
+<img src="/img/compfest11-cnn/pic2.png" alt="xor" /></p>
+
 <h2 id="flag">Flag</h2>
+
 <p><strong>COMPFEST11{pre_processing_convolutional_neural_network_yeay}</strong></p>
+
 <h2 id="references">References</h2>
+
 <ol>
 <li><a href="https://en.kali.tools/all/?tool=1762">https://en.kali.tools/all/?tool=1762</a></li>
 </ol>
@@ -261,7 +277,7 @@ soal.png: PNG image data, <span style="color:#bd93f9">700</span> x 700, 8-bit/co
                     
                     
                     <li class="next">
-                        <a href="/2019/10/31/writeup-slashroot4-quals-b64/" data-toggle="tooltip" data-placement="top" title="Writeup bASe64 encRyption">Next
+                        <a href="/2019/11/01/writeup-pico2019-whitepages/" data-toggle="tooltip" data-placement="top" title="Writeup WhitePages">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -347,6 +363,8 @@ soal.png: PNG image data, <span style="color:#bd93f9">700</span> x 700, 8-bit/co
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -562,7 +580,7 @@ soal.png: PNG image data, <span style="color:#bd93f9">700</span> x 700, 8-bit/co
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

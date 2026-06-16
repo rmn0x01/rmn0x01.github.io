@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -215,12 +219,20 @@
                 post-container">
 
                 
-                <p>Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.</p>
+                
+
+<p>Soal Forensik pertama yang diberikan saat final Hology 2.0, starting points: 100.</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file Leaked
+
+<pre><code class="language-zsh">$ file Leaked
 Leaked: data
-</code></pre></div><h2 id="tldr">TLDR</h2>
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Perbaiki file</li>
 <li>Import registry</li>
@@ -229,84 +241,100 @@ Leaked: data
 <li>Decode</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>Isi dari file <em>Leaked</em> adalah</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ cat Leaked
+
+<pre><code class="language-zsh">$ cat Leaked
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa��Windows Registry Editor Version 5.00
-<span style="color:#ff79c6">(</span>...<span style="color:#ff79c6">)</span>
-<span style="color:#ff79c6">[</span>HKEY_CURRENT_USER<span style="color:#f1fa8c">\S</span>oftware<span style="color:#f1fa8c">\M</span>icrosoft<span style="color:#f1fa8c">\X</span>boxLive<span style="color:#ff79c6">]</span>
-<span style="color:#ff79c6">(</span>...<span style="color:#ff79c6">)</span>
+(...)
+[HKEY_CURRENT_USER\Software\Microsoft\XboxLive]
+(...)
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
-</code></pre></div><p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa… di awal file dan AAAAA… di akhir file</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;Leaked&#39;</span>,<span style="color:#f1fa8c">&#39;r&#39;</span>)<span style="color:#ff79c6">.</span>read()
-g <span style="color:#ff79c6">=</span> f[<span style="color:#bd93f9">205</span>:<span style="color:#ff79c6">-</span><span style="color:#bd93f9">243</span>]
-h <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">open</span>(<span style="color:#f1fa8c">&#39;Leaked.reg&#39;</span>,<span style="color:#f1fa8c">&#39;wb&#39;</span>)
-h<span style="color:#ff79c6">.</span>write(g)
-h<span style="color:#ff79c6">.</span>close()
-</code></pre></div><p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file Leaked.reg 
-Leaked.reg: Windows Registry little-endian text <span style="color:#ff79c6">(</span>Win2K or above<span style="color:#ff79c6">)</span>
-</code></pre></div><p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh"><span style="color:#f1fa8c">&#34;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&#34;</span><span style="color:#ff79c6">=</span>hex:53,41,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,01,00,00,00
-<span style="color:#f1fa8c">&#34;C:\\Users\\hanyi\\Desktop\\Flag.exe&#34;</span><span style="color:#ff79c6">=</span>hex:53,41,43,50,01,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,<span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
-</code></pre></div><p>Langkah selanjutnya adalah melakukan <em>Import Leaked.reg</em> menggunakan <code>regedit</code>. Hal yang aman adalah dengan menggunakan <code>Virtual Machine</code>, namun ketika pelaksanaan kemarin karena tidak memiliki <code>VM</code> yang ready, saya <strong>yolo</strong> saja dengan mengimport-nya ke regedit di <code>Wine</code> (setidaknya kalau broken, yang broken hanya <code>Wine</code> saja).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ wine regedit
-</code></pre></div><p>
-  <img src="/img/hology-jendela/pic1.png" alt="Registry">
+</code></pre>
 
-</p>
+<p>Yang pertama dilakukan adalah menghapus string sampah aaaaaa… di awal file dan AAAAA… di akhir file</p>
+
+<pre><code class="language-python">f = open('Leaked','r').read()
+g = f[205:-243]
+h = open('Leaked.reg','wb')
+h.write(g)
+h.close()
+</code></pre>
+
+<p>Setelah dipotong, file <em>Leaked.reg</em> menjadi</p>
+
+<pre><code class="language-zsh">$ file Leaked.reg 
+Leaked.reg: Windows Registry little-endian text (Win2K or above)
+</code></pre>
+
+<p>Baru kemudian dibaca kembali isi dari file <em>Leaked.reg</em>, dan didapatkan baris yang menarik</p>
+
+<pre><code class="language-zsh">&quot;C:\\Users\\hanyi\\source\\repos\\Flag\\Flag\\obj\\Debug\\Flag.exe&quot;=hex:53,41,\
+  43,50,01,00,00,00,00,00,00,00,07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,\
+  00,01,00,00,00,00,00,00,00,00,00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,\
+  00,00,00,00,00,00,00,00,02,00,00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,9d,0d,00,00,00,00,00,00,01,00,\
+  00,00,01,00,00,00
+&quot;C:\\Users\\hanyi\\Desktop\\Flag.exe&quot;=hex:53,41,43,50,01,00,00,00,00,00,00,00,\
+  07,00,00,00,28,00,00,00,00,68,0a,00,00,00,00,00,01,00,00,00,00,00,00,00,00,\
+  00,00,0a,65,22,00,00,bf,a2,13,9d,ed,d1,d3,01,00,00,00,00,00,00,00,00,02,00,\
+  00,00,28,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,2c,4c,00,00,00,00,00,00,01,00,00,00,01,00,00,00
+</code></pre>
+
+<p>Langkah selanjutnya adalah melakukan <em>Import Leaked.reg</em> menggunakan <code>regedit</code>. Hal yang aman adalah dengan menggunakan <code>Virtual Machine</code>, namun ketika pelaksanaan kemarin karena tidak memiliki <code>VM</code> yang ready, saya <strong>yolo</strong> saja dengan mengimport-nya ke regedit di <code>Wine</code> (setidaknya kalau broken, yang broken hanya <code>Wine</code> saja).</p>
+
+<pre><code class="language-zsh">$ wine regedit
+</code></pre>
+
+<p><img src="/img/hology-jendela/pic1.png" alt="Registry" /></p>
+
 <p>Ditemukan Flag.exe di <strong>[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store]</strong>
+<img src="/img/hology-jendela/pic2.png" alt="Flag located" /></p>
 
-  <img src="/img/hology-jendela/pic2.png" alt="Flag located">
+<p>Hint yang diberikan panitia adalah:
+&gt; 1. Display Opened Application in Jendela
+&gt; 2. ROT-13</p>
 
-</p>
-<p>Hint yang diberikan panitia adalah:</p>
-<blockquote>
-<ol>
-<li>Display Opened Application in Jendela</li>
-<li>ROT-13</li>
-</ol>
-</blockquote>
-<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan keyword:</p>
-<blockquote>
-<p>windows registry rot 13</p>
-</blockquote>
-<p>dari referensi [1] diketahui bahwa system objects seperti program, shortcut, dan control panel applets yang baru saja diakses akan disimpan di</p>
-<blockquote>
-<p>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</p>
-</blockquote>
+<p>Berdasarkan <em>hint</em>, dilakukan pencarian dengan keyword:
+&gt; windows registry rot 13</p>
+
+<p>dari referensi [1] diketahui bahwa system objects seperti program, shortcut, dan control panel applets yang baru saja diakses akan disimpan di
+&gt; HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</p>
+
 <p>dalam bentuk <em>ROT-13 Encoded</em></p>
+
 <p>Setelah dicari dengan regedit, ditemukan <strong>IHYA_INYHRF</strong> yang jika dilakukan <code>ROT-13</code> menjadi <strong>VULN_VALUES</strong>, kami mengasumsikan bahwa ini merupakan hasil run dari file <em>flag.exe</em> tadi.
+<img src="/img/hology-jendela/pic3.png" alt="Flag located" /></p>
 
-  <img src="/img/hology-jendela/pic3.png" alt="Flag located">
-
-</p>
 <p>Ambil <em>data</em>-nya, kemudian buat <em>script</em>-nya</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> Crypto.Util.number <span style="color:#ff79c6">import</span> long_to_bytes
 
-ihya<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&#34;</span><span style="color:#ff79c6">.</span>split(<span style="color:#f1fa8c">&#39;,&#39;</span>)
-flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> ihya:
-    flag<span style="color:#ff79c6">+=</span>i<span style="color:#ff79c6">.</span>decode(<span style="color:#f1fa8c">&#39;hex&#39;</span>)
+<pre><code class="language-python">from Crypto.Util.number import long_to_bytes
 
-<span style="color:#8be9fd;font-style:italic">print</span>(long_to_bytes(<span style="color:#8be9fd;font-style:italic">int</span>(flag,<span style="color:#bd93f9">2</span>)))
-</code></pre></div><h2 id="flag">Flag</h2>
+ihya=&quot;30,31,31,30,31,30,30,30,30,31,31,30,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,30,30,31,31,30,30,31,31,31,31,30,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,30,30,30,31,31,31,30,31,30,30,30,31,30,31,31,31,31,31,30,30,31,31,30,30,30,31,30,30,31,31,30,30,31,31,30,31,30,31,31,31,31,31,30,31,31,30,30,31,30,30,30,31,31,30,30,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,30,30,31,30,31,30,31,30,31,30,31,30,31,31,30,31,31,30,30,30,30,31,31,30,31,31,31,30,31,30,31,31,31,31,31,30,31,31,31,30,30,31,30,30,30,31,31,30,30,31,31,30,31,31,30,30,31,31,31,30,30,31,31,30,30,30,31,30,31,31,31,30,30,31,31,30,31,31,31,30,31,30,30,30,31,31,31,30,30,31,30,30,31,31,31,31,30,30,31,30,31,30,31,31,31,31,31,30,31,31,30,31,31,30,31,30,31,31,30,30,30,30,31,30,31,31,30,31,30,31,31,30,30,31,31,30,30,31,31,30,30,31,31,30,31,30,31,30,31,30,31,31,31,31,31,30,30,31,31,30,30,31,31,30,31,31,30,30,30,30,31,30,30,31,31,30,31,30,31,30,31,31,31,31,30,30,31,30,31,31,31,31,31,30,31&quot;.split(',')
+flag=''
+for i in ihya:
+    flag+=i.decode('hex')
+
+print(long_to_bytes(int(flag,2)))
+</code></pre>
+
+<h2 id="flag">Flag</h2>
+
 <p><strong>hctf{r0t_13_defaUl7_r3g1stry_mak35_3a5y}</strong></p>
+
 <h2 id="references">References</h2>
+
 <ol>
 <li><a href="https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/">https://www.andreafortuna.org/2017/10/18/windows-registry-in-forensic-analysis/</a></li>
 </ol>
+
 <h2 id="rant">Rant</h2>
+
 <p>Baru dapet step 4 waktu tinggal 30 detik, alhasil gagal solve on time alias woe tambahin 5 menit lagi aja solve ini saya …</p>
 
 
@@ -408,6 +436,8 @@ flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -623,7 +653,7 @@ flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

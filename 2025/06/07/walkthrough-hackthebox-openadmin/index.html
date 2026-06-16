@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -239,88 +243,73 @@
                 post-container">
 
                 
-                <p>Exploiting Linux Machine with an outdated OpenNetAdmin CMS Instance</p>
+                
+
+<p>Exploiting Linux Machine with an outdated OpenNetAdmin CMS Instance</p>
+
 <h2 id="intro">Intro</h2>
-<p>
-  <img src="/img/hackthebox-openadmin/pic1.png" alt="Openadmin">
 
-</p>
+<p><img src="/img/hackthebox-openadmin/pic1.png" alt="Openadmin" /></p>
+
 <h2 id="recon">Recon</h2>
+
 <p>Scan IPs using <a href="https://nmap.org/">NMAP</a>
+<img src="/img/hackthebox-openadmin/pic2.png" alt="NMAP" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic2.png" alt="NMAP">
-
-</p>
 <p>Found port 80 (HTTP), bruteforce directory using Dirbuster, found interesting directory: <strong>10.10.10.171/ona</strong></p>
+
 <p>This directory mark the usage of OpenNetAdmin v18.1.1, which an outdated version of OpenNetAdmin with known <a href="https://www.exploit-db.com/exploits/47691">RCE</a></p>
+
 <h2 id="remote-code-execution">Remote Code Execution</h2>
+
 <p>Run the exploit, shell for www-data is executed
+<img src="/img/hackthebox-openadmin/pic3.png" alt="Script" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic3.png" alt="Script">
-
-</p>
 <p>Explore and enumerate directories within, found mysql credentials in local/config/database_settings.inc.php
+<img src="/img/hackthebox-openadmin/pic4.png" alt="MySQL Creds" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic4.png" alt="MySQL Creds">
-
-</p>
 <p>Given 2 users, jimmy and joana, try n1nj4W4rri0R! as the password for all, correct for jimmy
+<img src="/img/hackthebox-openadmin/pic5.png" alt="Jimmy" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic5.png" alt="Jimmy">
-
-</p>
 <h2 id="ssh">SSH</h2>
+
 <p>Continue exploring directories with jimmy&rsquo;s access, found executable PHP file can be run internally, complete with Jimmy&rsquo;s login credential
+<img src="/img/hackthebox-openadmin/pic6.png" alt="PHP Script" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic6.png" alt="PHP Script">
-
-</p>
 <p>Create an SSH Port Forwarding to host the index.php
-
-  <img src="/img/hackthebox-openadmin/pic7.png" alt="SSH Port Forwarding">
-
-
+<img src="/img/hackthebox-openadmin/pic7.png" alt="SSH Port Forwarding" />
 Login using jimmy:Revealed
-
-  <img src="/img/hackthebox-openadmin/pic8.png" alt="Local Index.php">
-
-
+<img src="/img/hackthebox-openadmin/pic8.png" alt="Local Index.php" />
 Found Private Key
+<img src="/img/hackthebox-openadmin/pic9.png" alt="After login" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic9.png" alt="After login">
-
-</p>
 <p>After finding a private key, it can be assumed that the private key belongs to other user, joanna. Use <a href="https://github.com/openwall/john">John The Ripper</a> to bruteforce the password
+<img src="/img/hackthebox-openadmin/pic10.png" alt="John" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic10.png" alt="John">
-
-</p>
 <p>Password: <strong>bloodninjas</strong></p>
+
 <p>Use it to SSH for user joanna
+<img src="/img/hackthebox-openadmin/pic11.png" alt="Joanna" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic11.png" alt="Joanna">
-
-</p>
 <p><strong>FLAG USER : c9b2cf07d40807e62af62660f0c81b5f</strong></p>
+
 <h2 id="recon-for-root-as-joanna">Recon for Root as Joanna</h2>
+
 <p>Find which command can be run as sudo for Joanna
+<img src="/img/hackthebox-openadmin/pic12.png" alt="sudoers" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic12.png" alt="sudoers">
-
-</p>
 <p>Found that Joanna can run command /bin/nano and /opt/priv with sudo privilege</p>
+
 <h2 id="exploit">Exploit</h2>
+
 <p>Using <a href="https://gtfobins.github.io/">GTFOBins</a>, find any command/sequences from an executable to bypass local security restrictions in misconfigured systems.</p>
+
 <p>For nano:
+<img src="/img/hackthebox-openadmin/pic13.png" alt="nano" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic13.png" alt="nano">
-
-</p>
 <p>Exploit:
+<img src="/img/hackthebox-openadmin/pic14.png" alt="exploit" /></p>
 
-  <img src="/img/hackthebox-openadmin/pic14.png" alt="exploit">
-
-</p>
 <p>Successfully gained root access and read the root flag :)</p>
 
 
@@ -422,6 +411,8 @@ Found Private Key
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -637,7 +628,7 @@ Found Private Key
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

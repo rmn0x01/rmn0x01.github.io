@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on rmn0x01</title>
@@ -6,7 +6,20 @@
     <description>Recent content in Tags on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Jun 2026 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rmn0x01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>general</title>
+      <link>https://rmn0x01.github.io/tags/general/</link>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/general/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Cryptography</title>
       <link>https://rmn0x01.github.io/tags/cryptography/</link>
@@ -269,6 +282,15 @@
     </item>
     
     <item>
+      <title>Steganography</title>
+      <link>https://rmn0x01.github.io/tags/steganography/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/tags/steganography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>aes-ofb</title>
       <link>https://rmn0x01.github.io/tags/aes-ofb/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
@@ -346,15 +368,6 @@
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://rmn0x01.github.io/tags/slashroot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Steganography</title>
-      <link>https://rmn0x01.github.io/tags/steganography/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rmn0x01.github.io/tags/steganography/</guid>
       <description></description>
     </item>
     

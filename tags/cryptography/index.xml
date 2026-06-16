@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cryptography on rmn0x01</title>
@@ -6,7 +6,11 @@
     <description>Recent content in Cryptography on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://rmn0x01.github.io/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rmn0x01.github.io/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>[ROOT] Walkthrough Obscurity</title>
       <link>https://rmn0x01.github.io/2025/06/08/walkthrough-hackthebox-obscurity/</link>
@@ -14,21 +18,8 @@
       
       <guid>https://rmn0x01.github.io/2025/06/08/walkthrough-hackthebox-obscurity/</guid>
       <description>Medium difficulty Linux Machine on custom web server with a taste of cryptography.
-Intro  Recon Scan port using NMAP Default webserver on port 80 is closed, but port 8080 is open, start analyzing this port Check the source code From the source code, file SuperSecureServer.py is interesting, use ffuf to fuzz the directory to get the file.
+Intro Recon Scan port using NMAP Default webserver on port 80 is closed, but port 8080 is open, start analyzing this port Check the source code From the source code, file SuperSecureServer.py is interesting, use ffuf to fuzz the directory to get the file.
 ./ffuf -w /usr/share/dirb/wordlists/common.txt -u http://10.10.10.168:8080/FUZZ/SuperSecureServer.py  From downloaded SuperSecureServer.py file, we can analyze it that the function ServeDoc is having a possibility to be exploited The variable path is an input from an URL (IP/Path), therefore we can craft a payload here</description>
-    </item>
-    
-    <item>
-      <title>Writeup bASe64 encRyption</title>
-      <link>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</guid>
-      <description>Soal kriptografi penyisihan Slashroot 4.0 dengan poin 150.
-Intro File yang diberikan berupa
-BASe64.py: Python script, ASCII text executable flag.enc: ASCII text, with no line terminators public.key: ASCII text TLDR  Reverse Get the flag  Full Steps Script yang digunakan untuk enkripsi adalah sebagai berikut:
-BASe64.py
-from base64 import b64encode as b64 from Crypto.PublicKey import RSA from Crypto.Util.number import bytes_to_long, long_to_bytes FLAG = &amp;#34;SlashRootCTF&amp;#34; def enc(key, msg, b6=&amp;#34;&amp;#34;, b4=&amp;#34;&amp;#34;): key = RSA.</description>
     </item>
     
     <item>
@@ -39,8 +30,20 @@ from base64 import b64encode as b64 from Crypto.PublicKey import RSA from Crypto
       <guid>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-reuse/</guid>
       <description>Soal kategori Kriptografi dengan poin 100, salah satu soal yang muncul pada gelombang pertama penyisihan Slashroot 4.0
 Intro File yang diberikan berupa
-$ file ReUse.zip ReUse.zip: Zip archive data, at least v1.0 to extract $ unzip ReUse.zip Archive: ReUse.zip extracting: ENV.py.encrypted inflating: file.decrypted.zip inflating: file.zip.encrypted inflating: ReUse.py TLDR  XOR Get the flag  Full Steps Penjelasan dari keempat file yang diberikan adalah:
- ENV.py.encrypted : File ENV.py yang terenkripsi file.</description>
+$ file ReUse.zip ReUse.zip: Zip archive data, at least v1.0 to extract $ unzip ReUse.zip Archive: ReUse.zip extracting: ENV.py.encrypted inflating: file.decrypted.zip inflating: file.zip.encrypted inflating: ReUse.py  TLDR  XOR Get the flag  Full Steps Penjelasan dari keempat file yang diberikan adalah: - ENV.py.encrypted : File ENV.py yang terenkripsi - file.</description>
+    </item>
+    
+    <item>
+      <title>Writeup bASe64 encRyption</title>
+      <link>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rmn0x01.github.io/2019/10/31/writeup-slashroot4-quals-b64/</guid>
+      <description>Soal kriptografi penyisihan Slashroot 4.0 dengan poin 150.
+Intro File yang diberikan berupa
+BASe64.py: Python script, ASCII text executable flag.enc: ASCII text, with no line terminators public.key: ASCII text  TLDR  Reverse Get the flag  Full Steps Script yang digunakan untuk enkripsi adalah sebagai berikut:
+BASe64.py
+from base64 import b64encode as b64 from Crypto.PublicKey import RSA from Crypto.Util.number import bytes_to_long, long_to_bytes FLAG = &amp;quot;SlashRootCTF&amp;quot; def enc(key, msg, b6=&amp;quot;&amp;quot;, b4=&amp;quot;&amp;quot;): key = RSA.</description>
     </item>
     
   </channel>

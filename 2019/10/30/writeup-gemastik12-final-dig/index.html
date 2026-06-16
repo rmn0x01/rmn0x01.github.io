@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -227,12 +231,20 @@
                 post-container">
 
                 
-                <p>Satu-satunya soal steganografi di final Gemastik XII, poin 200.</p>
+                
+
+<p>Satu-satunya soal steganografi di final Gemastik XII, poin 200.</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file minatozaki.bmp 
-minatozaki.bmp: bzip2 compressed data, block <span style="color:#8be9fd;font-style:italic">size</span> <span style="color:#ff79c6">=</span> 600k
-</code></pre></div><h2 id="tldr">TLDR</h2>
+
+<pre><code class="language-zsh">$ file minatozaki.bmp 
+minatozaki.bmp: bzip2 compressed data, block size = 600k
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Extract</li>
 <li>Extract</li>
@@ -241,69 +253,93 @@ minatozaki.bmp: bzip2 compressed data, block <span style="color:#8be9fd;font-sty
 <li>Baca Spectogram</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>Meskipun file berekstensi <em>bmp</em>, ketika dicek dengan <code>file</code> menandakan bahwa file tersebut adalah <em>bzip compressed data</em> sehingga dilakukan ekstraksi data</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ 7z e minatozaki.bmp 
 
-7-Zip <span style="color:#ff79c6">[</span>64<span style="color:#ff79c6">]</span> 16.02 : Copyright <span style="color:#ff79c6">(</span>c<span style="color:#ff79c6">)</span> 1999-2016 Igor Pavlov : 2016-05-21
-p7zip Version 16.02 <span style="color:#ff79c6">(</span><span style="color:#8be9fd;font-style:italic">locale</span><span style="color:#ff79c6">=</span>en_US.UTF-8,Utf16<span style="color:#ff79c6">=</span>on,HugeFiles<span style="color:#ff79c6">=</span>on,64 bits,4 CPUs Intel<span style="color:#ff79c6">(</span>R<span style="color:#ff79c6">)</span> Core<span style="color:#ff79c6">(</span>TM<span style="color:#ff79c6">)</span> i5-6200U CPU @ 2.30GHz <span style="color:#ff79c6">(</span>406E3<span style="color:#ff79c6">)</span>,ASM,AES-NI<span style="color:#ff79c6">)</span>
+<pre><code class="language-zsh">$ 7z e minatozaki.bmp 
 
-Scanning the drive <span style="color:#ff79c6">for</span> archives:
-<span style="color:#bd93f9">1</span> file, <span style="color:#bd93f9">6737180</span> bytes <span style="color:#ff79c6">(</span><span style="color:#bd93f9">6580</span> KiB<span style="color:#ff79c6">)</span>
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 6737180 bytes (6580 KiB)
 
 Extracting archive: minatozaki.bmp
 --
-<span style="color:#8be9fd;font-style:italic">Path</span> <span style="color:#ff79c6">=</span> minatozaki.bmp
-<span style="color:#8be9fd;font-style:italic">Type</span> <span style="color:#ff79c6">=</span> bzip2
+Path = minatozaki.bmp
+Type = bzip2
 
 Everything is Ok 
 
-Size:       <span style="color:#bd93f9">9652224</span>
-Compressed: <span style="color:#bd93f9">6737180</span>
-</code></pre></div><p>Didapatkan file minatozaki</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file minatozaki 
+Size:       9652224
+Compressed: 6737180
+</code></pre>
+
+<p>Didapatkan file minatozaki</p>
+
+<pre><code class="language-zsh">$ file minatozaki 
 minatozaki: POSIX tar archive
-</code></pre></div><p><em>Extract</em> lagi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ tar -xvf minatozaki
+</code></pre>
+
+<p><em>Extract</em> lagi</p>
+
+<pre><code class="language-zsh">$ tar -xvf minatozaki
 cheese_kimbap.wav
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file cheese_kimbap.wav 
-cheese_kimbap.wav: RIFF <span style="color:#ff79c6">(</span>little-endian<span style="color:#ff79c6">)</span> data, WAVE audio, Microsoft PCM, <span style="color:#bd93f9">16</span> bit, stereo <span style="color:#bd93f9">44100</span> Hz
-</code></pre></div><p>Merupakan audio potongan dari sebuah acara TV dan ketika dibuka dengan <code>Audacity</code>, tidak ada pola-pola yang mengarah pada analisis Spectogram maupun SSTV, sehingga kemungkinannya antara <code>Steghide</code> atau <code>LSB</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ steghide extract -sf cheese_kimbap.wav 
+</code></pre>
+
+<pre><code class="language-zsh">$ file cheese_kimbap.wav 
+cheese_kimbap.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, stereo 44100 Hz
+</code></pre>
+
+<p>Merupakan audio potongan dari sebuah acara TV dan ketika dibuka dengan <code>Audacity</code>, tidak ada pola-pola yang mengarah pada analisis Spectogram maupun SSTV, sehingga kemungkinannya antara <code>Steghide</code> atau <code>LSB</code>.</p>
+
+<pre><code class="language-zsh">$ steghide extract -sf cheese_kimbap.wav 
 Enter passphrase: 
 steghide: could not extract any data with that passphrase!
-</code></pre></div><p><code>Steghide</code> dengan <em>password</em> kosong tidak dapat mengekstrak data apapun, kemungkinan <em>password</em> harus ditebak. Gunakan tool <code>StegCracker</code> [1] dan <em>wordlist</em> 00-indonesian-wordlist.lst [2] untuk mencari <em>password</em>-nya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ stegcracker cheese_kimbap.wav ~/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst 
-StegCracker 2.0.7 - <span style="color:#ff79c6">(</span>https://github.com/Paradoxis/StegCracker<span style="color:#ff79c6">)</span>
-Copyright <span style="color:#ff79c6">(</span>c<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">2019</span> - Luke Paris <span style="color:#ff79c6">(</span>Paradoxis<span style="color:#ff79c6">)</span>
+</code></pre>
+
+<p><code>Steghide</code> dengan <em>password</em> kosong tidak dapat mengekstrak data apapun, kemungkinan <em>password</em> harus ditebak. Gunakan tool <code>StegCracker</code> [1] dan <em>wordlist</em> 00-indonesian-wordlist.lst [2] untuk mencari <em>password</em>-nya</p>
+
+<pre><code class="language-zsh">$ stegcracker cheese_kimbap.wav ~/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst 
+StegCracker 2.0.7 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2019 - Luke Paris (Paradoxis)
 
 Counting lines in wordlist..
-Attacking file <span style="color:#f1fa8c">&#39;cheese_kimbap.wav&#39;</span> with wordlist <span style="color:#f1fa8c">&#39;/root/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst&#39;</span>..
-6/79898 <span style="color:#ff79c6">(</span>0.72%<span style="color:#ff79c6">)</span> Attempted: afkirorns
-</code></pre></div><p>Didapatkan <em>password</em>-nya adalah</p>
-<blockquote>
-<p>patriot</p>
-</blockquote>
+Attacking file 'cheese_kimbap.wav' with wordlist '/root/ctf/tools/wordlist/indonesian-wordlist/00-indonesian-wordlist.lst'..
+6/79898 (0.72%) Attempted: afkirorns
+</code></pre>
+
+<p>Didapatkan <em>password</em>-nya adalah
+&gt; patriot</p>
+
 <p>File berikutnya memiliki ekstensi .zip, extract lagi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file cheese_kimbap.wav.out 
-cheese_kimbap.wav.out: Zip archive data, at least v?<span style="color:#ff79c6">[</span>0x314<span style="color:#ff79c6">]</span> to extract
+
+<pre><code class="language-zsh">$ file cheese_kimbap.wav.out 
+cheese_kimbap.wav.out: Zip archive data, at least v?[0x314] to extract
 $ mv cheese_kimbap.wav.out cheese_kimbap.wav.zip
 $ unzip cheese_kimbap.wav.zip 
 Archive:  cheese_kimbap.wav.zip
   inflating: further.wav   
-</code></pre></div><p>Buka dengan <code>Audacity</code>
+</code></pre>
 
-  <img src="/img/gemastik12-digg/pic1.png" alt="Audacity">
+<p>Buka dengan <code>Audacity</code>
+<img src="/img/gemastik12-digg/pic1.png" alt="Audacity" /></p>
 
-</p>
 <h2 id="flag">Flag</h2>
+
 <p><strong>gemastik12{looK_FuRth3R}</strong></p>
+
 <h2 id="references">References</h2>
+
 <ol>
 <li><a href="https://github.com/Paradoxis/StegCracker">https://github.com/Paradoxis/StegCracker</a></li>
 <li><a href="https://github.com/geovedi/indonesian-wordlist">https://github.com/geovedi/indonesian-wordlist</a></li>
 </ol>
+
 <h2 id="rant">Rant</h2>
+
 <p>Selesaikan apa yang sedang dijalankan, jangan baru 40% langsung di-<strong>CTRL+C</strong> dudul</p>
 
 
@@ -319,7 +355,7 @@ Archive:  cheese_kimbap.wav.zip
                     
                     
                     <li class="next">
-                        <a href="/2019/10/31/writeup-indoxploit-steg2/" data-toggle="tooltip" data-placement="top" title="Writeup Stegano2">Next
+                        <a href="/2019/10/31/writeup-slashroot4-quals-b64/" data-toggle="tooltip" data-placement="top" title="Writeup bASe64 encRyption">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -405,6 +441,8 @@ Archive:  cheese_kimbap.wav.zip
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -620,7 +658,7 @@ Archive:  cheese_kimbap.wav.zip
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

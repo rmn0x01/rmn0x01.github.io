@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -235,121 +239,83 @@
                 post-container">
 
                 
-                <p>Exploiting Linux Machine having unauthenticated Redis server.</p>
+                
+
+<p>Exploiting Linux Machine having unauthenticated Redis server.</p>
+
 <h2 id="intro">Intro</h2>
-<p>
-  <img src="/img/hackthebox-postman/pic1.png" alt="Postman">
 
-</p>
+<p><img src="/img/hackthebox-postman/pic1.png" alt="Postman" /></p>
+
 <h2 id="recon">Recon</h2>
+
 <p>NMAP scan:
+<img src="/img/hackthebox-postman/pic2.png" alt="NMAP1" />
+<img src="/img/hackthebox-postman/pic3.png" alt="NMAP2" /></p>
 
-  <img src="/img/hackthebox-postman/pic2.png" alt="NMAP1">
-
-
-
-  <img src="/img/hackthebox-postman/pic3.png" alt="NMAP2">
-
-</p>
 <p>Found port 80, save for later
+<img src="/img/hackthebox-postman/pic4.png" alt="web" /></p>
 
-  <img src="/img/hackthebox-postman/pic4.png" alt="web">
-
-</p>
 <p>Play around for default port, found default Redis port in 6379:
+<img src="/img/hackthebox-postman/pic5.png" alt="redis" /></p>
 
-  <img src="/img/hackthebox-postman/pic5.png" alt="redis">
-
-</p>
 <h2 id="redis-exploit">Redis Exploit</h2>
+
 <p>From this <a href="https://medium.com/@Victor.Z.Zhu/redis-unauthorized-access-vulnerability-simulation-victor-zhu-ac7a71b2e419">article</a>, it is known that we can <em>smuggle</em> our SSH public key to an unprotected Redis server, with steps:</p>
+
 <ol>
-<li>
-<p>Generate RSA key pair
+<li><p>Generate RSA key pair
+<img src="/img/hackthebox-postman/pic6.png" alt="RSA Key Pair" /></p></li>
 
-  <img src="/img/hackthebox-postman/pic6.png" alt="RSA Key Pair">
+<li><p>Craft a payload
+<img src="/img/hackthebox-postman/pic7.png" alt="Payload" /></p></li>
 
-</p>
-</li>
-<li>
-<p>Craft a payload
+<li><p><em>Smuggle</em> it in
+<img src="/img/hackthebox-postman/pic8.png" alt="Smuggling it in" /></p></li>
 
-  <img src="/img/hackthebox-postman/pic7.png" alt="Payload">
+<li><p>From the redis side, open the redis-cli (remember we have an unprotected redis server)
+<img src="/img/hackthebox-postman/pic9.png" alt="Redis-cli" /></p></li>
 
-</p>
-</li>
-<li>
-<p><em>Smuggle</em> it in
-
-  <img src="/img/hackthebox-postman/pic8.png" alt="Smuggling it in">
-
-</p>
-</li>
-<li>
-<p>From the redis side, open the redis-cli (remember we have an unprotected redis server)
-
-  <img src="/img/hackthebox-postman/pic9.png" alt="Redis-cli">
-
-</p>
-</li>
-<li>
-<p>SSH time!
-
-  <img src="/img/hackthebox-postman/pic10.png" alt="SSH">
-
-</p>
-</li>
+<li><p>SSH time!
+<img src="/img/hackthebox-postman/pic10.png" alt="SSH" /></p></li>
 </ol>
+
 <h2 id="recon-as-redis">Recon as Redis</h2>
+
 <p>Now we have access to the server as redis user, start another recon session, and enumerate all files and directories, found this in /opt/id_rsa.bak
+<img src="/img/hackthebox-postman/pic11.png" alt="Matt" /></p>
 
-  <img src="/img/hackthebox-postman/pic11.png" alt="Matt">
+<h2 id="escalate-to-matt-s-user">Escalate to Matt&rsquo;s User</h2>
 
-</p>
-<h2 id="escalate-to-matts-user">Escalate to Matt&rsquo;s User</h2>
 <p>Having Matt&rsquo;s id_rsa, we can start the John The Ripper to bruteforce the password
+<img src="/img/hackthebox-postman/pic12.png" alt="ssh2john" /></p>
 
-  <img src="/img/hackthebox-postman/pic12.png" alt="ssh2john">
-
-</p>
 <p>Password: <strong>computer2008</strong></p>
+
 <p>Try to switch to user Matt having the password above:
+<img src="/img/hackthebox-postman/pic13.png" alt="Switch user" /></p>
 
-  <img src="/img/hackthebox-postman/pic13.png" alt="Switch user">
-
-</p>
 <p>Voila! Matt&rsquo;s access gained and we have our User Flag
+<img src="/img/hackthebox-postman/pic14.png" alt="Matt" /></p>
 
-  <img src="/img/hackthebox-postman/pic14.png" alt="Matt">
-
-</p>
 <p><strong>FLAG user : 517ad0ec2458ca97af8d93aac08a2f3c</strong></p>
+
 <h2 id="recon-as-matt">Recon as Matt</h2>
+
 <p>Circle back to discovered port from nmap above, we have port 10000, that if we opened it, a webmin with login-password page. Log with Matt&rsquo;s user password (Matt:computer2008) and we have
+<img src="/img/hackthebox-postman/pic15.png" alt="Webmin" /></p>
 
-  <img src="/img/hackthebox-postman/pic15.png" alt="Webmin">
-
-</p>
 <p>Knowing the version is 1.910, we&rsquo;ll use a combo of searchsploit and msfconsole to find the exploit of this exact version of webmin
+<img src="/img/hackthebox-postman/pic16.png" alt="searchsploit" />
+<img src="/img/hackthebox-postman/pic17.png" alt="msf" /></p>
 
-  <img src="/img/hackthebox-postman/pic16.png" alt="searchsploit">
-
-
-
-  <img src="/img/hackthebox-postman/pic17.png" alt="msf">
-
-</p>
 <h2 id="exploit">Exploit</h2>
+
 <p>Use msf5 to exploit
+<img src="/img/hackthebox-postman/pic18.png" alt="msf5" /></p>
 
-  <img src="/img/hackthebox-postman/pic18.png" alt="msf5">
-
-</p>
 <p>Root access gained :), read the flag and we&rsquo;re done!
-
-  <img src="/img/hackthebox-postman/pic19.png" alt="root">
-
-
+<img src="/img/hackthebox-postman/pic19.png" alt="root" />
 <strong>FLAG ROOT : a257741c5bed8be7778c6ed95686ddce</strong></p>
 
 
@@ -451,6 +417,8 @@
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -666,7 +634,7 @@
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

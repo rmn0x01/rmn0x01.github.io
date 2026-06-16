@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -215,384 +219,438 @@
                 post-container">
 
                 
-                <p>Rangkaian soal Reversing-VaultDoor picoCTF
+                
+
+<p>Rangkaian soal Reversing-VaultDoor picoCTF
 Setiap <em>challenges</em> terdapat satu <em>file .java</em> yang harus di-<em>reverse</em> untuk didapatkan <em>flag</em>-nya</p>
+
 <h2 id="vaulttraining">VaultTraining</h2>
+
 <p><strong>VaultDoorTraining.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoorTraining</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoorTraining vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoorTraining<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span> 
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-        String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span>
-   <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.util.*;
 
-    <span style="color:#6272a4">// The password is below. Is it safe to put the password in the source code?
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// What if somebody stole our source code? Then they would know what our
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// password is. Hmm... I will think of some ways to improve the security
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// on the other doors.
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #9567
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">return</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equals</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;w4rm1ng_Up_w1tH_jAv4_fa9bcc3bcf9&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p><em>Pretty straightforward</em>
+class VaultDoorTraining {
+    public static void main(String args[]) {
+        VaultDoorTraining vaultDoor = new VaultDoorTraining();
+        Scanner scanner = new Scanner(System.in); 
+        System.out.print(&quot;Enter vault password: &quot;);
+        String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+	}
+   }
+
+    // The password is below. Is it safe to put the password in the source code?
+    // What if somebody stole our source code? Then they would know what our
+    // password is. Hmm... I will think of some ways to improve the security
+    // on the other doors.
+    //
+    // -Minion #9567
+    public boolean checkPassword(String password) {
+        return password.equals(&quot;w4rm1ng_Up_w1tH_jAv4_fa9bcc3bcf9&quot;);
+    }
+}
+</code></pre>
+
+<p><em>Pretty straightforward</em>
 FLAG: <strong>picoCTF{w4rm1ng_Up_w1tH_jAv4_fa9bcc3bcf9}</strong></p>
+
 <h2 id="vaultdoor-1">VaultDoor 1</h2>
+
 <p><strong>VaultDoor1.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoor1</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoor1 vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoor1<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-	String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span>
-    <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.util.*;
 
-    <span style="color:#6272a4">// I came up with a more secure way to check the password without putting
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// the password itself in the source code. I think this is going to be
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// UNHACKABLE!! I hope Dr. Evil agrees...
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #8728
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">return</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">==</span> 32 <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>0<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;d&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>29<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;7&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>4<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;r&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>2<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;5&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>23<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;r&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>3<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;c&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>17<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;4&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>1<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;3&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>7<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;b&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>10<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;_&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>5<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;4&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>9<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;3&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>11<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;t&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>15<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;c&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>8<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;l&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>12<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;H&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>20<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;c&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>14<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;_&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>6<span style="color:#ff79c6">)</span>  <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;m&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>24<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;5&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>18<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;r&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>13<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;3&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>19<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;4&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>21<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;T&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>16<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;H&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>27<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;5&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>30<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;0&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>25<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;_&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>22<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;3&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>28<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;8&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>26<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;5&#39;</span> <span style="color:#ff79c6">&amp;&amp;</span>
-               password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>31<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;d&#39;</span><span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p>Susun ulang karakter sesuai posisinya.</p>
+class VaultDoor1 {
+    public static void main(String args[]) {
+        VaultDoor1 vaultDoor = new VaultDoor1();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(&quot;Enter vault password: &quot;);
+	String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+	}
+    }
+
+    // I came up with a more secure way to check the password without putting
+    // the password itself in the source code. I think this is going to be
+    // UNHACKABLE!! I hope Dr. Evil agrees...
+    //
+    // -Minion #8728
+    public boolean checkPassword(String password) {
+        return password.length() == 32 &amp;&amp;
+               password.charAt(0)  == 'd' &amp;&amp;
+               password.charAt(29) == '7' &amp;&amp;
+               password.charAt(4)  == 'r' &amp;&amp;
+               password.charAt(2)  == '5' &amp;&amp;
+               password.charAt(23) == 'r' &amp;&amp;
+               password.charAt(3)  == 'c' &amp;&amp;
+               password.charAt(17) == '4' &amp;&amp;
+               password.charAt(1)  == '3' &amp;&amp;
+               password.charAt(7)  == 'b' &amp;&amp;
+               password.charAt(10) == '_' &amp;&amp;
+               password.charAt(5)  == '4' &amp;&amp;
+               password.charAt(9)  == '3' &amp;&amp;
+               password.charAt(11) == 't' &amp;&amp;
+               password.charAt(15) == 'c' &amp;&amp;
+               password.charAt(8)  == 'l' &amp;&amp;
+               password.charAt(12) == 'H' &amp;&amp;
+               password.charAt(20) == 'c' &amp;&amp;
+               password.charAt(14) == '_' &amp;&amp;
+               password.charAt(6)  == 'm' &amp;&amp;
+               password.charAt(24) == '5' &amp;&amp;
+               password.charAt(18) == 'r' &amp;&amp;
+               password.charAt(13) == '3' &amp;&amp;
+               password.charAt(19) == '4' &amp;&amp;
+               password.charAt(21) == 'T' &amp;&amp;
+               password.charAt(16) == 'H' &amp;&amp;
+               password.charAt(27) == '5' &amp;&amp;
+               password.charAt(30) == '0' &amp;&amp;
+               password.charAt(25) == '_' &amp;&amp;
+               password.charAt(22) == '3' &amp;&amp;
+               password.charAt(28) == '8' &amp;&amp;
+               password.charAt(26) == '5' &amp;&amp;
+               password.charAt(31) == 'd';
+    }
+}
+</code></pre>
+
+<p>Susun ulang karakter sesuai posisinya.</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">passwd <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#39;?&#39;</span> <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">32</span>)]
 
-passwd[<span style="color:#bd93f9">0</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;d&#39;</span> 
-passwd[<span style="color:#bd93f9">29</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;7&#39;</span> 
-passwd[<span style="color:#bd93f9">4</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;r&#39;</span> 
-passwd[<span style="color:#bd93f9">2</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;5&#39;</span> 
-passwd[<span style="color:#bd93f9">23</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;r&#39;</span> 
-passwd[<span style="color:#bd93f9">3</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span> 
-passwd[<span style="color:#bd93f9">17</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;4&#39;</span> 
-passwd[<span style="color:#bd93f9">1</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;3&#39;</span> 
-passwd[<span style="color:#bd93f9">7</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;b&#39;</span> 
-passwd[<span style="color:#bd93f9">10</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;_&#39;</span> 
-passwd[<span style="color:#bd93f9">5</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;4&#39;</span> 
-passwd[<span style="color:#bd93f9">9</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;3&#39;</span> 
-passwd[<span style="color:#bd93f9">11</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;t&#39;</span> 
-passwd[<span style="color:#bd93f9">15</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span> 
-passwd[<span style="color:#bd93f9">8</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;l&#39;</span> 
-passwd[<span style="color:#bd93f9">12</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;H&#39;</span> 
-passwd[<span style="color:#bd93f9">20</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span> 
-passwd[<span style="color:#bd93f9">14</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;_&#39;</span> 
-passwd[<span style="color:#bd93f9">6</span>]  <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;m&#39;</span> 
-passwd[<span style="color:#bd93f9">24</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;5&#39;</span> 
-passwd[<span style="color:#bd93f9">18</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;r&#39;</span> 
-passwd[<span style="color:#bd93f9">13</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;3&#39;</span> 
-passwd[<span style="color:#bd93f9">19</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;4&#39;</span> 
-passwd[<span style="color:#bd93f9">21</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;T&#39;</span> 
-passwd[<span style="color:#bd93f9">16</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;H&#39;</span> 
-passwd[<span style="color:#bd93f9">27</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;5&#39;</span> 
-passwd[<span style="color:#bd93f9">30</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;0&#39;</span> 
-passwd[<span style="color:#bd93f9">25</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;_&#39;</span> 
-passwd[<span style="color:#bd93f9">22</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;3&#39;</span> 
-passwd[<span style="color:#bd93f9">28</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;8&#39;</span> 
-passwd[<span style="color:#bd93f9">26</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;5&#39;</span> 
-passwd[<span style="color:#bd93f9">31</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;d&#39;</span>
+<pre><code class="language-python">passwd = ['?' for i in range(32)]
 
-<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;&#39;</span><span style="color:#ff79c6">.</span>join(passwd))
-</code></pre></div><p>FLAG: <strong>picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_55870d}</strong></p>
+passwd[0]  = 'd' 
+passwd[29] = '7' 
+passwd[4]  = 'r' 
+passwd[2]  = '5' 
+passwd[23] = 'r' 
+passwd[3]  = 'c' 
+passwd[17] = '4' 
+passwd[1]  = '3' 
+passwd[7]  = 'b' 
+passwd[10] = '_' 
+passwd[5]  = '4' 
+passwd[9]  = '3' 
+passwd[11] = 't' 
+passwd[15] = 'c' 
+passwd[8]  = 'l' 
+passwd[12] = 'H' 
+passwd[20] = 'c' 
+passwd[14] = '_' 
+passwd[6]  = 'm' 
+passwd[24] = '5' 
+passwd[18] = 'r' 
+passwd[13] = '3' 
+passwd[19] = '4' 
+passwd[21] = 'T' 
+passwd[16] = 'H' 
+passwd[27] = '5' 
+passwd[30] = '0' 
+passwd[25] = '_' 
+passwd[22] = '3' 
+passwd[28] = '8' 
+passwd[26] = '5' 
+passwd[31] = 'd'
+
+print(''.join(passwd))
+</code></pre>
+
+<p>FLAG: <strong>picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_55870d}</strong></p>
+
 <h2 id="vaultdoor-3">VaultDoor 3</h2>
+
 <p><strong>VaultDoor3.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoor3</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoor3 vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoor3<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-        String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-    <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.util.*;
 
-    <span style="color:#6272a4">// Our security monitoring team has noticed some intrusions on some of the
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// less secure doors. Dr. Evil has asked me specifically to build a stronger
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// vault door to protect his Doomsday plans. I just *know* this door will
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// keep all of those nosy agents out of our business. Mwa ha!
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #2671
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">!=</span> 32<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span><span style="color:#ff79c6">;</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#8be9fd">char</span><span style="color:#ff79c6">[]</span> buffer <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">[</span>32<span style="color:#ff79c6">];</span>
-        <span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">;</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">=</span>0<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">&lt;</span>8<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
-            buffer<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(;</span> i<span style="color:#ff79c6">&lt;</span>16<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
-            buffer<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>23<span style="color:#ff79c6">-</span>i<span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(;</span> i<span style="color:#ff79c6">&lt;</span>32<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">+=</span>2<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-            buffer<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>46<span style="color:#ff79c6">-</span>i<span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">=</span>31<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">&gt;=</span>17<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">-=</span>2<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-            buffer<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">charAt</span><span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-        String s <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span>buffer<span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">return</span> s<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equals</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;jU5t_a_sna_3lpm17ga45_u_4_mbrf4c&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p>Mirip dengan soal VaultDoor 1, susun ulang karakternya.</p>
+class VaultDoor3 {
+    public static void main(String args[]) {
+        VaultDoor3 vaultDoor = new VaultDoor3();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(&quot;Enter vault password: &quot;);
+        String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+        }
+    }
+
+    // Our security monitoring team has noticed some intrusions on some of the
+    // less secure doors. Dr. Evil has asked me specifically to build a stronger
+    // vault door to protect his Doomsday plans. I just *know* this door will
+    // keep all of those nosy agents out of our business. Mwa ha!
+    //
+    // -Minion #2671
+    public boolean checkPassword(String password) {
+        if (password.length() != 32) {
+            return false;
+        }
+        char[] buffer = new char[32];
+        int i;
+        for (i=0; i&lt;8; i++) {
+            buffer[i] = password.charAt(i);
+        }
+        for (; i&lt;16; i++) {
+            buffer[i] = password.charAt(23-i);
+        }
+        for (; i&lt;32; i+=2) {
+            buffer[i] = password.charAt(46-i);
+        }
+        for (i=31; i&gt;=17; i-=2) {
+            buffer[i] = password.charAt(i);
+        }
+        String s = new String(buffer);
+        return s.equals(&quot;jU5t_a_sna_3lpm17ga45_u_4_mbrf4c&quot;);
+    }
+}
+</code></pre>
+
+<p>Mirip dengan soal VaultDoor 1, susun ulang karakternya.</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">s<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;jU5t_a_sna_3lpm17ga45_u_4_mbrf4c&#34;</span>
-pwd<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#39;?&#39;</span> <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">32</span>)]
 
-<span style="color:#6272a4">#Rule 1</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">8</span>):
-    pwd[i] <span style="color:#ff79c6">=</span> s[i]
-<span style="color:#6272a4">#Rule 2</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">8</span>,<span style="color:#bd93f9">16</span>):
-    pwd[<span style="color:#bd93f9">23</span><span style="color:#ff79c6">-</span>i] <span style="color:#ff79c6">=</span> s[i]
-<span style="color:#6272a4">#Rule 3</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">16</span>,<span style="color:#bd93f9">32</span>,<span style="color:#bd93f9">2</span>):
-    pwd[<span style="color:#bd93f9">46</span><span style="color:#ff79c6">-</span>i] <span style="color:#ff79c6">=</span> s[i]
-<span style="color:#6272a4">#Rule 4</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">31</span>,<span style="color:#bd93f9">16</span>,<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span>):
-    pwd[i] <span style="color:#ff79c6">=</span> s[i]
-<span style="color:#6272a4">#CheckFlag</span>
-<span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#39;&#39;</span><span style="color:#ff79c6">.</span>join(pwd))
-</code></pre></div><p>FLAG: <strong>picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_5baf7c}</strong></p>
+<pre><code class="language-python">s=&quot;jU5t_a_sna_3lpm17ga45_u_4_mbrf4c&quot;
+pwd=['?' for i in range(32)]
+
+#Rule 1
+for i in range(0,8):
+    pwd[i] = s[i]
+#Rule 2
+for i in range(8,16):
+    pwd[23-i] = s[i]
+#Rule 3
+for i in range(16,32,2):
+    pwd[46-i] = s[i]
+#Rule 4
+for i in range(31,16,-2):
+    pwd[i] = s[i]
+#CheckFlag
+print(''.join(pwd))
+</code></pre>
+
+<p>FLAG: <strong>picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_5baf7c}</strong></p>
+
 <h2 id="vaultdoor-4">VaultDoor 4</h2>
+
 <p><strong>VaultDoor4.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoor4</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoor4 vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoor4<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-        String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-    <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.util.*;
 
-    <span style="color:#6272a4">// I made myself dizzy converting all of these numbers into different bases,
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// so I just *know* that this vault will be impenetrable. This will make Dr.
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// Evil like me better than all of the other minions--especially Minion
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// #5620--I just know it!
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//  .:::.   .:::.
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// :::::::.:::::::
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// :::::::::::::::
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// &#39;:::::::::::::&#39;
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//   &#39;:::::::::&#39;
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//     &#39;:::::&#39;
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//       &#39;:&#39;
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #7781
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> passBytes <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getBytes</span><span style="color:#ff79c6">();</span>
-        <span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> myBytes <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span>
-            106 <span style="color:#ff79c6">,</span> 85  <span style="color:#ff79c6">,</span> 53  <span style="color:#ff79c6">,</span> 116 <span style="color:#ff79c6">,</span> 95  <span style="color:#ff79c6">,</span> 52  <span style="color:#ff79c6">,</span> 95  <span style="color:#ff79c6">,</span> 98  <span style="color:#ff79c6">,</span>
-            0x55<span style="color:#ff79c6">,</span> 0x6e<span style="color:#ff79c6">,</span> 0x43<span style="color:#ff79c6">,</span> 0x68<span style="color:#ff79c6">,</span> 0x5f<span style="color:#ff79c6">,</span> 0x30<span style="color:#ff79c6">,</span> 0x66<span style="color:#ff79c6">,</span> 0x5f<span style="color:#ff79c6">,</span>
-            0142<span style="color:#ff79c6">,</span> 0131<span style="color:#ff79c6">,</span> 0164<span style="color:#ff79c6">,</span> 063 <span style="color:#ff79c6">,</span> 0163<span style="color:#ff79c6">,</span> 0137<span style="color:#ff79c6">,</span> 0142<span style="color:#ff79c6">,</span> 071 <span style="color:#ff79c6">,</span>
-            <span style="color:#f1fa8c">&#39;e&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;9&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;2&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;f&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;7&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;6&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;a&#39;</span> <span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#39;c&#39;</span> <span style="color:#ff79c6">,</span>
-        <span style="color:#ff79c6">};</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">=</span>0<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">&lt;</span>32<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
-            <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>passBytes<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">!=</span> myBytes<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">])</span> <span style="color:#ff79c6">{</span>
-                <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span><span style="color:#ff79c6">;</span>
-            <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span><span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p><em>Decode</em> <strong>myBytes</strong> sesuai base-nya.</p>
+class VaultDoor4 {
+    public static void main(String args[]) {
+        VaultDoor4 vaultDoor = new VaultDoor4();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(&quot;Enter vault password: &quot;);
+        String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+        }
+    }
+
+    // I made myself dizzy converting all of these numbers into different bases,
+    // so I just *know* that this vault will be impenetrable. This will make Dr.
+    // Evil like me better than all of the other minions--especially Minion
+    // #5620--I just know it!
+    //
+    //  .:::.   .:::.
+    // :::::::.:::::::
+    // :::::::::::::::
+    // ':::::::::::::'
+    //   ':::::::::'
+    //     ':::::'
+    //       ':'
+    // -Minion #7781
+    public boolean checkPassword(String password) {
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 0142, 071 ,
+            'e' , '9' , '2' , 'f' , '7' , '6' , 'a' , 'c' ,
+        };
+        for (int i=0; i&lt;32; i++) {
+            if (passBytes[i] != myBytes[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+</code></pre>
+
+<p><em>Decode</em> <strong>myBytes</strong> sesuai base-nya.</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">p1 <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">106</span>,<span style="color:#bd93f9">85</span>,<span style="color:#bd93f9">53</span>,<span style="color:#bd93f9">116</span>,<span style="color:#bd93f9">95</span>,<span style="color:#bd93f9">52</span>,<span style="color:#bd93f9">95</span>,<span style="color:#bd93f9">98</span>)
-p2 <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">0x55</span>,<span style="color:#bd93f9">0x6e</span>,<span style="color:#bd93f9">0x43</span>,<span style="color:#bd93f9">0x68</span>,<span style="color:#bd93f9">0x5f</span>,<span style="color:#bd93f9">0x30</span>,<span style="color:#bd93f9">0x66</span>,<span style="color:#bd93f9">0x5f</span>)
-p3 <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">142</span>,<span style="color:#bd93f9">131</span>,<span style="color:#bd93f9">164</span>,<span style="color:#bd93f9">63</span>,<span style="color:#bd93f9">163</span>,<span style="color:#bd93f9">137</span>,<span style="color:#bd93f9">142</span>,<span style="color:#bd93f9">71</span>)
-p4 <span style="color:#ff79c6">=</span> (<span style="color:#f1fa8c">&#39;e&#39;</span> , <span style="color:#f1fa8c">&#39;9&#39;</span> , <span style="color:#f1fa8c">&#39;2&#39;</span> , <span style="color:#f1fa8c">&#39;f&#39;</span> , <span style="color:#f1fa8c">&#39;7&#39;</span> , <span style="color:#f1fa8c">&#39;6&#39;</span> , <span style="color:#f1fa8c">&#39;a&#39;</span> , <span style="color:#f1fa8c">&#39;c&#39;</span>)
 
-flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> p1:
-    flag<span style="color:#ff79c6">+=</span><span style="color:#8be9fd;font-style:italic">chr</span>(i)
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> p2:
-    flag<span style="color:#ff79c6">+=</span><span style="color:#8be9fd;font-style:italic">chr</span>(i)
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> p3:
-    flag<span style="color:#ff79c6">+=</span><span style="color:#8be9fd;font-style:italic">chr</span>(<span style="color:#8be9fd;font-style:italic">int</span>(<span style="color:#8be9fd;font-style:italic">str</span>(i),<span style="color:#bd93f9">8</span>))
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> p4:
-    flag<span style="color:#ff79c6">+=</span>i
+<pre><code class="language-python">p1 = (106,85,53,116,95,52,95,98)
+p2 = (0x55,0x6e,0x43,0x68,0x5f,0x30,0x66,0x5f)
+p3 = (142,131,164,63,163,137,142,71)
+p4 = ('e' , '9' , '2' , 'f' , '7' , '6' , 'a' , 'c')
 
-<span style="color:#8be9fd;font-style:italic">print</span>(flag)
-</code></pre></div><p>FLAG: <strong>picoCTF{jU5t_4_bUnCh_0f_bYt3s_b9e92f76ac}</strong></p>
+flag=''
+for i in p1:
+    flag+=chr(i)
+for i in p2:
+    flag+=chr(i)
+for i in p3:
+    flag+=chr(int(str(i),8))
+for i in p4:
+    flag+=i
+
+print(flag)
+</code></pre>
+
+<p>FLAG: <strong>picoCTF{jU5t_4_bUnCh_0f_bYt3s_b9e92f76ac}</strong></p>
+
 <h2 id="vaultdoor-5">VaultDoor 5</h2>
+
 <p><strong>VaultDoor5.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.net.URLDecoder<span style="color:#ff79c6">;</span>
-<span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoor5</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoor5 vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoor5<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-        String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-    <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.net.URLDecoder;
+import java.util.*;
 
-    <span style="color:#6272a4">// Minion #7781 used base 8 and base 16, but this is base 64, which is
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// like... eight times stronger, right? Riiigghtt? Well that&#39;s what my twin
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// brother Minion #2415 says, anyway.
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #2414
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">base64Encode</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> input<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">return</span> Base64<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getEncoder</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">encodeToString</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
+class VaultDoor5 {
+    public static void main(String args[]) {
+        VaultDoor5 vaultDoor = new VaultDoor5();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(&quot;Enter vault password: &quot;);
+        String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+        }
+    }
 
-    <span style="color:#6272a4">// URL encoding is meant for web pages, so any double agent spies who steal
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// our source code will think this is a web site or something, defintely not
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// vault door! Oh wait, should I have not said that in a source code
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// comment?
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #2415
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">urlEncode</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> input<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        StringBuffer buf <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> StringBuffer<span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">=</span>0<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">&lt;</span>input<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
-            buf<span style="color:#ff79c6">.</span><span style="color:#50fa7b">append</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">.</span><span style="color:#50fa7b">format</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;%%%2x&#34;</span><span style="color:#ff79c6">,</span> input<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]));</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> buf<span style="color:#ff79c6">.</span><span style="color:#50fa7b">toString</span><span style="color:#ff79c6">();</span>
-    <span style="color:#ff79c6">}</span>
+    // Minion #7781 used base 8 and base 16, but this is base 64, which is
+    // like... eight times stronger, right? Riiigghtt? Well that's what my twin
+    // brother Minion #2415 says, anyway.
+    //
+    // -Minion #2414
+    public String base64Encode(byte[] input) {
+        return Base64.getEncoder().encodeToString(input);
+    }
 
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        String urlEncoded <span style="color:#ff79c6">=</span> urlEncode<span style="color:#ff79c6">(</span>password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getBytes</span><span style="color:#ff79c6">());</span>
-        String base64Encoded <span style="color:#ff79c6">=</span> base64Encode<span style="color:#ff79c6">(</span>urlEncoded<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getBytes</span><span style="color:#ff79c6">());</span>
-        String expected <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVm&#34;</span>
-                        <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;JTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2&#34;</span>
-                        <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;JTM0JTVmJTY0JTYxJTM4JTM4JTMyJTY0JTMwJTMx&#34;</span><span style="color:#ff79c6">;</span>
-        <span style="color:#ff79c6">return</span> base64Encoded<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equals</span><span style="color:#ff79c6">(</span>expected<span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p>Kombinasi URL-encode dengan Base64-encode</p>
+    // URL encoding is meant for web pages, so any double agent spies who steal
+    // our source code will think this is a web site or something, defintely not
+    // vault door! Oh wait, should I have not said that in a source code
+    // comment?
+    //
+    // -Minion #2415
+    public String urlEncode(byte[] input) {
+        StringBuffer buf = new StringBuffer();
+        for (int i=0; i&lt;input.length; i++) {
+            buf.append(String.format(&quot;%%%2x&quot;, input[i]));
+        }
+        return buf.toString();
+    }
+
+    public boolean checkPassword(String password) {
+        String urlEncoded = urlEncode(password.getBytes());
+        String base64Encoded = base64Encode(urlEncoded.getBytes());
+        String expected = &quot;JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVm&quot;
+                        + &quot;JTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2&quot;
+                        + &quot;JTM0JTVmJTY0JTYxJTM4JTM4JTMyJTY0JTMwJTMx&quot;;
+        return base64Encoded.equals(expected);
+    }
+}
+</code></pre>
+
+<p>Kombinasi URL-encode dengan Base64-encode</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">import</span> urllib
 
-<span style="color:#6272a4">#Step1</span>
-b64d<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVmJTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2JTM0JTVmJTY0JTYxJTM4JTM4JTMyJTY0JTMwJTMx&#34;</span><span style="color:#ff79c6">.</span>decode(<span style="color:#f1fa8c">&#39;base64&#39;</span>)
-<span style="color:#6272a4">#Step2</span>
-urld<span style="color:#ff79c6">=</span>urllib<span style="color:#ff79c6">.</span>unquote(b64d)
+<pre><code class="language-python">import urllib
 
-<span style="color:#8be9fd;font-style:italic">print</span>(urld)
-</code></pre></div><p>FLAG: <strong>picoCTF{c0nv3rt1ng_fr0m_ba5e_64_da882d01}</strong></p>
+#Step1
+b64d=&quot;JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVmJTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2JTM0JTVmJTY0JTYxJTM4JTM4JTMyJTY0JTMwJTMx&quot;.decode('base64')
+#Step2
+urld=urllib.unquote(b64d)
+
+print(urld)
+</code></pre>
+
+<p>FLAG: <strong>picoCTF{c0nv3rt1ng_fr0m_ba5e_64_da882d01}</strong></p>
+
 <h2 id="vaultdoor-6">VaultDoor 6</h2>
+
 <p><strong>VaultDoor6.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.*<span style="color:#ff79c6">;</span>
 
-<span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">VaultDoor6</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">{</span>
-        VaultDoor6 vaultDoor <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> VaultDoor6<span style="color:#ff79c6">();</span>
-        Scanner scanner <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Enter vault password: &#34;</span><span style="color:#ff79c6">);</span>
-        String userInput <span style="color:#ff79c6">=</span> scanner<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
-	String input <span style="color:#ff79c6">=</span> userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">substring</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;picoCTF{&#34;</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">(),</span>userInput<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()-</span>1<span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>vaultDoor<span style="color:#ff79c6">.</span><span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>input<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access granted.&#34;</span><span style="color:#ff79c6">);</span>
-	<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
-	    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Access denied!&#34;</span><span style="color:#ff79c6">);</span>
-        <span style="color:#ff79c6">}</span>
-    <span style="color:#ff79c6">}</span>
+<pre><code class="language-java">import java.util.*;
 
-    <span style="color:#6272a4">// Dr. Evil gave me a book called Applied Cryptography by Bruce Schneier,
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// and I learned this really cool encryption system. This will be the
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// strongest vault door in Dr. Evil&#39;s entire evil volcano compound for sure!
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// Well, I didn&#39;t exactly read the *whole* book, but I&#39;m sure there&#39;s
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// nothing important in the last 750 pages.
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// -Minion #3091
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">checkPassword</span><span style="color:#ff79c6">(</span>String password<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">!=</span> 32<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span><span style="color:#ff79c6">;</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> passBytes <span style="color:#ff79c6">=</span> password<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getBytes</span><span style="color:#ff79c6">();</span>
-        <span style="color:#8be9fd">byte</span><span style="color:#ff79c6">[]</span> myBytes <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span>
-            0x3b<span style="color:#ff79c6">,</span> 0x65<span style="color:#ff79c6">,</span> 0x21<span style="color:#ff79c6">,</span> 0xa <span style="color:#ff79c6">,</span> 0x38<span style="color:#ff79c6">,</span> 0x0 <span style="color:#ff79c6">,</span> 0x36<span style="color:#ff79c6">,</span> 0x1d<span style="color:#ff79c6">,</span>
-            0xa <span style="color:#ff79c6">,</span> 0x3d<span style="color:#ff79c6">,</span> 0x61<span style="color:#ff79c6">,</span> 0x27<span style="color:#ff79c6">,</span> 0x11<span style="color:#ff79c6">,</span> 0x66<span style="color:#ff79c6">,</span> 0x27<span style="color:#ff79c6">,</span> 0xa <span style="color:#ff79c6">,</span>
-            0x21<span style="color:#ff79c6">,</span> 0x1d<span style="color:#ff79c6">,</span> 0x61<span style="color:#ff79c6">,</span> 0x3b<span style="color:#ff79c6">,</span> 0xa <span style="color:#ff79c6">,</span> 0x2d<span style="color:#ff79c6">,</span> 0x65<span style="color:#ff79c6">,</span> 0x27<span style="color:#ff79c6">,</span>
-            0xa <span style="color:#ff79c6">,</span> 0x63<span style="color:#ff79c6">,</span> 0x65<span style="color:#ff79c6">,</span> 0x64<span style="color:#ff79c6">,</span> 0x67<span style="color:#ff79c6">,</span> 0x37<span style="color:#ff79c6">,</span> 0x6d<span style="color:#ff79c6">,</span> 0x62<span style="color:#ff79c6">,</span>
-        <span style="color:#ff79c6">};</span>
-        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">=</span>0<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">&lt;</span>32<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
-            <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(((</span>passBytes<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">^</span> 0x55<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">-</span> myBytes<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">])</span> <span style="color:#ff79c6">!=</span> 0<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-                <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span><span style="color:#ff79c6">;</span>
-            <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span><span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><p><em>XOR</em> kembali dengan 0x55 untuk dapatkan <em>flag</em>-nya</p>
+class VaultDoor6 {
+    public static void main(String args[]) {
+        VaultDoor6 vaultDoor = new VaultDoor6();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(&quot;Enter vault password: &quot;);
+        String userInput = scanner.next();
+	String input = userInput.substring(&quot;picoCTF{&quot;.length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println(&quot;Access granted.&quot;);
+	} else {
+	    System.out.println(&quot;Access denied!&quot;);
+        }
+    }
+
+    // Dr. Evil gave me a book called Applied Cryptography by Bruce Schneier,
+    // and I learned this really cool encryption system. This will be the
+    // strongest vault door in Dr. Evil's entire evil volcano compound for sure!
+    // Well, I didn't exactly read the *whole* book, but I'm sure there's
+    // nothing important in the last 750 pages.
+    //
+    // -Minion #3091
+    public boolean checkPassword(String password) {
+        if (password.length() != 32) {
+            return false;
+        }
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,
+            0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,
+            0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,
+            0xa , 0x63, 0x65, 0x64, 0x67, 0x37, 0x6d, 0x62,
+        };
+        for (int i=0; i&lt;32; i++) {
+            if (((passBytes[i] ^ 0x55) - myBytes[i]) != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+</code></pre>
+
+<p><em>XOR</em> kembali dengan 0x55 untuk dapatkan <em>flag</em>-nya</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> pwn <span style="color:#ff79c6">import</span> xor
 
-pwd<span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">0x3b</span>, <span style="color:#bd93f9">0x65</span>, <span style="color:#bd93f9">0x21</span>, <span style="color:#bd93f9">0xa</span> , <span style="color:#bd93f9">0x38</span>, <span style="color:#bd93f9">0x0</span> , <span style="color:#bd93f9">0x36</span>, <span style="color:#bd93f9">0x1d</span>, <span style="color:#bd93f9">0xa</span> , <span style="color:#bd93f9">0x3d</span>, <span style="color:#bd93f9">0x61</span>, <span style="color:#bd93f9">0x27</span>, <span style="color:#bd93f9">0x11</span>, <span style="color:#bd93f9">0x66</span>, <span style="color:#bd93f9">0x27</span>, <span style="color:#bd93f9">0xa</span> ,<span style="color:#bd93f9">0x21</span>, <span style="color:#bd93f9">0x1d</span>, <span style="color:#bd93f9">0x61</span>, <span style="color:#bd93f9">0x3b</span>, <span style="color:#bd93f9">0xa</span> , <span style="color:#bd93f9">0x2d</span>, <span style="color:#bd93f9">0x65</span>, <span style="color:#bd93f9">0x27</span>,<span style="color:#bd93f9">0xa</span> , <span style="color:#bd93f9">0x63</span>, <span style="color:#bd93f9">0x65</span>, <span style="color:#bd93f9">0x64</span>, <span style="color:#bd93f9">0x67</span>, <span style="color:#bd93f9">0x37</span>, <span style="color:#bd93f9">0x6d</span>, <span style="color:#bd93f9">0x62</span>)
-xor_val<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0x55</span>
-tmp<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</span>
-<span style="color:#8be9fd;font-style:italic">print</span>(xor(xor_val,pwd))
-</code></pre></div><p>FLAG: <strong>picoCTF{n0t_mUcH_h4rD3r_tH4n_x0r_6012b87}</strong></p>
+<pre><code class="language-python">from pwn import xor
+
+pwd= (0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d, 0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,0xa , 0x63, 0x65, 0x64, 0x67, 0x37, 0x6d, 0x62)
+xor_val=0x55
+tmp=''
+print(xor(xor_val,pwd))
+</code></pre>
+
+<p>FLAG: <strong>picoCTF{n0t_mUcH_h4rD3r_tH4n_x0r_6012b87}</strong></p>
+
 <h2 id="vaultdoor-7">VaultDoor 7</h2>
+
 <blockquote>
 <p>TODO</p>
 </blockquote>
@@ -604,13 +662,13 @@ tmp<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</s
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/11/01/writeup-pico2019-whitepages/" data-toggle="tooltip" data-placement="top" title="Writeup WhitePages">&larr;
+                        <a href="/2019/11/02/writeup-pico2019-corrupt/" data-toggle="tooltip" data-placement="top" title="Writeup c0rrupt">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/11/02/writeup-pico2019-corrupt/" data-toggle="tooltip" data-placement="top" title="Writeup c0rrupt">Next
+                        <a href="/2022/02/09/hello-from-a-paragonian/" data-toggle="tooltip" data-placement="top" title="Hello From A Paragonian">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -696,6 +754,8 @@ tmp<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</s
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -911,7 +971,7 @@ tmp<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</s
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

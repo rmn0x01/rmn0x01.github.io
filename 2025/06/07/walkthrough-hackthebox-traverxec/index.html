@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -239,89 +243,73 @@
                 post-container">
 
                 
-                <p>Melanjutkan posting writeup hackthebox pada masa dahulu kala, karena draft-nya menganggur di Google Drive</p>
+                
+
+<p>Melanjutkan posting writeup hackthebox pada masa dahulu kala, karena draft-nya menganggur di Google Drive</p>
+
 <h2 id="intro">Intro</h2>
-<p>
-  <img src="/img/hackthebox-traverxec/pic1.png" alt="Traverxec">
 
-</p>
+<p><img src="/img/hackthebox-traverxec/pic1.png" alt="Traverxec" /></p>
+
 <h2 id="recon">Recon</h2>
+
 <p>Scan port pakai <a href="https://nmap.org/">NMAP</a>
+<img src="/img/hackthebox-traverxec/pic2.png" alt="Recon" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic2.png" alt="Recon">
-
-</p>
 <p>Open port 22 (SSH) dan port 80 (HTTP). Pada port 80 yang dibuka di browser, muncul Website
+<img src="/img/hackthebox-traverxec/pic3.png" alt="Website" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic3.png" alt="Website">
-
-</p>
 <p>Enumerasi direktori pakai <a href="https://www.kali.org/tools/dirb/">Dirb</a>
+<img src="/img/hackthebox-traverxec/pic4.png" alt="Dirb" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic4.png" alt="Dirb">
-
-</p>
 <p>Googling Nostromo versi 1.9.6, ditemukan <a href="https://www.exploit-db.com/exploits/47837">exploit RCE</a></p>
+
 <h2 id="remote-code-execution">Remote Code Execution</h2>
-<p>
-  <img src="/img/hackthebox-traverxec/pic5.png" alt="Script">
 
-</p>
+<p><img src="/img/hackthebox-traverxec/pic5.png" alt="Script" /></p>
+
 <p>Lakukan modifikasi <em>script</em> agar selalu while(True), lanjutkan <em>recon</em>, ditemukan <em>file</em> menarik di
+<img src="/img/hackthebox-traverxec/pic6.png" alt="File" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic6.png" alt="File">
-
-</p>
 <p>Terdapat <em>backup file</em> SSH di direktori /home/david/public_www/protected-file-area/, <em>retrieve</em> dan <em>convert</em> ke <em>original file</em>
+<img src="/img/hackthebox-traverxec/pic7.png" alt="Backup" />
+<img src="/img/hackthebox-traverxec/pic8.png" alt="Tgz" />
+<img src="/img/hackthebox-traverxec/pic9.png" alt="Tgz2" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic7.png" alt="Backup">
-
-
-
-  <img src="/img/hackthebox-traverxec/pic8.png" alt="Tgz">
-
-
-
-  <img src="/img/hackthebox-traverxec/pic9.png" alt="Tgz2">
-
-</p>
 <h2 id="bruteforce-ssh-password">Bruteforce SSH Password</h2>
+
 <p>id_rsa digunakan untuk koneksi ssh, namun dibutuhkan <em>password</em> yang dapat di-<em>brute force</em> menggunakan <a href="https://bytesoverbombs.io/cracking-everything-with-john-the-ripper-d434f0f6dc1c">John The Ripper</a> dan <a href="https://fossies.org/linux/john/run/ssh2john.py">ssh2john</a>
-
-  <img src="/img/hackthebox-traverxec/pic10.png" alt="ssh2john">
-
-
-
-  <img src="/img/hackthebox-traverxec/pic11.png" alt="Password">
-
-
+<img src="/img/hackthebox-traverxec/pic10.png" alt="ssh2john" />
+<img src="/img/hackthebox-traverxec/pic11.png" alt="Password" />
 Ditemukan password: <strong>Hunter</strong>, lanjutkan koneksi SSH
+<img src="/img/hackthebox-traverxec/pic12.png" alt="SSH" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic12.png" alt="SSH">
-
-</p>
 <p><strong>FLAG USER: 7db0b48469606a42cec20750d9782f3d</strong></p>
+
 <h2 id="recon-for-root">Recon for Root</h2>
+
 <p>Masuk ke direktori /home/david/bin dan cek file server-stats.sh
+<img src="/img/hackthebox-traverxec/pic13.png" alt="Dir" />
+<img src="/img/hackthebox-traverxec/pic14.png" alt="File" /></p>
 
-  <img src="/img/hackthebox-traverxec/pic13.png" alt="Dir">
-
-
-
-  <img src="/img/hackthebox-traverxec/pic14.png" alt="File">
-
-</p>
 <p>Diketahui bahwa user dapat menjalankan <em>command</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo journalctl -n5 -unostromo.service
-</code></pre></div><p>Pada manual <em>journalctl</em>, apabila teks output terlalu panjang, akan di-<em>truncate</em> dan navigasi melalui tombol panah (<em>pager</em>)</p>
-<pre tabindex="0"><code>The output is paged through less by default, and long lines are &quot;truncated&quot; to screen width. The hidden part can be viewed by using the 	left-arrow and right-arrow keys. Paging can be disabled; see the --no-pager option and the &quot;Environment&quot; section below.
-</code></pre><p>Hal ini dapat digunakan untuk memunculkan shell jika output text terlalu panjang sehingga navigasi muncul.</p>
+
+<pre><code class="language-shell">sudo journalctl -n5 -unostromo.service
+</code></pre>
+
+<p>Pada manual <em>journalctl</em>, apabila teks output terlalu panjang, akan di-<em>truncate</em> dan navigasi melalui tombol panah (<em>pager</em>)</p>
+
+<pre><code>The output is paged through less by default, and long lines are &quot;truncated&quot; to screen width. The hidden part can be viewed by using the 	left-arrow and right-arrow keys. Paging can be disabled; see the --no-pager option and the &quot;Environment&quot; section below.
+</code></pre>
+
+<p>Hal ini dapat digunakan untuk memunculkan shell jika output text terlalu panjang sehingga navigasi muncul.</p>
+
 <p>Kecilkan ukuran terminal agar layar tidak muat, shell excape</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">!/bin/sh
-</code></pre></div><p>
-  <img src="/img/hackthebox-traverxec/pic15.png" alt="Shell">
 
+<pre><code class="language-shell">!/bin/sh
+</code></pre>
 
+<p><img src="/img/hackthebox-traverxec/pic15.png" alt="Shell" />
 <strong>FLAG ROOT : 9aa36a6d76f785dfd320a478f6e0d906</strong></p>
 
 
@@ -423,6 +411,8 @@ Ditemukan password: <strong>Hunter</strong>, lanjutkan koneksi SSH
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -638,7 +628,7 @@ Ditemukan password: <strong>Hunter</strong>, lanjutkan koneksi SSH
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

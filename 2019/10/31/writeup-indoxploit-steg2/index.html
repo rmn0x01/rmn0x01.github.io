@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -223,95 +227,122 @@
                 post-container">
 
                 
-                <p>Stegano 2 Indoxploit</p>
+                
+
+<p>Stegano 2 Indoxploit</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file who-is-this.zip 
-who-is-this.zip: Zip archive data, at least v?<span style="color:#ff79c6">[</span>0x314<span style="color:#ff79c6">]</span> to extract
+
+<pre><code class="language-zsh">$ file who-is-this.zip 
+who-is-this.zip: Zip archive data, at least v?[0x314] to extract
 $ unzip who-is-this.zip 
 Archive:  who-is-this.zip
    creating: who-is-this/
   inflating: who-is-this/lol.jpg     
   inflating: who-is-this/readme-first  
-</code></pre></div><p>
-  <img src="/img/indoxploit-steg2/pic1.jpg" alt="who-is-this/lol.jpg">
+</code></pre>
 
-</p>
+<p><img src="/img/indoxploit-steg2/pic1.jpg" alt="who-is-this/lol.jpg" /></p>
+
 <h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Steghide</li>
 <li>Susun <em>script solver</em>-nya</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>Baca pesan di <em>readme-first</em> terlebih dahulu</p>
-<pre tabindex="0"><code># can u read this bruh ??
+
+<pre><code># can u read this bruh ??
 
 aGVsbC1vIG04LCBpIGFtICJoaWRpbmciIGluc2lkZSB0aGUgcGljdHogLi4= 
 aWYgdSB3YW50IHRvIGxvb2sgYXQgbWUsIHBseiB1c2UgYSB0ZXh0IGluc2lkZSBhICJyZWQgbGluZSIgYXMgYSBrZXkgLi4=
 R0xIRiAhISBpdCBjb3VsZCBiZSBFWiA0IFUgLi4=
-</code></pre><p><code>Decode</code> Base-64, menjadi</p>
-<pre tabindex="0"><code>hell-o m8, i am &quot;hiding&quot; inside the pictz ..
+</code></pre>
+
+<p><code>Decode</code> Base-64, menjadi</p>
+
+<pre><code>hell-o m8, i am &quot;hiding&quot; inside the pictz ..
 if u want to look at me, plz use a text inside a &quot;red line&quot; as a key ..
 GLHF !! it could be EZ 4 U ..
-</code></pre><p>Ada sesuatu yang disembunyikan di gambar <em>lol.jpg</em> dan <em>hint</em>-nya adalah teks di <em>red line</em>, yaitu kata <strong>BANE</strong>. <em>Extract</em> menggunakan <code>steghide</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ steghide extract -sf lol.jpg -p <span style="color:#f1fa8c">&#34;BANE&#34;</span>
-wrote extracted data to <span style="color:#f1fa8c">&#34;g3t_th1s.py&#34;</span>.
-</code></pre></div><p>File <em>g3t_th1s.py</em> berhasil didapatkan, dan berisi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6272a4">#! /usr/bin/python</span>
+</code></pre>
 
-<span style="color:#6272a4"># Flag = Password</span>
+<p>Ada sesuatu yang disembunyikan di gambar <em>lol.jpg</em> dan <em>hint</em>-nya adalah teks di <em>red line</em>, yaitu kata <strong>BANE</strong>. <em>Extract</em> menggunakan <code>steghide</code></p>
+
+<pre><code class="language-zsh">$ steghide extract -sf lol.jpg -p &quot;BANE&quot;
+wrote extracted data to &quot;g3t_th1s.py&quot;.
+</code></pre>
+
+<p>File _g3t<em>th1s.py</em> berhasil didapatkan, dan berisi</p>
+
+<pre><code class="language-python">#! /usr/bin/python
+
+# Flag = Password
 
 
-<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;__main__&#39;</span>:
- 	p4ssw0rd <span style="color:#ff79c6">=</span> raw_input(<span style="color:#f1fa8c">&#39;passwd --&gt; &#39;</span>)
- 	<span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(p4ssw0rd) <span style="color:#ff79c6">!=</span>  <span style="color:#bd93f9">27</span>:
- 		<span style="color:#8be9fd;font-style:italic">print</span> <span style="color:#f1fa8c">&#39;nope&#39;</span>
- 	<span style="color:#ff79c6">else</span>:
-	 	<span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">25</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">110</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">8</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">110</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">2</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">116</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">3</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">95</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">9</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">49</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">6</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">101</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">7</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">95</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">1</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">51</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">4</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">116</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">10</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">103</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">18</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">110</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">17</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">95</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">12</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">116</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">0</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">108</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">16</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">51</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">22</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">114</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">26</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">100</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">24</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">101</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">23</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">95</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">20</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">118</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">15</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">114</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">19</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">51</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">5</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">104</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">11</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">104</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">14</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">52</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">21</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">51</span> <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">ord</span>(p4ssw0rd[<span style="color:#bd93f9">13</span>]) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">109</span> :
-	 		<span style="color:#8be9fd;font-style:italic">print</span> <span style="color:#f1fa8c">&#39;nope&#39;</span>
-	 	<span style="color:#ff79c6">else</span>:
-	 		<span style="color:#8be9fd;font-style:italic">print</span> <span style="color:#f1fa8c">&#39;GGWP m8 ..&#39;</span>
-</code></pre></div><p>Susun ulang <em>string</em> p4ssw0rd dan dapatkan <em>flag</em>-nya. Operasi pengecekan (!=) diubah menjadi operasi assignment (=) untuk mendapatkan <em>flag</em>-nya</p>
+if __name__ == '__main__':
+ 	p4ssw0rd = raw_input('passwd --&gt; ')
+ 	if len(p4ssw0rd) !=  27:
+ 		print 'nope'
+ 	else:
+	 	if ord(p4ssw0rd[25]) != 110 or ord(p4ssw0rd[8]) != 110 or ord(p4ssw0rd[2]) != 116 or ord(p4ssw0rd[3]) != 95 or ord(p4ssw0rd[9]) != 49 or ord(p4ssw0rd[6]) != 101 or ord(p4ssw0rd[7]) != 95 or ord(p4ssw0rd[1]) != 51 or ord(p4ssw0rd[4]) != 116 or ord(p4ssw0rd[10]) != 103 or ord(p4ssw0rd[18]) != 110 or ord(p4ssw0rd[17]) != 95 or ord(p4ssw0rd[12]) != 116 or ord(p4ssw0rd[0]) != 108 or ord(p4ssw0rd[16]) != 51 or ord(p4ssw0rd[22]) != 114 or ord(p4ssw0rd[26]) != 100 or ord(p4ssw0rd[24]) != 101 or ord(p4ssw0rd[23]) != 95 or ord(p4ssw0rd[20]) != 118 or ord(p4ssw0rd[15]) != 114 or ord(p4ssw0rd[19]) != 51 or ord(p4ssw0rd[5]) != 104 or ord(p4ssw0rd[11]) != 104 or ord(p4ssw0rd[14]) != 52 or ord(p4ssw0rd[21]) != 51 or ord(p4ssw0rd[13]) != 109 :
+	 		print 'nope'
+	 	else:
+	 		print 'GGWP m8 ..'
+</code></pre>
+
+<p>Susun ulang <em>string</em> p4ssw0rd dan dapatkan <em>flag</em>-nya. Operasi pengecekan (!=) diubah menjadi operasi assignment (=) untuk mendapatkan <em>flag</em>-nya</p>
+
 <p><strong>solver.py</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">p4ssw0rd<span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">0</span> <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">27</span>)]
 
-p4ssw0rd[<span style="color:#bd93f9">25</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">110</span>
-p4ssw0rd[<span style="color:#bd93f9">8</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">110</span>
-p4ssw0rd[<span style="color:#bd93f9">2</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">116</span>
-p4ssw0rd[<span style="color:#bd93f9">3</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">95</span>
-p4ssw0rd[<span style="color:#bd93f9">9</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">49</span>
-p4ssw0rd[<span style="color:#bd93f9">6</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">101</span>
-p4ssw0rd[<span style="color:#bd93f9">7</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">95</span>
-p4ssw0rd[<span style="color:#bd93f9">1</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">51</span>
-p4ssw0rd[<span style="color:#bd93f9">4</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">116</span>
-p4ssw0rd[<span style="color:#bd93f9">10</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">103</span>
-p4ssw0rd[<span style="color:#bd93f9">18</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">110</span>
-p4ssw0rd[<span style="color:#bd93f9">17</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">95</span>
-p4ssw0rd[<span style="color:#bd93f9">12</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">116</span>
-p4ssw0rd[<span style="color:#bd93f9">0</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">108</span>
-p4ssw0rd[<span style="color:#bd93f9">16</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">51</span>
-p4ssw0rd[<span style="color:#bd93f9">22</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">114</span>
-p4ssw0rd[<span style="color:#bd93f9">26</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">100</span>
-p4ssw0rd[<span style="color:#bd93f9">24</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">101</span>
-p4ssw0rd[<span style="color:#bd93f9">23</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">95</span>
-p4ssw0rd[<span style="color:#bd93f9">20</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">118</span>
-p4ssw0rd[<span style="color:#bd93f9">15</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">114</span>
-p4ssw0rd[<span style="color:#bd93f9">19</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">51</span>
-p4ssw0rd[<span style="color:#bd93f9">5</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">104</span>
-p4ssw0rd[<span style="color:#bd93f9">11</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">104</span>
-p4ssw0rd[<span style="color:#bd93f9">14</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">52</span>
-p4ssw0rd[<span style="color:#bd93f9">21</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">51</span>
-p4ssw0rd[<span style="color:#bd93f9">13</span>]<span style="color:#ff79c6">=</span><span style="color:#bd93f9">109</span>
+<pre><code class="language-python">p4ssw0rd= [0 for i in range(27)]
 
-flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> p4ssw0rd:
-    flag<span style="color:#ff79c6">+=</span><span style="color:#8be9fd;font-style:italic">chr</span>(i)
+p4ssw0rd[25]=110
+p4ssw0rd[8]=110
+p4ssw0rd[2]=116
+p4ssw0rd[3]=95
+p4ssw0rd[9]=49
+p4ssw0rd[6]=101
+p4ssw0rd[7]=95
+p4ssw0rd[1]=51
+p4ssw0rd[4]=116
+p4ssw0rd[10]=103
+p4ssw0rd[18]=110
+p4ssw0rd[17]=95
+p4ssw0rd[12]=116
+p4ssw0rd[0]=108
+p4ssw0rd[16]=51
+p4ssw0rd[22]=114
+p4ssw0rd[26]=100
+p4ssw0rd[24]=101
+p4ssw0rd[23]=95
+p4ssw0rd[20]=118
+p4ssw0rd[15]=114
+p4ssw0rd[19]=51
+p4ssw0rd[5]=104
+p4ssw0rd[11]=104
+p4ssw0rd[14]=52
+p4ssw0rd[21]=51
+p4ssw0rd[13]=109
 
-<span style="color:#8be9fd;font-style:italic">print</span> flag
-</code></pre></div><h2 id="flag">Flag</h2>
+flag=''
+for i in p4ssw0rd:
+    flag+=chr(i)
+
+print flag
+</code></pre>
+
+<h2 id="flag">Flag</h2>
+
 <p><strong>l3t_the_n1ghtm4r3_n3v3r_end</strong></p>
+
 <h2 id="rant">Rant</h2>
+
 <p>Sebenernya lupa ini soal dari mana, tapi tersimpan di folder bernama Indoxploit maka jadilah ini Soal Indoxploit Stegano 2</p>
 
 
@@ -321,7 +352,7 @@ flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/10/30/writeup-gemastik12-final-dig/" data-toggle="tooltip" data-placement="top" title="Writeup Digging Deeper">&larr;
+                        <a href="/2019/10/31/writeup-slashroot4-quals-b64/" data-toggle="tooltip" data-placement="top" title="Writeup bASe64 encRyption">&larr;
                             Previous Post</a>
                     </li>
                     
@@ -413,6 +444,8 @@ flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -628,7 +661,7 @@ flag<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;&#39;</
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

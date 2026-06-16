@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -215,155 +219,168 @@
                 post-container">
 
                 
-                <p>We found this file. Recover the flag</p>
+                
+
+<p>We found this file. Recover the flag</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file mystery 
+
+<pre><code class="language-zsh">$ file mystery 
 mystery: data
-</code></pre></div><h2 id="tldr">TLDR</h2>
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Perbaiki file-header</li>
 <li>Perbaiki chunks</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
-<p><em>Hint</em> yang diberikan adalah</p>
-<blockquote>
-<p>Try fixing the file header</p>
-</blockquote>
+
+<p><em>Hint</em> yang diberikan adalah
+&gt; Try fixing the file header</p>
+
 <p>Sehingga langkah pertama yang dilakukan adalah menganalisis <em>hex</em>-<em>value</em>-nya menggunakan <em>hex editor</em> atau <em>hex viewer</em>, disini saya menggunakan <code>Bless</code>
+<img src="/img/pico2019-corrupt/pic1.png" alt="Bless" /></p>
 
-  <img src="/img/pico2019-corrupt/pic1.png" alt="Bless">
-
-</p>
 <p>Delapan <em>bytes</em> pertama terlihat seperti membentuk <em>file header PNG</em> namun tidak sempurna, sehingga diubah ke <em>file header PNG</em> yang benar</p>
-<p>Dari</p>
-<blockquote>
-<p>89 65 4E 34 0D 0A B0 AA</p>
-</blockquote>
-<p>Ke</p>
-<blockquote>
-<p>89 50 4E 47 0D 0A 1A 0A</p>
-</blockquote>
+
+<p>Dari
+&gt; 89 65 4E 34 0D 0A B0 AA</p>
+
+<p>Ke
+&gt; 89 50 4E 47 0D 0A 1A 0A</p>
+
 <p>Pengecekan dengan command <code>file</code> masih belum berubah, namun dengan <code>pngcheck</code> terdapat informasi lain</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
-File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
-  invalid chunk name <span style="color:#f1fa8c">&#34;C&#34;</span>DR<span style="color:#f1fa8c">&#34; (43 22 44 52)
-</span><span style="color:#f1fa8c">ERRORS DETECTED in mystery
-</span></code></pre></div><p>Berdasarkan referensi [1], diketahui bahwa:</p>
-<blockquote>
-<p>The PNG datastream consists of a PNG signature (see 5.2: PNG signature) followed by a sequence of chunks. Each chunk has a chunk type which specifies its function. This clause defines the PNG chunk types standardized in this International Standard</p>
-</blockquote>
-<p>Dengan <em>Critical Chunks</em> dari PNG adalah:</p>
-<ol>
-<li>IHDR: image header, which is the first chunk in a PNG datastream.</li>
-<li>PLTE: palette table associated with indexed PNG images.</li>
-<li>IDAT: image data chunks.</li>
-<li>IEND: image trailer, which is the last chunk in a PNG datastream.</li>
-</ol>
+
+<pre><code class="language-zsh">$ pngcheck -v mystery 
+File: mystery (202940 bytes)
+  invalid chunk name &quot;C&quot;DR&quot; (43 22 44 52)
+ERRORS DETECTED in mystery
+</code></pre>
+
+<p>Berdasarkan referensi [1], diketahui bahwa:
+&gt; The PNG datastream consists of a PNG signature (see 5.2: PNG signature) followed by a sequence of chunks. Each chunk has a chunk type which specifies its function. This clause defines the PNG chunk types standardized in this International Standard</p>
+
+<p>Dengan <em>Critical Chunks</em> dari PNG adalah:
+1. IHDR: image header, which is the first chunk in a PNG datastream.
+2. PLTE: palette table associated with indexed PNG images.
+3. IDAT: image data chunks.
+4. IEND: image trailer, which is the last chunk in a PNG datastream.</p>
+
 <p>Berdasarkan informasi tersebut, diasumsikan <em>invalid chunk name <strong>C”DR</strong>”</em> seharusnya <em><strong>IHDR</strong></em>, ubah kembali menggunakan <code>Bless</code>
+<img src="/img/pico2019-corrupt/pic2.png" alt="Bless 2" /></p>
 
-  <img src="/img/pico2019-corrupt/pic2.png" alt="Bless 2">
-
-</p>
 <p>Kini file <em>mystery</em> telah terbaca, meskipun belum dapat dilihat gambarnya karena masih terdapat error lain</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file mystery 
-mystery: PNG image data, <span style="color:#bd93f9">1642</span> x 1095, 8-bit/color RGB, non-interlaced
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
-File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
-  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
-    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
-    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
+
+<pre><code class="language-zsh">$ file mystery 
+mystery: PNG image data, 1642 x 1095, 8-bit/color RGB, non-interlaced
+</code></pre>
+
+<pre><code class="language-zsh">$ pngcheck -v mystery 
+File: mystery (202940 bytes)
+  chunk IHDR at offset 0x0000c, length 13
+    1642 x 1095 image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length 1
+    rendering intent = perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
   chunk pHYs at offset 0x00042, length 9: 2852132389x5669 pixels/meter
-  CRC error in chunk pHYs <span style="color:#ff79c6">(</span>computed 38d82c82, expected 495224f0<span style="color:#ff79c6">)</span>
+  CRC error in chunk pHYs (computed 38d82c82, expected 495224f0)
 ERRORS DETECTED in mystery
-</code></pre></div><p>Masih berdasarkan referensi [1], diketahui bahwa <em>layout</em> sebuah <em>chunk</em> adalah:</p>
-<ul>
-<li>4-bytes Length</li>
-<li>4-bytes Chunk Type</li>
-<li>x-bytes Chunk Data (x tergantung Length yang didefinisikan sebelumnya)</li>
-<li>4-bytes Cyclic Redundancy Cycle (CRC)</li>
-</ul>
+</code></pre>
+
+<p>Masih berdasarkan referensi [1], diketahui bahwa <em>layout</em> sebuah <em>chunk</em> adalah:
+- 4-bytes Length
+- 4-bytes Chunk Type
+- x-bytes Chunk Data (x tergantung Length yang didefinisikan sebelumnya)
+- 4-bytes Cyclic Redundancy Cycle (CRC)</p>
+
 <p>Berdasarkan error message terdapat kesalahan di CRC milik chunk <strong>pHYs</strong>, namun jika diteliti lebih lanjut terdapat angka yang terlalu besar di chunk pHYs tersebut, yaitu <strong>2852132389</strong>, sehingga inisiatif yang dilakukan adalah mengubah ukuran tersebut menjadi <strong>5669</strong> daripada memperbaiki <em>CRC</em>-nya.
-Cari layout <em>chunk data</em> milik <strong>pHYs</strong> (offset <strong>00000046</strong>), ubah dari</p>
-<blockquote>
-<p>AA 00 16 25</p>
-</blockquote>
+Cari layout <em>chunk data</em> milik <strong>pHYs</strong> (offset <strong>00000046</strong>), ubah dari
+&gt; AA 00 16 25</p>
+
 <p>karena 0xaa001625 = 2852132389
-menjadi</p>
-<blockquote>
-<p>00 00 16 25</p>
-</blockquote>
+menjadi
+&gt; 00 00 16 25</p>
+
 <p>0x00001625 = 5669</p>
+
 <p>Simpan, kemudian cek kembali <em>error message</em>-nya</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
-File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
-  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
-    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
-    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
+
+<pre><code class="language-zsh">$ pngcheck -v mystery 
+File: mystery (202940 bytes)
+  chunk IHDR at offset 0x0000c, length 13
+    1642 x 1095 image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length 1
+    rendering intent = perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
-  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter <span style="color:#ff79c6">(</span><span style="color:#bd93f9">144</span> dpi<span style="color:#ff79c6">)</span>
-:  invalid chunk length <span style="color:#ff79c6">(</span>too large<span style="color:#ff79c6">)</span>
+  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter (144 dpi)
+:  invalid chunk length (too large)
 ERRORS DETECTED in mystery
-</code></pre></div><p>Terdapat error message invalid chunk length namun tidak disebutkan chunk yang error, analisis bytes setelah chunk pHYs berakhir melalui Bless didapatkan:</p>
-<p>Bytes penanda chunk length</p>
-<blockquote>
-<p>AA AA FF A5</p>
-</blockquote>
-<p>dan Bytes penanda chunk type</p>
-<blockquote>
-<p>AB 44 45 54</p>
-</blockquote>
+</code></pre>
+
+<p>Terdapat error message invalid chunk length namun tidak disebutkan chunk yang error, analisis bytes setelah chunk pHYs berakhir melalui Bless didapatkan:</p>
+
+<p>Bytes penanda chunk length
+&gt; AA AA FF A5</p>
+
+<p>dan Bytes penanda chunk type
+&gt; AB 44 45 54</p>
+
 <p><em>Chunk Type</em> 0xab444554 = <strong>\xabDET</strong> tidak dikenali sebagai chunk type dari PNG, dan diasumsikan paling mendekati adalah Chunk <strong>IDAT</strong>, sehingga diubah menjadi 0x49444154</p>
+
 <p>Untuk chunk length 0xaaaaffa5 = 2863333285 diasumsikan terlalu besar, sehingga perlu diubah.
 Berdasarkan referensi [1], tertera bahwa:</p>
+
 <blockquote>
 <p>There can be multiple IDAT chunks; if so, they must appear consecutively with no other intervening chunks.</p>
 </blockquote>
+
 <p>Sehingga, untuk memperbaiki chunk length perlu dicari chunk <strong>IDAT</strong> lainnya, kemudian dihitung selisihnya. Apabila tidak ada chunk <strong>IDAT</strong> lain, selisih yang dicari adalah dengan chunk IEND. Analisis dari Bless, terdapat total 4 chunk <strong>IDAT</strong> dimana <strong>IDAT</strong> pertama (yang sedang diperbaiki) berada pada offset 0x00057, sedangkan <strong>IDAT</strong> kedua berada pada offset 0x10008.
-Selisih keduanya adalah</p>
-<blockquote>
-<p>0x10008 - 0x00057 = 0xFFB1</p>
-</blockquote>
-<p>0xFFB1 masih harus dikurangi dengan bytes length dari <strong>IDAT</strong> 1 (4 bytes), CRC dari <strong>IDAT</strong> 1 (4 bytes) dan chunk type dari <strong>IDAT</strong> 2 (4 bytes), sehingga total 12 bytes</p>
-<blockquote>
-<p>0xFFB1 - 0xC = 0xFFA5</p>
-</blockquote>
-<p>0xFFA5 merupakan length dari <strong>IDAT</strong> pertama, sehingga edit kembali bytes penanda length <strong>IDAT</strong> pertama dari</p>
-<blockquote>
-<p>AA AA FF A5</p>
-</blockquote>
-<p>menjadi</p>
-<blockquote>
-<p>00 00 FF A5</p>
-</blockquote>
+Selisih keduanya adalah
+&gt; 0x10008 - 0x00057 = 0xFFB1</p>
+
+<p>0xFFB1 masih harus dikurangi dengan bytes length dari <strong>IDAT</strong> 1 (4 bytes), CRC dari <strong>IDAT</strong> 1 (4 bytes) dan chunk type dari <strong>IDAT</strong> 2 (4 bytes), sehingga total 12 bytes
+&gt; 0xFFB1 - 0xC = 0xFFA5</p>
+
+<p>0xFFA5 merupakan length dari <strong>IDAT</strong> pertama, sehingga edit kembali bytes penanda length <strong>IDAT</strong> pertama dari
+&gt; AA AA FF A5</p>
+
+<p>menjadi
+&gt; 00 00 FF A5</p>
+
 <p>Hasil dari <code>pngcheck</code> menandakan tidak ada <em>error</em> lagi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ pngcheck -v mystery 
-File: mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">202940</span> bytes<span style="color:#ff79c6">)</span>
-  chunk IHDR at offset 0x0000c, length <span style="color:#bd93f9">13</span>
-    <span style="color:#bd93f9">1642</span> x <span style="color:#bd93f9">1095</span> image, 24-bit RGB, non-interlaced
-  chunk sRGB at offset 0x00025, length <span style="color:#bd93f9">1</span>
-    rendering <span style="color:#8be9fd;font-style:italic">intent</span> <span style="color:#ff79c6">=</span> perceptual
+
+<pre><code class="language-zsh">$ pngcheck -v mystery 
+File: mystery (202940 bytes)
+  chunk IHDR at offset 0x0000c, length 13
+    1642 x 1095 image, 24-bit RGB, non-interlaced
+  chunk sRGB at offset 0x00025, length 1
+    rendering intent = perceptual
   chunk gAMA at offset 0x00032, length 4: 0.45455
-  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter <span style="color:#ff79c6">(</span><span style="color:#bd93f9">144</span> dpi<span style="color:#ff79c6">)</span>
-  chunk IDAT at offset 0x00057, length <span style="color:#bd93f9">65445</span>
+  chunk pHYs at offset 0x00042, length 9: 5669x5669 pixels/meter (144 dpi)
+  chunk IDAT at offset 0x00057, length 65445
     zlib: deflated, 32K window, fast compression
-  chunk IDAT at offset 0x10008, length <span style="color:#bd93f9">65524</span>
-  chunk IDAT at offset 0x20008, length <span style="color:#bd93f9">65524</span>
-  chunk IDAT at offset 0x30008, length <span style="color:#bd93f9">6304</span>
-  chunk IEND at offset 0x318b4, length <span style="color:#bd93f9">0</span>
-No errors detected in mystery <span style="color:#ff79c6">(</span><span style="color:#bd93f9">9</span> chunks, 96.3% compression<span style="color:#ff79c6">)</span>.
-</code></pre></div><p>Sehingga file <em>mystery</em> dapat dibuka
+  chunk IDAT at offset 0x10008, length 65524
+  chunk IDAT at offset 0x20008, length 65524
+  chunk IDAT at offset 0x30008, length 6304
+  chunk IEND at offset 0x318b4, length 0
+No errors detected in mystery (9 chunks, 96.3% compression).
+</code></pre>
 
-  <img src="/img/pico2019-corrupt/pic3.png" alt="mystery">
+<p>Sehingga file <em>mystery</em> dapat dibuka
+<img src="/img/pico2019-corrupt/pic3.png" alt="mystery" /></p>
 
-</p>
 <h2 id="flag">Flag</h2>
+
 <p><strong>picoCTF{c0rrupt10n_1847995}</strong></p>
+
 <h2 id="references">References</h2>
+
 <ol>
 <li><a href="https://www.w3.org/TR/PNG">https://www.w3.org/TR/PNG</a></li>
 </ol>
@@ -375,13 +392,13 @@ No errors detected in mystery <span style="color:#ff79c6">(</span><span style="c
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/11/02/writeup-pico2019-vaultdoor-series/" data-toggle="tooltip" data-placement="top" title="Writeup VaultDoor Series">&larr;
+                        <a href="/2020/01/12/walkthrough-hackthebox-bitlab/" data-toggle="tooltip" data-placement="top" title="[USER] Walkthrough Bitlab">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/01/12/walkthrough-hackthebox-bitlab/" data-toggle="tooltip" data-placement="top" title="[USER] Walkthrough Bitlab">Next
+                        <a href="/2019/11/02/writeup-pico2019-vaultdoor-series/" data-toggle="tooltip" data-placement="top" title="Writeup VaultDoor Series">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -467,6 +484,8 @@ No errors detected in mystery <span style="color:#ff79c6">(</span><span style="c
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -682,7 +701,7 @@ No errors detected in mystery <span style="color:#ff79c6">(</span><span style="c
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

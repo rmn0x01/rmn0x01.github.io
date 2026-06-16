@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -223,21 +227,32 @@
                 post-container">
 
                 
-                <p>Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200</p>
+                
+
+<p>Soal forensik pembuka final Gemastik XII di Telkom University. Poin 200</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file forensic.img 
+
+<pre><code class="language-zsh">$ file forensic.img 
 forensic.img: data
-</code></pre></div><h2 id="tldr">TLDR</h2>
+</code></pre>
+
+<h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>Perbaiki file</li>
 <li>Mount file</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>File <em>forensic.img</em> perlu diperbaiki terlebih dahulu agar dapat dilakukan <em>mounting</em> dengan menggunakan <code>fsck</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ fsck.ext2 forensic.img 
-e2fsck 1.44.5 <span style="color:#ff79c6">(</span>15-Dec-2018<span style="color:#ff79c6">)</span>
+
+<pre><code class="language-zsh">$ fsck.ext2 forensic.img 
+e2fsck 1.44.5 (15-Dec-2018)
 ext2fs_open2: Bad magic number in super-block
 fsck.ext2: Superblock invalid, trying backup blocks...
 forensic.img was not cleanly unmounted, check forced.
@@ -246,47 +261,57 @@ Pass 2: Checking directory structure
 Pass 3: Checking directory connectivity
 Pass 4: Checking reference counts
 Pass 5: Checking group summary information
-Free blocks count wrong <span style="color:#ff79c6">for</span> group <span style="color:#6272a4">#0 (7975, counted=7711).</span>
+Free blocks count wrong for group #0 (7975, counted=7711).
 Fix&lt;y&gt;? yes
-Free blocks count wrong <span style="color:#ff79c6">for</span> group <span style="color:#6272a4">#1 (1844, counted=940).</span>
+Free blocks count wrong for group #1 (1844, counted=940).
 Fix&lt;y&gt;? yes
-Free blocks count wrong <span style="color:#ff79c6">(</span>9819, <span style="color:#8be9fd;font-style:italic">counted</span><span style="color:#ff79c6">=</span>8651<span style="color:#ff79c6">)</span>.
+Free blocks count wrong (9819, counted=8651).
 Fix&lt;y&gt;? yes
-Free inodes count wrong <span style="color:#ff79c6">for</span> group <span style="color:#6272a4">#0 (1269, counted=1268).</span>
+Free inodes count wrong for group #0 (1269, counted=1268).
 Fix&lt;y&gt;? yes
-Free inodes count wrong <span style="color:#ff79c6">for</span> group <span style="color:#6272a4">#1 (1280, counted=1224).</span>
+Free inodes count wrong for group #1 (1280, counted=1224).
 Fix&lt;y&gt;? yes
-Directories count wrong <span style="color:#ff79c6">for</span> group <span style="color:#6272a4">#1 (0, counted=1).</span>
+Directories count wrong for group #1 (0, counted=1).
 Fix&lt;y&gt;? yes
-Free inodes count wrong <span style="color:#ff79c6">(</span>2549, <span style="color:#8be9fd;font-style:italic">counted</span><span style="color:#ff79c6">=</span>2492<span style="color:#ff79c6">)</span>.
+Free inodes count wrong (2549, counted=2492).
 Fix&lt;y&gt;? yes
 
 forensic.img: ***** FILE SYSTEM WAS MODIFIED *****
-forensic.img: 68/2560 files <span style="color:#ff79c6">(</span>77.9% non-contiguous<span style="color:#ff79c6">)</span>, 1589/10240 blocks
-</code></pre></div><p>File <em>forensic.img</em> telah berhasil diperbaiki</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file forensic.img 
-forensic.img: Linux rev 1.0 ext2 filesystem data, <span style="color:#8be9fd;font-style:italic">UUID</span><span style="color:#ff79c6">=</span>5424215a-8103-4a3d-8687-b4ed6f74fef2 <span style="color:#ff79c6">(</span>large files<span style="color:#ff79c6">)</span>
-</code></pre></div><p>Kemudian file <em>forensic.img</em> di-<em>mount</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ mkdir mont
+forensic.img: 68/2560 files (77.9% non-contiguous), 1589/10240 blocks
+</code></pre>
+
+<p>File <em>forensic.img</em> telah berhasil diperbaiki</p>
+
+<pre><code class="language-zsh">$ file forensic.img 
+forensic.img: Linux rev 1.0 ext2 filesystem data, UUID=5424215a-8103-4a3d-8687-b4ed6f74fef2 (large files)
+</code></pre>
+
+<p>Kemudian file <em>forensic.img</em> di-<em>mount</em></p>
+
+<pre><code class="language-zsh">$ mkdir mont
 $ mount -o loop forensic.img mont/
-$ <span style="color:#8be9fd;font-style:italic">cd</span> mont/
+$ cd mont/
 $ ls
 accordion  lost+found  wkwkwkw
-</code></pre></div><p>Flag ditemukan di</p>
-<blockquote>
-<p>accordion/image_0017.jpg</p>
-</blockquote>
-<p>
-  <img src="/img/gemastik12-diskforen/pic1.jpg" alt="Accordion Pic">
+</code></pre>
 
-</p>
+<p>Flag ditemukan di
+&gt; accordion/image_0017.jpg</p>
+
+<p><img src="/img/gemastik12-diskforen/pic1.jpg" alt="Accordion Pic" /></p>
+
 <h2 id="flag">Flag</h2>
+
 <p><strong>gemastik12{Disk_forensic_is Eazy}</strong></p>
+
 <h2 id="references">References</h2>
+
 <ol>
 <li><a href="https://linux.die.net/man/8/fsck">https://linux.die.net/man/8/fsck</a></li>
 </ol>
+
 <h2 id="rant">Rant</h2>
+
 <p>Saya benci cheese kimbap</p>
 
 
@@ -388,6 +413,8 @@ accordion  lost+found  wkwkwkw
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -603,7 +630,7 @@ accordion  lost+found  wkwkwkw
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

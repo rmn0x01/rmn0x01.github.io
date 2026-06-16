@@ -102,6 +102,10 @@
                         </li>
                         
                         <li>
+                            <a href="/categories/general">general</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/penetration-testing">penetration-testing</a>
                         </li>
                         
@@ -223,18 +227,24 @@
                 post-container">
 
                 
-                <p>Soal forensik final Gemastik XII di Telkom University. Poin 200</p>
+                
+
+<p>Soal forensik final Gemastik XII di Telkom University. Poin 200</p>
+
 <h2 id="intro">Intro</h2>
+
 <p>File yang diberikan berupa</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file *
-images.png:               PNG image data, <span style="color:#bd93f9">358</span> x 141, 8-bit colormap, non-interlaced
+
+<pre><code class="language-zsh">$ file *
+images.png:               PNG image data, 358 x 141, 8-bit colormap, non-interlaced
 trafik-gemastik12.pcapng: pcap-ng capture file - version 1.0
-</code></pre></div><p><em>images.png</em> yang diterima menerangkan bagaimana <em>File Transfer Protocol</em> (FTP) bekerja
+</code></pre>
 
-  <img src="/img/gemastik12-ftpforen/pic1.png" alt="FTP">
+<p><em>images.png</em> yang diterima menerangkan bagaimana <em>File Transfer Protocol</em> (FTP) bekerja
+<img src="/img/gemastik12-ftpforen/pic1.png" alt="FTP" /></p>
 
-</p>
 <h2 id="tldr">TLDR</h2>
+
 <ol>
 <li>FTP Packet filter</li>
 <li>Analisis paket</li>
@@ -243,96 +253,114 @@ trafik-gemastik12.pcapng: pcap-ng capture file - version 1.0
 <li>Dapatkan password ZIP</li>
 <li>Get the <strong>flag</strong></li>
 </ol>
+
 <h2 id="full-steps">Full Steps</h2>
+
 <p>Sesuai dengan judul soal dan <em>images.png</em> yang sudah sangat amat terang jelas mengarah pada <em>FTP</em>, maka file <em>trafik-gemastik12.pcapng</em> dibuka dengan <code>wireshark</code> dan difilter <em>ftp</em>
+<img src="/img/gemastik12-ftpforen/pic2.png" alt="Wireshark-FTP" /></p>
 
-  <img src="/img/gemastik12-ftpforen/pic2.png" alt="Wireshark-FTP">
+<p>Pada paket no. 356, terdapat aktivitas yang menarik dimana dilakukan <em>request</em> terhadap file
+&gt; /home/gemastik12/files/file/data-gemastik.jpg</p>
 
-</p>
-<p>Pada paket no. 356, terdapat aktivitas yang menarik dimana dilakukan <em>request</em> terhadap file</p>
-<blockquote>
-<p>/home/gemastik12/files/file/data-gemastik.jpg</p>
-</blockquote>
-<p>
-  <img src="/img/gemastik12-ftpforen/pic3.png" alt="Wireshark-FTP Packet 356">
+<p><img src="/img/gemastik12-ftpforen/pic3.png" alt="Wireshark-FTP Packet 356" /></p>
 
-</p>
 <p>Dilakukan pencarian terhadap file <em>data-gemastik.jpg</em> dengan cara mencari FF D8 FF (<em>hex-value</em> dari JPG), kemudian <em>follow tcp streams</em> tersebut, <em>dump as raw</em> dan simpan sebagai <em>data-gemastik.jpg</em>
+<img src="/img/gemastik12-ftpforen/pic4.png" alt="Wireshark-FTP tcp streams" /></p>
 
-  <img src="/img/gemastik12-ftpforen/pic4.png" alt="Wireshark-FTP tcp streams">
-
-</p>
 <p><em>data-gemastik.jpg</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ file data-gemastik.jpg 
-data-gemastik.jpg: JPEG image data, JFIF standard 1.01, resolution <span style="color:#ff79c6">(</span>DPI<span style="color:#ff79c6">)</span>, density 300x300, segment length 16, Exif Standard: <span style="color:#ff79c6">[</span>TIFF image data, big-endian, <span style="color:#8be9fd;font-style:italic">direntries</span><span style="color:#ff79c6">=</span>4, <span style="color:#8be9fd;font-style:italic">manufacturer</span><span style="color:#ff79c6">=</span>Canon, <span style="color:#8be9fd;font-style:italic">model</span><span style="color:#ff79c6">=</span>Canon EOS 5D Mark III<span style="color:#ff79c6">]</span>, baseline, precision 8, 510x340, components <span style="color:#bd93f9">3</span>
-</code></pre></div><p>Kemudian dilakukan pencarian terhadap file lain di <em>data-gemastik.jpg</em> menggunakan <code>binwalk</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ binwalk data-gemastik.jpg 
+
+<pre><code class="language-zsh">$ file data-gemastik.jpg 
+data-gemastik.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 300x300, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=4, manufacturer=Canon, model=Canon EOS 5D Mark III], baseline, precision 8, 510x340, components 3
+</code></pre>
+
+<p>Kemudian dilakukan pencarian terhadap file lain di <em>data-gemastik.jpg</em> menggunakan <code>binwalk</code></p>
+
+<pre><code class="language-zsh">$ binwalk data-gemastik.jpg 
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
-<span style="color:#bd93f9">0</span>             0x0             JPEG image data, JFIF standard 1.01
-<span style="color:#bd93f9">30</span>            0x1E            TIFF image data, big-endian, offset of first image directory: <span style="color:#bd93f9">8</span>
-<span style="color:#bd93f9">22337</span>         0x5741          Zip archive data, at least v1.0 to extract, compressed size: 93051, uncompressed size: 93051, name: data.png
-<span style="color:#bd93f9">115426</span>        0x1C2E2         Zip archive data, at least v2.0 to extract, compressed size: 206330, uncompressed size: 210266, name: flag-diproteksi.pdf
-<span style="color:#bd93f9">321805</span>        0x4E90D         Zip archive data, at least v1.0 to extract, compressed size: 322317, uncompressed size: 322317, name: tree.jpg
-<span style="color:#bd93f9">644441</span>        0x9D559         End of Zip archive, footer length: <span style="color:#bd93f9">22</span>
-</code></pre></div><p><em>Recover</em> semuanya dengan <code>foremost</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ foremost data-gemastik.jpg 
+0             0x0             JPEG image data, JFIF standard 1.01
+30            0x1E            TIFF image data, big-endian, offset of first image directory: 8
+22337         0x5741          Zip archive data, at least v1.0 to extract, compressed size: 93051, uncompressed size: 93051, name: data.png
+115426        0x1C2E2         Zip archive data, at least v2.0 to extract, compressed size: 206330, uncompressed size: 210266, name: flag-diproteksi.pdf
+321805        0x4E90D         Zip archive data, at least v1.0 to extract, compressed size: 322317, uncompressed size: 322317, name: tree.jpg
+644441        0x9D559         End of Zip archive, footer length: 22
+</code></pre>
+
+<p><em>Recover</em> semuanya dengan <code>foremost</code></p>
+
+<pre><code class="language-zsh">$ foremost data-gemastik.jpg 
 Processing: data-gemastik.jpg
-|<span style="color:#8be9fd;font-style:italic">foundat</span><span style="color:#ff79c6">=</span>data.png�PNG
+|foundat=data.png�PNG
 
 
-<span style="color:#8be9fd;font-style:italic">foundat</span><span style="color:#ff79c6">=</span>flag-diproteksi.pdf�Rcp%<span style="color:#f1fa8c">\</span>̈́۶�b���b<span style="color:#ff79c6">[</span>/�&#39;�L&lt;I&amp;�1ыm۶�Ŷ�ݭu��ت���<span style="color:#ff79c6">{</span>���&gt;���R�l,Ի<span style="color:#ff79c6">{</span>Sld�d����
-<span style="color:#8be9fd;font-style:italic">foundat</span><span style="color:#ff79c6">=</span>tree.jpg����
+foundat=flag-diproteksi.pdf�Rcp%\̈́۶�b���b[/�'�L&lt;I&amp;�1ыm۶�Ŷ�ݭu��ت���{���&gt;���R�l,Ի{Sld�d����
+foundat=tree.jpg����
 *|
-</code></pre></div><p>File zip yang di-<em>recover</em> berisi</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ unzip 00000043.zip 
+</code></pre>
+
+<p>File zip yang di-<em>recover</em> berisi</p>
+
+<pre><code class="language-zsh">$ unzip 00000043.zip 
 Archive:  00000043.zip
  extracting: data.png                
   inflating: flag-diproteksi.pdf     
  extracting: tree.jpg 
-</code></pre></div><blockquote>
+</code></pre>
+
+<blockquote>
 <p>Tidak semudah itu ferguso - Panitia gemastik12</p>
 </blockquote>
+
 <p>File PDF tidak dapat dibuka karena <em>password protected</em>, asumsi selanjutnya adalah <em>password</em> disembunyikan di salah satu gambar, antara <em>data.png</em> atau <em>tree.jpg</em>, sehingga kemudian dilakukan <code>zsteg</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ zsteg data.png 
-meta Raw profile <span style="color:#8be9fd;font-style:italic">type</span> APP1.. text: <span style="color:#f1fa8c">&#34;\ngeneric profile\n     202\n4578696600004d4d002a000000080004010e00020000001f0000003e0128000300000001\n0002000002130003000000010001000088250004000000010000005e000000004e4f2043\n4f444520455845435554494f4e20414c4c4f574544204845524500000004000100020000\n00024e000000000200050000000300000094000300020000000245000000000400050000\n0003000000ac000000000000002b0000000100000036000000010001914000001d1b0000\n0009000000010000003a0000000100004eb100001000\n&#34;</span>
-b1,g,msb,xy         .. file: PGP<span style="color:#f1fa8c">\0</span>11Secret Key -
-b1,rgb,lsb,xy       .. text: <span style="color:#f1fa8c">&#34;cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=&#34;</span>
-b2,r,msb,xy         .. text: <span style="color:#f1fa8c">&#34;@UUUUUUUUA&#34;</span>
-b2,g,msb,xy         .. text: <span style="color:#f1fa8c">&#34;TUUUUUUU&#34;</span>
-b2,rgba,lsb,xy      .. text: <span style="color:#f1fa8c">&#34;{k?g#s?{cs&#34;</span>
-b2,abgr,msb,xy      .. text: <span style="color:#f1fa8c">&#34;GCSSSSSSSSSSSSSSS&#34;</span>
-b3,rgba,lsb,xy      .. text: <span style="color:#f1fa8c">&#34;?Wu?wwwWu?s&#34;</span>
-b4,r,lsb,xy         .. text: <span style="color:#f1fa8c">&#34;fUEEEU#2 &#34;</span>
-b4,r,msb,xy         .. text: <span style="color:#f1fa8c">&#34;DD\&#34;\&#34;33333333\&#34;\&#34;\&#34;DD&#34;</span>
-b4,g,lsb,xy         .. text: <span style="color:#f1fa8c">&#34;3#\&#34;3vwfgvffvvuB#&#34;</span>
-b4,g,msb,xy         .. text: <span style="color:#f1fa8c">&#34;;3;3;33w&#34;</span>
-b4,b,lsb,xy         .. text: <span style="color:#f1fa8c">&#34;gfwwgfgv&#34;</span>
-b4,b,msb,xy         .. text: <span style="color:#f1fa8c">&#34;ffff\&#34;\&#34;\&#34;\&#34;DTUU&#34;</span>
-b4,rgb,lsb,xy       .. text: <span style="color:#f1fa8c">&#34;c62b&#39;2b&#39;#c)3&#34;</span>
-b4,bgr,lsb,xy       .. text: <span style="color:#f1fa8c">&#34;3b6\&#34;b7\&#34;c&#39;#c9&#34;</span>
-b4,abgr,msb,xy      .. text: <span style="color:#f1fa8c">&#34;h_`o(o(o&#34;</span>
-</code></pre></div><p><em>Decode string</em></p>
-<blockquote>
-<p>cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=&#39;</span> | base64 -d
+
+<pre><code class="language-zsh">$ zsteg data.png 
+meta Raw profile type APP1.. text: &quot;\ngeneric profile\n     202\n4578696600004d4d002a000000080004010e00020000001f0000003e0128000300000001\n0002000002130003000000010001000088250004000000010000005e000000004e4f2043\n4f444520455845435554494f4e20414c4c4f574544204845524500000004000100020000\n00024e000000000200050000000300000094000300020000000245000000000400050000\n0003000000ac000000000000002b0000000100000036000000010001914000001d1b0000\n0009000000010000003a0000000100004eb100001000\n&quot;
+b1,g,msb,xy         .. file: PGP\011Secret Key -
+b1,rgb,lsb,xy       .. text: &quot;cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=&quot;
+b2,r,msb,xy         .. text: &quot;@UUUUUUUUA&quot;
+b2,g,msb,xy         .. text: &quot;TUUUUUUU&quot;
+b2,rgba,lsb,xy      .. text: &quot;{k?g#s?{cs&quot;
+b2,abgr,msb,xy      .. text: &quot;GCSSSSSSSSSSSSSSS&quot;
+b3,rgba,lsb,xy      .. text: &quot;?Wu?wwwWu?s&quot;
+b4,r,lsb,xy         .. text: &quot;fUEEEU#2 &quot;
+b4,r,msb,xy         .. text: &quot;DD\&quot;\&quot;33333333\&quot;\&quot;\&quot;DD&quot;
+b4,g,lsb,xy         .. text: &quot;3#\&quot;3vwfgvffvvuB#&quot;
+b4,g,msb,xy         .. text: &quot;;3;3;33w&quot;
+b4,b,lsb,xy         .. text: &quot;gfwwgfgv&quot;
+b4,b,msb,xy         .. text: &quot;ffff\&quot;\&quot;\&quot;\&quot;DTUU&quot;
+b4,rgb,lsb,xy       .. text: &quot;c62b'2b'#c)3&quot;
+b4,bgr,lsb,xy       .. text: &quot;3b6\&quot;b7\&quot;c'#c9&quot;
+b4,abgr,msb,xy      .. text: &quot;h_`o(o(o&quot;
+</code></pre>
+
+<p><em>Decode string</em>
+&gt; cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=</p>
+
+<pre><code class="language-zsh">$ echo 'cGFzc3dvcmQgcGRmIGZpbGUgYWRhbGFoIGdhbGl0ZXJ1c3NhbXBhaWQ0cDR0a2F3YW4=' | base64 -d
 password pdf file adalah galiterussampaid4p4tkawan
-</code></pre></div><p>Buka file <em>flag-diproteksi.pdf</em> dengan <em>password</em> <strong>galiterussampaid4p4tkawan</strong>, didapatkan flagnya
+</code></pre>
 
-  <img src="/img/gemastik12-ftpforen/pic5.png" alt="Flag">
+<p>Buka file <em>flag-diproteksi.pdf</em> dengan <em>password</em> <strong>galiterussampaid4p4tkawan</strong>, didapatkan flagnya
+<img src="/img/gemastik12-ftpforen/pic5.png" alt="Flag" /></p>
 
-</p>
 <h2 id="flag">Flag</h2>
+
 <p><strong>gemastik12{a4e5e3b7ac929b5ec11726f7820cb1cd}</strong></p>
+
 <h2 id="shortcut">Shortcut</h2>
+
 <p>Cek dahulu apakah ada string <em>flag</em> di dalam paket</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ strings trafik-gemastik12.pcapng | grep -i flag
+
+<pre><code class="language-zsh">$ strings trafik-gemastik12.pcapng | grep -i flag
 flag-diproteksi.pdf
 flag-diproteksi.pdf
-</code></pre></div><p>Jika ada, gunakan <em>filter <strong>tcp contains flag</strong></em> di <code>Wireshark</code>, kemudian <em>follow tcp stream</em> tersebut dan <em>dump</em> file <em>data-gemastik.jpg</em>, kemudian dapat dilanjutkan dengan step 5 dan seterusnya seperti biasa.</p>
+</code></pre>
+
+<p>Jika ada, gunakan <em>filter <strong>tcp contains flag</strong></em> di <code>Wireshark</code>, kemudian <em>follow tcp stream</em> tersebut dan <em>dump</em> file <em>data-gemastik.jpg</em>, kemudian dapat dilanjutkan dengan step 5 dan seterusnya seperti biasa.</p>
+
 <h2 id="rant">Rant</h2>
+
 <p>Saya benci cheese kimbap</p>
 
 
@@ -434,6 +462,8 @@ flag-diproteksi.pdf
                         <a href="/tags/gemastik12" title="gemastik12">
                             gemastik12
                         </a>
+                        
+                        
                         
                         
                         
@@ -649,7 +679,7 @@ flag-diproteksi.pdf
             
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; rmn0x01 2025
+                    Copyright &copy; rmn0x01 2026
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
