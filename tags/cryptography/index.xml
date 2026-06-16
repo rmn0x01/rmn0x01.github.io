@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cryptography on rmn0x01</title>
+    <title>cryptography on rmn0x01</title>
     <link>https://rmn0x01.github.io/tags/cryptography/</link>
-    <description>Recent content in Cryptography on rmn0x01</description>
+    <description>Recent content in cryptography on rmn0x01</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
